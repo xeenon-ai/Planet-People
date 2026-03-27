@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Green Earth — Environmental Awareness Blog</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;500&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .font-heading {
+            font-family: 'DM Serif Display', serif;
+        }
+        
+        .font-body {
+            font-family: 'Outfit', sans-serif;
+        }
+        /* Modern Hero Gradient with Mesh */
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #166534 50%, #0c4a6e 75%, #1e1b4b 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: meshShift 20s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes meshShift {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, -20px);
+            }
+        }
+        /* Floating elements */
+        
+        .float-element {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .float-element:nth-child(2) {
+            animation-delay: -2s;
+            animation-duration: 10s;
+            left: 15%;
+            top: 20%;
+        }
+        
+        .float-element:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 7s;
+            right: 10%;
+            top: 40%;
+        }
+        
+        .float-element:nth-child(4) {
+            animation-delay: -6s;
+            animation-duration: 9s;
+            left: 5%;
+            bottom: 20%;
+        }
+        
+        .float-element:nth-child(5) {
+            animation-delay: -8s;
+            animation-duration: 12s;
+            right: 5%;
+            bottom: 15%;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0) rotateZ(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotateZ(5deg);
+            }
+            50% {
+                transform: translateY(0) rotateZ(0deg);
+            }
+            75% {
+                transform: translateY(30px) rotateZ(-5deg);
+            }
+        }
+        /* Modern card design */
+        
+        .topic-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(51, 65, 85, 0.1);
+        }
+        
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .topic-card:hover::before {
+            left: 100%;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 0 40px rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .topic-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .topic-card:hover .topic-card-image {
+            transform: scale(1.08);
+        }
+        
+        .topic-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--card-color), transparent);
+        }
+        /* Staggered entrance animation */
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUpDelayed 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        @keyframes fadeUpDelayed {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-up:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .fade-up:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .fade-up:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .fade-up:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        .fade-up:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        
+        .fade-up:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        
+        .fade-up:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+        
+        .fade-up:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+        
+        .fade-up:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+        
+        .fade-up:nth-child(10) {
+            animation-delay: 1s;
+        }
+        /* Elegant nav link */
+        
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #10b981);
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Smooth scrollbar */
+        
+        .app-wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+        }
+        
+        .app-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.05);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #22c55e, #10b981);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #16a34a, #059669);
+        }
+        /* Icon animation */
+        
+        .icon-pulse {
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        /* Glass effect */
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+    <div id="app" class="app-wrapper h-full w-full" style="background-color: #f0fdf4;">
+        <!-- ========== HEADER / NAV ========== -->
+        <header class="sticky top-0 z-50 backdrop-blur-md" style="background: rgba(6, 78, 59, 0.95);">
+            <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+                <a href="#hero" class="flex items-center gap-2 text-white font-heading text-xl"> <span style="font-size:1.5rem;">🌿</span> <span id="nav-title">Our Green Earth</span> </a>
+                <!-- Mobile menu toggle --><button id="menu-toggle" class="md:hidden text-white" aria-label="Toggle menu"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+                <!-- Desktop nav -->
+                <div class="hidden md:flex items-center gap-5 text-sm text-emerald-100"><a href="#hero" class="nav-link hover:text-white transition">Home</a> <a href="#topics" class="nav-link hover:text-white transition">Topics</a> <a href="#conclusion" class="nav-link hover:text-white transition">Conclusion</a> <a href="#references"
+                        class="nav-link hover:text-white transition">References</a>
+                </div>
+            </nav>
+            <!-- Mobile nav dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden px-4 pb-3 space-y-2 text-sm text-emerald-100" style="background: rgba(6,78,59,0.98);"><a href="#hero" class="block py-1 hover:text-white">Home</a> <a href="#topics" class="block py-1 hover:text-white">Topics</a> <a href="#conclusion" class="block py-1 hover:text-white">Conclusion</a> <a href="#references" class="block py-1 hover:text-white">References</a>
+            </div>
+        </header>
+        <main>
+            <!-- ========== HERO SECTION ========== -->
+            <section id="hero" class="hero-gradient relative overflow-hidden py-24 md:py-40 px-4 text-center text-white">
+                <!-- Animated mesh background elements -->
+                <div class="float-element text-8xl">
+                    🌍
+                </div>
+                <div class="float-element text-7xl">
+                    ♻️
+                </div>
+                <div class="float-element text-6xl">
+                    🌱
+                </div>
+                <div class="float-element text-8xl">
+                    💚
+                </div>
+                <div class="float-element text-7xl">
+                    🌿
+                </div>
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <p class="text-emerald-300 text-xs tracking-[0.2em] uppercase mb-4 font-semibold opacity-90">🌍 Environmental Awareness</p>
+                    <h1 id="blog-title" class="font-heading text-5xl md:text-7xl leading-tight mb-4 tracking-tight" style="text-shadow: 0 4px 30px rgba(0,0,0,0.4); letter-spacing: -0.02em;">Our Green Earth</h1>
+                    <div class="h-1 w-24 mx-auto mb-8 rounded-full" style="background: linear-gradient(90deg, #22c55e, #10b981);"></div>
+                    <p id="intro-text" class="text-emerald-50 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-10 font-light">Welcome to Our Green Earth — a blog dedicated to exploring the most pressing environmental issues of our time. From global warming and climate change to biodiversity loss and waste management, this blog aims to inform, inspire, and
+                        empower readers to take meaningful action toward protecting our planet.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center"><a href="#topics" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition hover:scale-105 active:scale-95 shadow-lg" style="background: linear-gradient(135deg, #22c55e, #16a34a); color: #0f172a;"> Explore Topics <i data-lucide="arrow-down" style="width:20px;height:20px;"></i> </a>                        <a href="#references" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition hover:bg-white/20 border border-emerald-300" style="color: #10b981;"> View References <i data-lucide="external-link" style="width:18px;height:18px;"></i> </a>
+                    </div>
+                    <!-- Stats display -->
+                    <div class="grid grid-cols-3 gap-6 mt-16 max-w-xl mx-auto">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">
+                                10
+                            </div>
+                            <div class="text-sm text-emerald-200">
+                                Topics
+                            </div>
+                        </div>
+                        <div class="text-center border-l border-r border-emerald-400/30">
+                            <div class="text-3xl font-bold mb-1">
+                                50+
+                            </div>
+                            <div class="text-sm text-emerald-200">
+                                References
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">
+                                100%
+                            </div>
+                            <div class="text-sm text-emerald-200">
+                                Informed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ========== TOPICS GRID ========== -->
+            <section id="topics" class="max-w-7xl mx-auto px-4 py-20 md:py-28">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);"><i data-lucide="book-open" style="width:16px;height:16px;color:#10b981;"></i> <span class="text-sm font-semibold text-emerald-700">Comprehensive Blog</span>
+                    </div>
+                    <h2 class="font-heading text-4xl md:text-5xl mb-4" style="color: #0f172a;">Explore Environmental Topics</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">Click on any topic below to read in-depth articles about critical environmental issues. Each post includes detailed information, real examples, and visual references.</p>
+                </div>
+                <div id="topics-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards are generated by JS below -->
+                </div>
+            </section>
+            <!-- ========== CONCLUSION ========== -->
+            <section id="conclusion" class="relative py-20 md:py-28 px-4 overflow-hidden">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg, #ecfdf5 0%, #e0f2fe 50%, #f0e7fe 100%);z-index:0;"></div>
+                <div style="position:absolute;inset:0;opacity:0.05;">
+                    <div style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%, #22c55e 0%, transparent 50%);"></div>
+                </div>
+                <div class="max-w-3xl mx-auto text-center relative z-10">
+                    <div style="font-size:3.5rem;margin-bottom:1.5rem;animation:iconPulse 2.5s ease-in-out infinite;">
+                        🌍
+                    </div>
+                    <h2 class="font-heading text-4xl md:text-5xl mb-6" style="color: #0f172a;">Our Collective Responsibility</h2>
+                    <div class="h-1 w-16 mx-auto mb-8 rounded-full" style="background: linear-gradient(90deg, #22c55e, #10b981);"></div>
+                    <p id="conclusion-text" class="text-gray-700 text-lg leading-relaxed mb-8 font-light">Environmental protection is not just a responsibility of governments and organizations — it begins with each one of us. By understanding the causes and effects of environmental issues like global warming, biodiversity loss, and improper
+                        waste management, we can make informed decisions that benefit both our communities and the planet. Let us commit to refusing, reducing, reusing, repairing, and recycling as part of our daily lives. Together, small actions can lead
+                        to a greener, healthier future for all.</p>
+                    <!-- Action badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mt-12">
+                        <div class="p-4 rounded-xl glass-effect"><span style="font-size:2rem;display:block;margin-bottom:0.5rem;">♻️</span>
+                            <p style="font-size:0.75rem;font-weight:600;color:#0f172a;">Recycle</p>
+                        </div>
+                        <div class="p-4 rounded-xl glass-effect"><span style="font-size:2rem;display:block;margin-bottom:0.5rem;">🌱</span>
+                            <p style="font-size:0.75rem;font-weight:600;color:#0f172a;">Sustain</p>
+                        </div>
+                        <div class="p-4 rounded-xl glass-effect"><span style="font-size:2rem;display:block;margin-bottom:0.5rem;">💧</span>
+                            <p style="font-size:0.75rem;font-weight:600;color:#0f172a;">Conserve</p>
+                        </div>
+                        <div class="p-4 rounded-xl glass-effect"><span style="font-size:2rem;display:block;margin-bottom:0.5rem;">🌳</span>
+                            <p style="font-size:0.75rem;font-weight:600;color:#0f172a;">Protect</p>
+                        </div>
+                        <div class="p-4 rounded-xl glass-effect"><span style="font-size:2rem;display:block;margin-bottom:0.5rem;">☀️</span>
+                            <p style="font-size:0.75rem;font-weight:600;color:#0f172a;">Inspire</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ========== REFERENCES ========== -->
+            <section id="references" class="max-w-4xl mx-auto px-4 py-20">
+                <div class="mb-12">
+                    <h2 class="font-heading text-3xl md:text-4xl mb-2" style="color: #0f172a;">References &amp; Sources</h2>
+                    <p class="text-gray-600">Carefully curated sources that inform the content of this environmental awareness blog.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 rounded-xl border border-emerald-200" style="background:linear-gradient(135deg,rgba(16,185,129,0.03),rgba(34,197,94,0.03));">
+                        <p class="font-semibold text-gray-800 mb-1">NASA Climate Change: How Do We Know?</p>
+                        <p class="text-sm text-gray-600 mb-3">Authoritative information on climate change evidence and climate science.</p><a href="https://climate.nasa.gov/evidence/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-emerald-700 hover:text-emerald-900 inline-flex items-center gap-1"> Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i> </a>
+                    </div>
+                    <div class="p-6 rounded-xl border border-emerald-200" style="background:linear-gradient(135deg,rgba(16,185,129,0.03),rgba(34,197,94,0.03));">
+                        <p class="font-semibold text-gray-800 mb-1">DENR - National Solid Waste Management Status Report (2023)</p>
+                        <p class="text-sm text-gray-600 mb-3">Department of Environment and Natural Resources, Philippines - Comprehensive waste management data and policies.</p>
+                        <p class="text-xs text-gray-500">Philippine Government Resource</p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-emerald-200" style="background:linear-gradient(135deg,rgba(16,185,129,0.03),rgba(34,197,94,0.03));">
+                        <p class="font-semibold text-gray-800 mb-1">WWF - Living Planet Report 2022</p>
+                        <p class="text-sm text-gray-600 mb-3">World Wildlife Fund's comprehensive analysis of biodiversity loss and ecosystem health globally.</p><a href="https://livingplanet.panda.org/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-emerald-700 hover:text-emerald-900 inline-flex items-center gap-1"> Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i> </a>
+                    </div>
+                    <div class="p-6 rounded-xl border border-emerald-200" style="background:linear-gradient(135deg,rgba(16,185,129,0.03),rgba(34,197,94,0.03));">
+                        <p class="font-semibold text-gray-800 mb-1">IPCC AR6 Synthesis Report: Climate Change 2023</p>
+                        <p class="text-sm text-gray-600 mb-3">Intergovernmental Panel on Climate Change - Latest findings on climate science and impacts.</p>
+                        <p class="text-xs text-gray-500">International Scientific Assessment</p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-emerald-200" style="background:linear-gradient(135deg,rgba(16,185,129,0.03),rgba(34,197,94,0.03));">
+                        <p class="font-semibold text-gray-800 mb-1">Republic Act No. 9003 - Ecological Solid Waste Management Act of 2000</p>
+                        <p class="text-sm text-gray-600 mb-3">Philippine legislation governing solid waste management and environmental protection.</p>
+                        <p class="text-xs text-gray-500">Philippine Legislation</p>
+                    </div>
+                    <!-- Add comment for future additions -->
+                    <div style="border:2px dashed rgba(107,114,128,0.3);border-radius:0.75rem;padding:1.5rem;margin-top:2rem;background:rgba(107,114,128,0.05);">
+                        <p style="color:#6b7280;font-size:0.875rem;margin:0;">💡 <strong>Comment:</strong> Additional references can be added here from reputable sources such as scientific journals, government agencies, international organizations (UN, WHO), environmental NGOs, and peer-reviewed research
+                            databases to support blog content with credible data.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- ========== FOOTER ========== -->
+        <footer class="text-center py-8 px-4" style="background: #064e3b; color: #a7f3d0;">
+            <p class="text-sm">🌿 Our Green Earth — Environmental Awareness Blog</p>
+            <p class="text-xs mt-1 text-emerald-400/60">Created for IT Environmental Awareness Project • 2025</p>
+        </footer>
+    </div>
+    <script>
+        // ===== TOPIC DATA WITH IMAGES =====
+        const topics = [{
+            num: 1,
+            title: "Causes of Global Warming",
+            icon: "🌡️",
+            desc: "Explore the human activities and natural factors driving global temperatures to dangerous levels.",
+            file: "topic1.html",
+            color: "#dc2626",
+            image: "https://images.unsplash.com/photo-1611080626919-7cf88ca77906?w=500&h=300&fit=crop"
+        }, {
+            num: 2,
+            title: "Climate Change & Its Impact",
+            icon: "🌪️",
+            desc: "Understand how shifting climate patterns affect ecosystems, weather, and human life worldwide.",
+            file: "topic2.html",
+            color: "#ea580c",
+            image: "https://images.unsplash.com/photo-1559829007-40cb313be3b5?w=500&h=300&fit=crop"
+        }, {
+            num: 3,
+            title: "Effect of Biodiversity Loss",
+            icon: "🦋",
+            desc: "Learn why species extinction threatens food security, medicine, and ecological balance.",
+            file: "topic3.html",
+            color: "#16a34a",
+            image: "https://images.unsplash.com/photo-1518531933037-91b2f8f89cc3?w=500&h=300&fit=crop"
+        }, {
+            num: 4,
+            title: "Philippine Waste Management",
+            icon: "🗑️",
+            desc: "Examine the waste crisis in the Philippines and the laws designed to address it.",
+            file: "topic4.html",
+            color: "#0891b2",
+            image: "https://images.unsplash.com/photo-1559834298-038196d6cb4d?w=500&h=300&fit=crop"
+        }, {
+            num: 5,
+            title: "Refuse, Reduce, Reuse, Repair & Recycle",
+            icon: "♻️",
+            desc: "Discover the 5R framework for sustainable living and minimizing waste.",
+            file: "topic5.html",
+            color: "#7c3aed",
+            image: "https://images.unsplash.com/photo-1532996122724-8f3c2cd83c5d?w=500&h=300&fit=crop"
+        }, {
+            num: 6,
+            title: "Deforestation & Its Consequences",
+            icon: "🌳",
+            desc: "Investigate how forest destruction accelerates climate change and displaces wildlife.",
+            file: "topic6.html",
+            color: "#15803d",
+            image: "https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=500&h=300&fit=crop"
+        }, {
+            num: 7,
+            title: "Ocean Pollution",
+            icon: "🌊",
+            desc: "Dive into the causes and devastating effects of plastic and chemical pollution in our oceans.",
+            file: "topic7.html",
+            color: "#0369a1",
+            image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=300&fit=crop"
+        }, {
+            num: 8,
+            title: "Air Quality & Health",
+            icon: "💨",
+            desc: "See how air pollution impacts respiratory health and contributes to global disease burden.",
+            file: "topic8.html",
+            color: "#6b7280",
+            image: "https://images.unsplash.com/photo-1610857590941-e8e6a570f434?w=500&h=300&fit=crop"
+        }, {
+            num: 9,
+            title: "Renewable Energy Solutions",
+            icon: "☀️",
+            desc: "Explore solar, wind, and other clean energy sources powering a sustainable future.",
+            file: "topic9.html",
+            color: "#ca8a04",
+            image: "https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=500&h=300&fit=crop"
+        }, {
+            num: 10,
+            title: "Environmental Laws in the Philippines",
+            icon: "📜",
+            desc: "Review key legislation protecting Philippine natural resources and communities.",
+            file: "topic10.html",
+            color: "#9333ea",
+            image: "https://images.unsplash.com/photo-1555939594-58d7cb313404?w=500&h=300&fit=crop"
+        }];
+
+        // ===== RENDER TOPIC CARDS =====
+        function renderTopics() {
+            const grid = document.getElementById('topics-grid');
+            grid.innerHTML = '';
+            topics.forEach((t) => {
+                const card = document.createElement('a');
+                card.href = t.file;
+                card.className = 'topic-card fade-up rounded-2xl overflow-hidden block';
+                card.style.setProperty('--card-color', t.color);
+                card.innerHTML = `
+          <div style="position:relative;height:200px;overflow:hidden;">
+            <img src="${t.image}" alt="Topic ${t.num}: ${t.title}" class="topic-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, ${t.color}22, ${t.color}11)'; this.style.display='none';">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg, ${t.color}00, ${t.color}33);"></div>
+            <div class="topic-card-overlay"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.4));padding:1rem;display:flex;justify-content:space-between;align-items:flex-end;height:100%;">
+              <span style="font-size:2rem;">${t.icon}</span>
+              <span style="font-weight:600;font-size:0.875rem;color:white;background:${t.color};padding:0.25rem 0.75rem;border-radius:9999px;">Topic ${t.num}</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-xl mb-2" style="color:#0f172a;line-height:1.3;">${t.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4 h-12">${t.desc}</p>
+            <div class="flex items-center gap-2 text-sm font-semibold" style="color:${t.color};">
+              Read Article 
+              <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </div>
+          </div>
+        `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // ===== MOBILE MENU =====
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // ===== ELEMENT SDK =====
+        const defaultConfig = {
+            blog_title: "Our Green Earth",
+            intro_text: "Welcome to Our Green Earth — a blog dedicated to exploring the most pressing environmental issues of our time. From global warming and climate change to biodiversity loss and waste management, this blog aims to inform, inspire, and empower readers to take meaningful action toward protecting our planet.",
+            conclusion_text: "Environmental protection is not just a responsibility of governments and organizations — it begins with each one of us. By understanding the causes and effects of environmental issues like global warming, biodiversity loss, and improper waste management, we can make informed decisions that benefit both our communities and the planet. Let us commit to refusing, reducing, reusing, repairing, and recycling as part of our daily lives. Together, small actions can lead to a greener, healthier future for all.",
+            background_color: "#f0fdf4",
+            surface_color: "#ffffff",
+            text_color: "#0f172a",
+            primary_action_color: "#22c55e",
+            secondary_action_color: "#10b981",
+            font_family: "DM Serif Display",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = key => config[key] || defaultConfig[key];
+
+            document.getElementById('blog-title').textContent = c('blog_title');
+            document.getElementById('nav-title').textContent = c('blog_title');
+            document.getElementById('intro-text').textContent = c('intro_text');
+            document.getElementById('conclusion-text').textContent = c('conclusion_text');
+
+            document.getElementById('app').style.backgroundColor = c('background_color');
+            document.querySelectorAll('.topic-card').forEach(card => {
+                card.style.backgroundColor = c('surface_color');
+            });
+
+            const font = c('font_family');
+            document.querySelectorAll('.font-heading').forEach(el => {
+                el.style.fontFamily = `${font}, serif`;
+            });
+
+            const size = c('font_size');
+            document.getElementById('intro-text').style.fontSize = `${size * 1.15}px`;
+            document.getElementById('conclusion-text').style.fontSize = `${size * 1.1}px`;
+        }
+
+        function mapToCapabilities(config) {
+            const c = key => config[key] || defaultConfig[key];
+
+            function mut(key) {
+                return {
+                    get: () => c(key),
+                    set: (v) => {
+                        config[key] = v;
+                        window.elementSdk.setConfig({
+                            [key]: v
+                        });
+                    }
+                };
+            }
+            return {
+                recolorables: [mut('background_color'), mut('surface_color'), mut('text_color'), mut('primary_action_color'), mut('secondary_action_color')],
+                borderables: [],
+                fontEditable: mut('font_family'),
+                fontSizeable: mut('font_size')
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            const c = key => config[key] || defaultConfig[key];
+            return new Map([
+                ["blog_title", c('blog_title')],
+                ["intro_text", c('intro_text')],
+                ["conclusion_text", c('conclusion_text')]
+            ]);
+        }
+
+        renderTopics();
+        lucide.createIcons();
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9e31d08a1739b9ff',t:'MTc3NDY1MDM2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
