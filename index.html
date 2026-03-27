@@ -1069,10 +1069,9 @@
                 card.className = 'topic-card fade-up';
                 card.innerHTML = `
           <div class="topic-card-image-wrapper">
-            <img 
-              src="images/topic${t.num}.jpg" 
-              alt="${t.title}" 
-              class="topic-card-image" 
+            <img src="images/topic${t.num}.jpg"
+              alt="${t.title}"
+              class="topic-card-image"
               loading="lazy"
               onerror="this.style.background='linear-gradient(135deg, ${t.color}20, ${t.color}10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='5rem'; this.textContent='${t.icon}';"
             />
