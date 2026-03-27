@@ -10,8 +10,6 @@
     <script src="/_sdk/element_sdk.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
-        /* ===== ROOT & BASE ===== */
-        
         html,
         body {
             height: 100%;
@@ -23,7 +21,6 @@
         * {
             box-sizing: border-box;
         }
-        /* ===== FONT STACKS ===== */
         
         .font-heading {
             font-family: 'Playfair Display', serif;
@@ -33,7 +30,6 @@
         .font-body {
             font-family: 'Poppins', sans-serif;
         }
-        /* ===== MAIN WRAPPER & SCROLLBAR ===== */
         
         .app-wrapper {
             overflow-y: auto;
@@ -59,7 +55,6 @@
         .app-wrapper::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(180deg, #059669, #15803d);
         }
-        /* ===== HEADER/NAV ===== */
         
         header {
             position: sticky;
@@ -183,7 +178,6 @@
             background: rgba(16, 185, 129, 0.1);
             color: white;
         }
-        /* ===== HERO SECTION ===== */
         
         .hero {
             position: relative;
@@ -368,7 +362,6 @@
             font-size: 0.875rem;
             color: #a7f3d0;
         }
-        /* ===== BUTTONS ===== */
         
         .button-group {
             display: flex;
@@ -444,7 +437,6 @@
         .btn-secondary:hover {
             background: rgba(16, 185, 129, 0.1);
         }
-        /* ===== TOPICS SECTION ===== */
         
         .topics-section {
             max-width: 80rem;
@@ -515,7 +507,6 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        /* ===== TOPIC CARD ===== */
         
         .topic-card {
             position: relative;
@@ -525,6 +516,7 @@
             border-radius: 1.5rem;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             transform-style: preserve-3d;
+            cursor: pointer;
         }
         
         .topic-card::after {
@@ -624,7 +616,6 @@
         .topic-cta:hover {
             gap: 0.75rem;
         }
-        /* ===== FADE-UP ANIMATION ===== */
         
         .fade-up {
             opacity: 0;
@@ -658,14 +649,12 @@
         .fade-up:nth-child(5) {
             animation-delay: 0.40s;
         }
-        /* ===== SECTION DIVIDER ===== */
         
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
             margin: 3rem 0;
         }
-        /* ===== CONCLUSION SECTION ===== */
         
         .conclusion-section {
             position: relative;
@@ -785,7 +774,6 @@
             color: #001f3f;
             letter-spacing: 0.5px;
         }
-        /* ===== REFERENCES SECTION ===== */
         
         .references-section {
             max-width: 56rem;
@@ -864,7 +852,6 @@
         .reference-link:hover {
             color: #0d6e4a;
         }
-        /* ===== FOOTER ===== */
         
         footer {
             text-align: center;
@@ -886,24 +873,139 @@
             margin-top: 0.5rem;
             color: rgba(167, 243, 208, 0.44);
         }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 2rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin: 0;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            transition: color 0.3s ease;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: #001f3f;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-body h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+        
+        .modal-body p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 1.5rem;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
 
 <body class="h-full font-body">
     <div class="app-wrapper">
-        <!-- ===== HEADER ===== -->
         <header>
             <nav>
                 <a href="#hero" class="logo"> <span>🌿</span> <span id="nav-title">Our Green Earth</span> </a> <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu"> <i data-lucide="menu" style="width:26px;height:26px;"></i> </button>
-                <div class="nav-desktop"><a href="#hero" class="nav-link">Home</a> <a href="#topics" class="nav-link">Topics</a> <a href="#conclusion" class="nav-link">Conclusion</a> <a href="#references" class="nav-link">References</a>
+                <div class="nav-desktop">
+                    <a href="#hero" class="nav-link">Home</a> <a href="#topics" class="nav-link">Topics</a> <a href="#conclusion" class="nav-link">Conclusion</a> <a href="#references" class="nav-link">References</a>
                 </div>
             </nav>
-            <div id="mobile-menu" class="mobile-menu"><a href="#hero">Home</a> <a href="#topics">Topics</a> <a href="#conclusion">Conclusion</a> <a href="#references">References</a>
+            <div id="mobile-menu" class="mobile-menu">
+                <a href="#hero">Home</a> <a href="#topics">Topics</a> <a href="#conclusion">Conclusion</a> <a href="#references">References</a>
             </div>
         </header>
         <main>
-            <!-- ===== HERO SECTION ===== -->
             <section id="hero" class="hero">
                 <div class="particle">
                     🌍
@@ -927,7 +1029,8 @@
                     <div class="hero-divider"></div>
                     <p id="intro-text" class="hero-subtitle">Welcome to Our Green Earth — a blog dedicated to exploring the most pressing environmental issues of our time. From global warming and climate change to biodiversity loss and waste management, this blog aims to inform, inspire, and
                         empower readers to take meaningful action.</p>
-                    <div class="button-group"><a href="#topics" class="btn btn-primary"> Explore Topics <i data-lucide="arrow-down" style="width:22px;height:22px;"></i> </a> <a href="#references" class="btn btn-secondary"> View References <i data-lucide="external-link" style="width:20px;height:20px;"></i> </a>
+                    <div class="button-group">
+                        <a href="#topics" class="btn btn-primary"> Explore Topics <i data-lucide="arrow-down" style="width:22px;height:22px;"></i> </a> <a href="#references" class="btn btn-secondary"> View References <i data-lucide="external-link" style="width:20px;height:20px;"></i> </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -957,18 +1060,16 @@
                     </div>
                 </div>
             </section>
-            <!-- ===== TOPICS SECTION ===== -->
             <section id="topics" class="topics-section">
                 <div class="section-header">
                     <div class="section-badge"><i data-lucide="book-open" style="width:18px;height:18px;"></i> <span>Featured Topics</span>
                     </div>
                     <h2>Explore Key Environmental Topics</h2>
-                    <p>Click on any topic to explore in-depth articles with detailed insights, real-world examples, and actionable information. Upload your own images for each topic.</p>
+                    <p>Click on any topic to explore in-depth articles with detailed insights, real-world examples, and actionable information. Replace image URLs with your own files.</p>
                 </div>
                 <div id="topics-grid" class="topics-grid"></div>
             </section>
             <div class="section-divider"></div>
-            <!-- ===== CONCLUSION SECTION ===== -->
             <section id="conclusion" class="conclusion-section">
                 <div class="conclusion-content">
                     <div class="pulse-emoji">
@@ -998,7 +1099,6 @@
                 </div>
             </section>
             <div class="section-divider"></div>
-            <!-- ===== REFERENCES SECTION ===== -->
             <section id="references" class="references-section">
                 <h2 class="font-heading">References &amp; Sources</h2>
                 <p>Carefully curated sources that inform the content of this environmental awareness initiative.</p>
@@ -1019,95 +1119,159 @@
                 </div>
             </section>
         </main>
-        <!-- ===== FOOTER ===== -->
         <footer>
             <p>🌿 Our Green Earth — Environmental Awareness Blog</p>
             <p>Created for Environmental Awareness Initiative • 2025</p>
         </footer>
     </div>
+    <!-- MODAL -->
+    <div id="topic-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title"></h2><button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
     <script>
-        // ===== TOPICS DATA =====
         const topics = [{
             num: 1,
             title: "Causes of Global Warming",
             icon: "🌡️",
             desc: "Explore human activities and natural factors driving global temperatures to dangerous levels.",
-            color: "#dc2626"
+            color: "#dc2626",
+            fullContent: `
+                    <img src="https://your-domain.com/images/global-warming-fossil-fuels.jpg" alt="Global warming" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #dc262620, #dc262610)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌡️';">
+                    <h3>🔥 Burning of Fossil Fuels (Main Cause)</h3>
+                    <p>Human use of coal, oil, and natural gas for electricity, transportation, and industry releases large amounts of carbon dioxide (CO₂). CO₂ is the most significant greenhouse gas driving modern warming.</p>
+                    <p><strong>Source: NASA – Human activities are the primary driver of warming since the mid‑20th century.</strong></p>
+                    <h3>🐄 Agriculture & Livestock</h3>
+                    <p>Cows and other ruminants produce methane (CH₄) during digestion. Rice farming and manure management also release methane. Methane traps far more heat per molecule than CO₂.</p>
+                    <h3>🏭 Industrial Processes</h3>
+                    <p>Factories emit nitrous oxide (N₂O) and chlorofluorocarbons (CFCs). These gases are extremely potent and remain in the atmosphere for decades.</p>
+                    <h3>🌳 Deforestation</h3>
+                    <p>Cutting down forests reduces Earth's natural ability to absorb CO₂. When trees are burned or decay, they release stored carbon back into the atmosphere.</p>
+                    <h3>🗑️ Waste Management & Landfills</h3>
+                    <p>Organic waste in landfills decomposes without oxygen, producing methane. Poor waste systems increase greenhouse gas emissions.</p>
+                `
         }, {
             num: 2,
             title: "Climate Change & Its Impact",
             icon: "🌪️",
             desc: "Understand how shifting climate patterns affect ecosystems, weather, and human life worldwide.",
-            color: "#ea580c"
+            color: "#ea580c",
+            fullContent: `
+                    <img src="https://your-domain.com/images/climate-impact.jpg" alt="Climate impact" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #ea580c20, #ea580c10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌪️';">
+                    <h3>Global Temperature Rise</h3>
+                    <p>Earth's average temperature has risen approximately 1.1°C since pre-industrial times, with most warming occurring in the last 40 years.</p>
+                    <h3>Extreme Weather Events</h3>
+                    <p>Climate change intensifies hurricanes, floods, droughts, and heatwaves, causing devastating impacts on communities worldwide.</p>
+                    <h3>Sea Level Rise</h3>
+                    <p>Melting ice sheets and thermal expansion of seawater threaten coastal cities and island nations.</p>
+                    <h3>Ecosystem Disruption</h3>
+                    <p>Many species face habitat loss and altered migration patterns, threatening biodiversity and food systems.</p>
+                `
         }, {
             num: 3,
             title: "Effect of Biodiversity Loss",
             icon: "🦋",
             desc: "Learn why species extinction threatens food security, medicine, and ecological balance.",
-            color: "#16a34a"
+            color: "#16a34a",
+            fullContent: `
+                    <img src="https://your-domain.com/images/biodiversity-loss.jpg" alt="Biodiversity" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #16a34a20, #16a34a10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🦋';">
+                    <h3>Species Extinction Rate</h3>
+                    <p>We're losing species 1,000 times faster than the natural extinction rate, driven by habitat destruction and pollution.</p>
+                    <h3>Food Web Collapse</h3>
+                    <p>Loss of pollinators and keystone species disrupts entire ecosystems and threatens global food production.</p>
+                    <h3>Medicinal Resources</h3>
+                    <p>Many life-saving medicines are derived from plants and animals. Biodiversity loss eliminates potential cures and treatments.</p>
+                    <h3>Climate Stability</h3>
+                    <p>Diverse ecosystems are more resilient and better at regulating climate, carbon cycles, and water systems.</p>
+                `
         }, {
             num: 4,
             title: "Philippine Waste Management",
             icon: "🗑️",
             desc: "Examine the waste crisis in the Philippines and the laws designed to address it.",
-            color: "#0891b2"
+            color: "#0891b2",
+            fullContent: `
+                    <img src="https://your-domain.com/images/waste-management.jpg" alt="Waste management" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #0891b220, #0891b210)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🗑️';">
+                    <h3>The Waste Crisis</h3>
+                    <p>The Philippines generates over 150,000 tons of waste daily, much of which ends up in landfills and oceans.</p>
+                    <h3>Republic Act 9003</h3>
+                    <p>The Solid Waste Management Law mandates waste segregation, recycling, and proper disposal to reduce environmental impact.</p>
+                    <h3>Plastic Pollution</h3>
+                    <p>The Philippines is among the world's largest contributors to ocean plastic, threatening marine life and ecosystems.</p>
+                    <h3>Community Solutions</h3>
+                    <p>Local initiatives and proper implementation of waste management laws are crucial for sustainable progress.</p>
+                `
         }, {
             num: 5,
             title: "Refuse, Reduce, Reuse, Repair & Recycle",
             icon: "♻️",
             desc: "Discover the 5R framework for sustainable living and minimizing waste.",
-            color: "#7c3aed"
+            color: "#7c3aed",
+            fullContent: `
+                    <img src="https://your-domain.com/images/5r-framework.jpg" alt="5R framework" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #7c3aed20, #7c3aed10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='♻️';">
+                    <h3>1. Refuse</h3>
+                    <p>Say no to unnecessary items. Decline single-use plastics, excess packaging, and products you don't truly need.</p>
+                    <h3>2. Reduce</h3>
+                    <p>Consume less by buying only what you need and choosing products with minimal packaging.</p>
+                    <h3>3. Reuse</h3>
+                    <p>Find new uses for old items. Use reusable bags, bottles, and containers instead of disposable ones.</p>
+                    <h3>4. Repair</h3>
+                    <p>Extend the life of your belongings by repairing them rather than replacing them with new ones.</p>
+                    <h3>5. Recycle</h3>
+                    <p>Properly sort and recycle materials to give them a second life and keep them out of landfills.</p>
+                `
         }];
 
-        // ===== RENDER TOPICS =====
         function renderTopics() {
             const grid = document.getElementById('topics-grid');
             grid.innerHTML = '';
 
-            topics.forEach(t => {
+            topics.forEach((t, index) => {
                 const card = document.createElement('div');
                 card.className = 'topic-card fade-up';
+                card.onclick = () => openTopic(index);
                 card.innerHTML = `
-          <div class="topic-card-image-wrapper">
-            <img src="images/topic${t.num}.jpg"
-              alt="${t.title}"
-              class="topic-card-image"
-              loading="lazy"
-              onerror="this.style.background='linear-gradient(135deg, ${t.color}20, ${t.color}10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='5rem'; this.textContent='${t.icon}';"
-            />
-            <div class="image-overlay"></div>
-          </div>
-          <div class="topic-card-content">
-            <div class="topic-label" style="background:${t.color}15; color:${t.color};">
-              TOPIC ${t.num}
-            </div>
-            <h3>${t.title}</h3>
-            <p>${t.desc}</p>
-            <div class="topic-cta" style="color:${t.color};">
-              Learn More
-              <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
-            </div>
-          </div>
-        `;
+                    <div class="topic-card-image-wrapper">
+                        <img src="https://your-domain.com/images/topic${t.num}.jpg" alt="${t.title}" class="topic-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, ${t.color}20, ${t.color}10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='5rem'; this.textContent='${t.icon}';">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="topic-card-content">
+                        <div class="topic-label" style="background:${t.color}15; color:${t.color};">TOPIC ${t.num}</div>
+                        <h3>${t.title}</h3>
+                        <p>${t.desc}</p>
+                        <div class="topic-cta" style="color:${t.color};">
+                            Learn More
+                            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                        </div>
+                    </div>
+                `;
                 grid.appendChild(card);
             });
 
             lucide.createIcons();
         }
 
-        // ===== MOBILE MENU =====
+        function openTopic(index) {
+            // Store selected topic in session storage
+            sessionStorage.setItem('selectedTopic', index);
+            // Redirect to topic page
+            window.location.href = `topic-${index + 1}.html`;
+        }
+
         document.getElementById('menu-toggle').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('active');
         });
 
-        // Close mobile menu when link clicked
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobile-menu').classList.remove('active');
             });
         });
 
-        // ===== ELEMENT SDK CONFIG =====
         const defaultConfig = {
             blog_title: "Our Green Earth",
             blog_subtitle: "Environmental Awareness Hub",
@@ -1180,7 +1344,6 @@
             ]);
         }
 
-        // Initialize
         renderTopics();
         lucide.createIcons();
 
@@ -1199,7 +1362,7 @@
                 var b = a.contentDocument || a.contentWindow.document;
                 if (b) {
                     var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'9e3232d9052bb9ff',t:'MTc3NDY1NDM5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    d.innerHTML = "window.__CF$cv$params={r:'9e324f64912cb9ff',t:'MTc3NDY1NTU2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
                     b.getElementsByTagName('head')[0].appendChild(d)
                 }
             }
