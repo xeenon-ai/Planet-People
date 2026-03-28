@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effect of Biodiversity Loss — Environmental Awareness</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .font-body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .app-wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            background-color: #f0fdf4;
+        }
+        
+        .app-wrapper::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-track {
+            background: rgba(6, 78, 28, 0.03);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #10b981, #34d399);
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #059669, #10b981);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(20, 83, 45, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(34, 197, 230, 0.1);
+        }
+        
+        nav {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #a7f3d0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(16, 185, 129, 0.2);
+            transform: translateX(-4px);
+        }
+        
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            color: #a5f3fc;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 5rem 1rem;
+            }
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #064e3b 0%, #10b981 25%, #34d399 50%, #10b981 75%, #064e3b 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 20%, rgba(52, 211, 153, 0.15) 0%, transparent 40%);
+            animation: meshShift 25s ease infinite;
+            z-index: 1;
+        }
+        
+        @keyframes meshShift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: 5rem;
+            }
+        }
+        
+        .hero-divider {
+            height: 4px;
+            width: 128px;
+            margin: 2rem auto;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            color: #a7f3d0;
+            opacity: 0.95;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .content-wrapper {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        .intro-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.03));
+            border-radius: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+        
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #374151;
+            margin: 0;
+        }
+        
+        .impact-card {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+        }
+        
+        .impact-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+        
+        .impact-card-content {
+            padding: 2rem;
+        }
+        
+        .impact-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-card h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0 0 1rem 0;
+            color: #047857;
+        }
+        
+        .impact-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0.75rem 0;
+        }
+        
+        .impact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .impact-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .impact-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .source-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            font-size: 0.875rem;
+            color: #047857;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .icon-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section {
+            position: relative;
+            padding: 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+            border-radius: 1.5rem;
+            border: 2px solid #10b981;
+            margin: 3rem 0;
+        }
+        
+        .summary-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .summary-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .summary-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #047857;
+            margin: 0 0 1rem 0;
+        }
+        
+        .summary-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0;
+        }
+        /* Assessment Styles */
+        
+        .assessment-section {
+            margin: 3rem 0;
+        }
+        
+        .assessment-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .assessment-prompt {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #10b981;
+        }
+        
+        .assessment-prompt h3 {
+            margin: 0 0 0.75rem 0;
+            color: #047857;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        
+        .assessment-prompt p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .assessment-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .assessment-btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .clear-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .clear-btn:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .assessment-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .assessment-feedback.show {
+            display: block;
+        }
+        
+        .assessment-feedback.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #047857;
+            border-left: 4px solid #10b981;
+        }
+        
+        .assessment-feedback-text {
+            margin: 0;
+            font-weight: 600;
+        }
+        /* References Styles */
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #047857;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.02), rgba(52, 211, 153, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(16, 185, 129, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #047857;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #047857;
+            background: rgba(16, 185, 129, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+            background: linear-gradient(135deg, #064e3b 0%, #0d6e52 100%);
+            color: #a7f3d0;
+        }
+        
+        footer p:first-child {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: rgba(167, 243, 208, 0.6);
+        }
+        /* Decorative Elements */
+        
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.08;
+            animation: float 20s infinite;
+            z-index: -1;
+        }
+        
+        .float-1 {
+            animation-delay: 0s;
+            top: 10%;
+            left: 5%;
+        }
+        
+        .float-2 {
+            animation-delay: 3s;
+            top: 20%;
+            right: 8%;
+        }
+        
+        .float-3 {
+            animation-delay: 6s;
+            top: 40%;
+            left: 10%;
+        }
+        
+        .float-4 {
+            animation-delay: 9s;
+            bottom: 20%;
+            right: 5%;
+        }
+        
+        .float-5 {
+            animation-delay: 12s;
+            bottom: 30%;
+            left: 15%;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+        /* Background Decorative Elements */
+        
+        .bg-decoration-left {
+            position: fixed;
+            left: -200px;
+            top: 15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 30s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-right {
+            position: fixed;
+            right: -150px;
+            bottom: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 35s infinite ease-in-out reverse;
+            pointer-events: none;
+        }
+        
+        .visual-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            margin: 2rem 0;
+            border-radius: 9999px;
+        }
+        
+        .mesh-background {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #10b981;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #047857;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 640px) {
+            .impact-card-image {
+                height: 350px;
+            }
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+    <div class="app-wrapper">
+        <div class="mesh-background"></div>
+        <div class="bg-decoration-left"></div>
+        <div class="bg-decoration-right"></div>
+        <div class="floating-elements">
+            <div class="floating-emoji float-1">
+                🦁
+            </div>
+            <div class="floating-emoji float-2">
+                🌿
+            </div>
+            <div class="floating-emoji float-3">
+                🐝
+            </div>
+            <div class="floating-emoji float-4">
+                🦅
+            </div>
+            <div class="floating-emoji float-5">
+                🌳
+            </div>
+        </div>
+        <header>
+            <nav>
+                <a href="index.html" class="back-button"><i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics</a>
+                <div class="logo"><span>🌿</span> <span id="page-title">Effect of Biodiversity Loss</span>
+                </div>
+                <div class="nav-desktop"></div>
+            </nav>
+        </header>
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="font-heading">🌿 Effect of Biodiversity Loss</h1>
+                    <div class="hero-divider"></div>
+                    <p class="hero-subtitle" id="hero-subtitle">How species extinction threatens food security, medicine, and the foundation of life on Earth</p>
+                </div>
+            </section>
+            <div class="content-wrapper">
+                <section class="intro-section">
+                    <p id="intro-text">Biodiversity loss is one of the most pressing global challenges, threatening food security, medicine, and ecological balance. As species disappear due to human activities like deforestation, pollution, and climate change, the stability
+                        of ecosystems — and the services they provide — is severely compromised. This guide explores how species extinction cascades through our interconnected world.</p>
+                </section>
+                <!-- Impact 1: Weather & Climate Patterns -->
+                <article class="impact-card"><img src="/images/extinction.jpg" alt="Species Extinction Crisis" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🐾';">
+                    <div class="impact-card-content"><span class="icon-emoji">🐾</span>
+                        <div class="impact-number">
+                            1
+                        </div>
+                        <h3>Extinction Rates Accelerating</h3>
+                        <p>Species are vanishing 100 to 1,000 times faster than the natural background extinction rate, marking the sixth mass extinction in Earth's history.</p>
+                        <ul>
+                            <li>Large mammals disappearing from habitats due to hunting and habitat loss</li>
+                            <li>Amphibians particularly vulnerable to environmental changes and disease</li>
+                            <li>Bird populations declining sharply across all continents</li>
+                            <li>Reptiles and reptile-dependent ecosystems facing collapse</li>
+                            <li>Most extinctions linked to human activities—deforestation, pollution, poaching</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📊
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Critical Fact
+                                </div>
+                                <div class="info-box-text">
+                                    One in four mammal species and one in eight bird species face extinction risk. The rate is accelerating with no signs of slowing.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: IUCN Red List – Extinction Crisis</span>
+                    </div>
+                </article>
+                <!-- Impact 2: Ecosystems & Wildlife -->
+                <article class="impact-card"><img src="/images/foodweb.jpg" alt="Ecosystem Collapse" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌍';">
+                    <div class="impact-card-content"><span class="icon-emoji">🌍</span>
+                        <div class="impact-number">
+                            2
+                        </div>
+                        <h3>Ecosystem Collapse &amp; Food Webs</h3>
+                        <p>Loss of species disrupts entire ecosystems by breaking food chains, reducing pollination, and diminishing ecosystem stability.</p>
+                        <ul>
+                            <li>Pollinator decline threatens 75% of global food crops</li>
+                            <li>Predator loss causes herbivore populations to explode and overgraze</li>
+                            <li>Keystone species extinction triggers cascading ecosystem failures</li>
+                            <li>Habitat fragmentation isolates populations and prevents breeding</li>
+                            <li>Loss of decomposers affects nutrient cycling and soil health</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🔗
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Interconnected Systems
+                                </div>
+                                <div class="info-box-text">
+                                    Every species plays a role. Removing one piece weakens the entire ecosystem structure and can trigger unexpected collapses.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Nature Conservancy – Ecosystem Services</span>
+                    </div>
+                </article>
+                <!-- Impact 3: Human Health & Wellbeing -->
+                <article class="impact-card"><img src="/images/genetics.jpg" alt="Medicine &amp; Biodiversity" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='💊';">
+                    <div class="impact-card-content"><span class="icon-emoji">💊</span>
+                        <div class="impact-number">
+                            3
+                        </div>
+                        <h3>Loss of Medical &amp; Genetic Resources</h3>
+                        <p>Many species contain undiscovered pharmaceutical compounds vital for human medicine. Extinction eliminates these before we can study them.</p>
+                        <ul>
+                            <li>25% of modern medicines derived from rainforest plants still undiscovered</li>
+                            <li>Unique genetic traits in endangered species hold cancer and disease cures</li>
+                            <li>Antibiotic compounds in soil bacteria lost through habitat destruction</li>
+                            <li>Indigenous knowledge of medicinal species disappearing alongside species</li>
+                            <li>Extinct species = permanent loss of evolutionary innovations millions of years in development</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🔬
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Example Impact
+                                </div>
+                                <div class="info-box-text">
+                                    The rosy periwinkle plant from Madagascar provided alkaloids for leukemia treatment, curing 90% of childhood leukemia cases. How many species have similar potential?
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NIH – Biodiversity &amp; Medicine</span>
+                    </div>
+                </article>
+                <!-- Impact 4: Food & Water Security -->
+                <article class="impact-card"><img src="/images/foodchain.jpg" alt="Food Chain Collapse" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🍎';">
+                    <div class="impact-card-content"><span class="icon-emoji">🍎</span>
+                        <div class="impact-number">
+                            4
+                        </div>
+                        <h3>Food Security &amp; Agricultural Collapse</h3>
+                        <p>Biodiversity loss undermines agriculture by eliminating pollinators, natural pest controls, and diverse crop varieties.</p>
+                        <ul>
+                            <li>Wild pollinator populations down 75% in some regions—crops fail without them</li>
+                            <li>Genetic diversity of crops shrinking as heirloom varieties disappear</li>
+                            <li>Natural pest predators extinct, forcing increased pesticide use</li>
+                            <li>Soil biodiversity lost, reducing fertility and crop productivity</li>
+                            <li>Fish stocks depleted, threatening protein source for 3+ billion people</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🌾
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Agricultural Risk
+                                </div>
+                                <div class="info-box-text">
+                                    90% of world's food depends on wild pollinators and natural pest controls. Their extinction = widespread crop failure and famine.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: FAO – Biodiversity &amp; Food Security</span>
+                    </div>
+                </article>
+                <!-- Impact 5: Economic Disruption -->
+                <article class="impact-card"><img src="/images/habitat-destruction.jpg" alt="Conservation Efforts" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🛡️';">
+                    <div class="impact-card-content"><span class="icon-emoji">🛡️</span>
+                        <div class="impact-number">
+                            5
+                        </div>
+                        <h3>Habitat Destruction &amp; Fragmentation</h3>
+                        <p>Human development destroys the spaces where species live, leaving fragmented habitats too small to sustain healthy populations.</p>
+                        <ul>
+                            <li>Deforestation removes 10 billion trees annually—80% of forest species depend on them</li>
+                            <li>Urban sprawl fragments habitats, isolating populations and preventing breeding</li>
+                            <li>Agricultural expansion destroys grasslands, wetlands, and marine ecosystems</li>
+                            <li>Small isolated populations face inbreeding and genetic collapse</li>
+                            <li>Species need corridors to migrate and adapt to climate change</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🗺️
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Protected Areas
+                                </div>
+                                <div class="info-box-text">
+                                    Only 17% of Earth's land and 8% of oceans are protected. Expanding and connecting protected areas is critical for species survival.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: World Bank – Habitat Loss &amp; Conservation</span>
+                    </div>
+                </article>
+                <!-- Impact 6: Social & Political Instability -->
+                <article class="impact-card"><img src="/images/world.jpg" alt="Global Conservation" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌐';">
+                    <div class="impact-card-content"><span class="icon-emoji">🌐</span>
+                        <div class="impact-number">
+                            6
+                        </div>
+                        <h3>Tipping Points &amp; Irreversible Change</h3>
+                        <p>Species extinction can trigger tipping points where ecosystems shift to new states that cannot be reversed, even if we restore species.</p>
+                        <ul>
+                            <li>Amazon rainforest approaching tipping point—60% loss would shift to savanna permanently</li>
+                            <li>Coral reef systems collapse when key species disappear—"dead zones" replace vibrant ecosystems</li>
+                            <li>Permafrost thaw releases methane accelerating climate change—vicious cycle</li>
+                            <li>Once an ecosystem tips, restoration becomes nearly impossible even with funding</li>
+                            <li>Sixth mass extinction now considered inevitable—question is how severe it becomes</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ⏰
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The Window is Closing
+                                </div>
+                                <div class="info-box-text">
+                                    Scientists warn that we have 5-10 years to make major changes before some tipping points become irreversible.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Science Magazine – Tipping Points &amp; Climate</span>
+                    </div>
+                </article>
+                <!-- Summary Section -->
+                <section class="summary-section">
+                    <div class="summary-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            🎯
+                        </div>
+                        <h2>Key Takeaway</h2>
+                        <p id="conclusion-text">Biodiversity loss is not just an environmental issue — it is a global crisis affecting food, medicine, climate stability, and human health. Protecting biodiversity is essential for ecological balance and long-term survival. As
+                            species continue to disappear at an alarming rate, we lose not only genetic treasures but also the ecosystem services and cultural heritage that sustain human civilization. The time to act is now.</p>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- Biodiversity Crisis Quiz Section -->
+                <section class="assessment-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            🧬
+                        </div>
+                        <h2 class="references-title">Biodiversity Crisis Challenge</h2>
+                    </div>
+                    <div class="assessment-container">
+                        <div class="assessment-prompt">
+                            <h3>🎯 Test Your Knowledge on Biodiversity Loss</h3>
+                            <p>Answer the following questions to discover how well you understand the impacts of species extinction and ecosystem collapse. Each answer reveals real-world data about the biodiversity crisis.</p>
+                        </div>
+                        <div id="quiz-container" style="margin: 2rem 0;">
+                            <!-- Question 1 -->
+                            <div class="quiz-question" data-question="1" style="margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.02)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                    <div style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); color: white; font-weight: 700; font-size: 1.1rem;">
+                                        1
+                                    </div>
+                                    <h4 style="margin: 0; color: #047857; font-size: 1.1rem; font-weight: 700;">What percentage of wildlife has disappeared since 1970?</h4>
+                                </div>
+                                <div class="quiz-options" style="display: grid; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q1" value="25" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">25% - Minor Decline</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q1" value="68" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">68% - Catastrophic Decline</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q1" value="42" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">42% - Moderate Decline</span> </label>
+                                </div>
+                            </div>
+                            <!-- Question 2 -->
+                            <div class="quiz-question" data-question="2" style="margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.02)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                    <div style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); color: white; font-weight: 700; font-size: 1.1rem;">
+                                        2
+                                    </div>
+                                    <h4 style="margin: 0; color: #047857; font-size: 1.1rem; font-weight: 700;">How many species go extinct every day?</h4>
+                                </div>
+                                <div class="quiz-options" style="display: grid; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q2" value="150-200" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">150-200 species per day</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q2" value="10-30" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">10-30 species per day</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q2" value="1-5" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">1-5 species per day</span> </label>
+                                </div>
+                            </div>
+                            <!-- Question 3 -->
+                            <div class="quiz-question" data-question="3" style="margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.02)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                    <div style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); color: white; font-weight: 700; font-size: 1.1rem;">
+                                        3
+                                    </div>
+                                    <h4 style="margin: 0; color: #047857; font-size: 1.1rem; font-weight: 700;">What percentage of modern medicines are derived from plants?</h4>
+                                </div>
+                                <div class="quiz-options" style="display: grid; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q3" value="5" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">5% - Very Few</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q3" value="25" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">25% - About One Quarter</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q3" value="75" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">75% - Three Quarters</span> </label>
+                                </div>
+                            </div>
+                            <!-- Question 4 -->
+                            <div class="quiz-question" data-question="4" style="margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.02)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                    <div style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); color: white; font-weight: 700; font-size: 1.1rem;">
+                                        4
+                                    </div>
+                                    <h4 style="margin: 0; color: #047857; font-size: 1.1rem; font-weight: 700;">What fraction of food crops depend on pollinators?</h4>
+                                </div>
+                                <div class="quiz-options" style="display: grid; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q4" value="1/10" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">1 in 10 crops</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q4" value="3/4" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">3 in 4 crops</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q4" value="1/2" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">1 in 2 crops</span> </label>
+                                </div>
+                            </div>
+                            <!-- Question 5 -->
+                            <div class="quiz-question" data-question="5" style="margin-bottom: 2.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.02)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                    <div style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); color: white; font-weight: 700; font-size: 1.1rem;">
+                                        5
+                                    </div>
+                                    <h4 style="margin: 0; color: #047857; font-size: 1.1rem; font-weight: 700;">How much of Earth's land is protected for conservation?</h4>
+                                </div>
+                                <div class="quiz-options" style="display: grid; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q5" value="50" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">50% - Half the Planet</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q5" value="17" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">17% - One Sixth</span> </label>                                    <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border: 2px solid #e0e7ff; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.background='rgba(16, 185, 129, 0.02)'"
+                                        onmouseout="this.style.borderColor='#e0e7ff'; this.style.background='white'"> <input type="radio" name="q5" value="5" style="width: 20px; height: 20px; cursor: pointer;"> <span style="flex: 1; color: #4b5563; font-weight: 500;">5% - Very Little</span> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="quiz-results" style="display: none; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(52, 211, 153, 0.03)); border-radius: 1.5rem; border: 2px solid #10b981;">
+                            <div id="results-content"></div>
+                        </div>
+                        <div id="feedback" class="assessment-feedback"></div>
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="assessment-btn submit-btn" onclick="submitBiodiversityQuiz()" style="padding: 1rem 2rem;">Submit Quiz</button> <button class="assessment-btn clear-btn" onclick="resetBiodiversityQuiz()" style="padding: 1rem 2rem;">Clear Answers</button>
+                        </div>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- References Section -->
+                <section class="references-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📚
+                        </div>
+                        <h2 class="references-title">References &amp; Sources</h2>
+                    </div>
+                    <div class="references-list">
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Britannica – Biodiversity Loss: Causes, Effects, &amp; Facts</h4>
+                                <p>Comprehensive overview of biodiversity loss causes, consequences, and global impact on ecosystems and human societies.</p><a href="https://www.britannica.com/science/biodiversity-loss" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit Britannica Article</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>FairPlanet – 10 Causes of Biodiversity Loss and Its Effects</h4>
+                                <p>In-depth analysis of the causes driving biodiversity loss and how these extinctions cascade through environmental and human systems.</p><a href="https://www.fairplanet.org/story/10-causes-of-biodiversity-loss-and-its-effect-on-the-environment"
+                                    target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit FairPlanet Article</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Earth.Org – Consequences of Biodiversity Loss</h4>
+                                <p>Scientific evidence and detailed breakdown of how species extinction affects ecosystems, food systems, and human survival.</p><a href="https://earth.org/consequences-of-biodiversity-loss" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit Earth.Org Article</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>United Nations – Biodiversity</h4>
+                                <p>Global perspective on biodiversity loss, conservation strategies, and the role of biodiversity in sustainable development.</p><a href="https://www.un.org/en/fight-racism-discrimination-and-xenophobia/action-against-hate/biodiversity"
+                                    target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit UN Biodiversity Page</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>World Wildlife Fund – Biodiversity Conservation</h4>
+                                <p>Global conservation efforts, species protection initiatives, and data on biodiversity threats and solutions.</p><a href="https://www.worldwildlife.org/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit WWF</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Navigation -->
+                <div class="footer-nav">
+                    <a href="index.html" class="back-button">← Back to All Topics</a> <span style="color: #999;">|</span> <a href="topic-1.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:0.75rem; background:rgba(16,185,129,0.1); color:#10b981; text-decoration:none; font-weight:600; transition:all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(16,185,129,0.2)'" onmouseout="this.style.background='rgba(16,185,129,0.1)'">Previous Topic <i data-lucide="arrow-left" style="width:20px;height:20px;"></i></a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>🌿 Effect of Biodiversity Loss — Comprehensive Impact Guide</p>
+            <p>Part of Our Green Earth Environmental Awareness Initiative • 2025</p>
+        </footer>
+    </div>
+    <script>
+        function submitBiodiversityQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+            const q5 = document.querySelector('input[name="q5"]:checked');
+
+            if (!q1 || !q2 || !q3 || !q4 || !q5) {
+                const feedback = document.getElementById('feedback');
+                feedback.innerHTML = '<strong>⚠️ Please answer all questions before submitting.</strong>';
+                feedback.className = 'assessment-feedback success show';
+                setTimeout(() => feedback.classList.remove('show'), 4000);
+                return;
+            }
+
+            const answers = {
+                q1: q1.value,
+                q2: q2.value,
+                q3: q3.value,
+                q4: q4.value,
+                q5: q5.value
+            };
+
+            const correctAnswers = {
+                q1: '68',
+                q2: '150-200',
+                q3: '25',
+                q4: '3/4',
+                q5: '17'
+            };
+
+            let score = 0;
+            for (let key in answers) {
+                if (answers[key] === correctAnswers[key]) score++;
+            }
+
+            let performanceLevel = '';
+            let emoji = '';
+            let message = '';
+            let performanceColor = '';
+
+            if (score === 5) {
+                performanceLevel = 'Expert Biodiversity Advocate! 🌟';
+                emoji = '🏆';
+                message = 'You understand the critical nature of biodiversity loss and its cascading effects on all life systems.';
+                performanceColor = '#047857';
+            } else if (score === 4) {
+                performanceLevel = 'Strong Understanding';
+                emoji = '💚';
+                message = 'You have a solid grasp of biodiversity impacts. Keep learning to become an expert advocate.';
+                performanceColor = '#10b981';
+            } else if (score === 3) {
+                performanceLevel = 'Good Foundation';
+                emoji = '📚';
+                message = 'You understand the basics of biodiversity loss. Dive deeper into the impact zones to learn more.';
+                performanceColor = '#34d399';
+            } else if (score === 2) {
+                performanceLevel = 'Getting Started';
+                emoji = '🌱';
+                message = 'You are beginning to understand biodiversity challenges. Explore the content sections for more insight.';
+                performanceColor = '#a7f3d0';
+            } else {
+                performanceLevel = 'Keep Learning';
+                emoji = '📖';
+                message = 'Use this quiz as a learning tool. The answers reveal critical facts about Earth\'s biodiversity crisis.';
+                performanceColor = '#6ee7b7';
+            }
+
+            const resultReview = `
+        <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.02)); border-radius: 0.5rem; border-left: 3px solid ${answers.q1 === correctAnswers.q1 ? '#10b981' : '#ef4444'};">
+          <div style="font-weight: 700; color: ${answers.q1 === correctAnswers.q1 ? '#047857' : '#7f1d1d'};">Q1: Wildlife Decline Since 1970</div>
+          <div style="color: #4b5563; margin-top: 0.25rem; font-size: 0.85rem;">Your answer: ${answers.q1}% | Correct: ${correctAnswers.q1}%</div>
+        </div>
+        <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.02)); border-radius: 0.5rem; border-left: 3px solid ${answers.q2 === correctAnswers.q2 ? '#10b981' : '#ef4444'};">
+          <div style="font-weight: 700; color: ${answers.q2 === correctAnswers.q2 ? '#047857' : '#7f1d1d'};">Q2: Species Extinction Rate</div>
+          <div style="color: #4b5563; margin-top: 0.25rem; font-size: 0.85rem;">Your answer: ${answers.q2} | Correct: ${correctAnswers.q2}</div>
+        </div>
+        <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.02)); border-radius: 0.5rem; border-left: 3px solid ${answers.q3 === correctAnswers.q3 ? '#10b981' : '#ef4444'};">
+          <div style="font-weight: 700; color: ${answers.q3 === correctAnswers.q3 ? '#047857' : '#7f1d1d'};">Q3: Plant-Based Medicines</div>
+          <div style="color: #4b5563; margin-top: 0.25rem; font-size: 0.85rem;">Your answer: ${answers.q3}% | Correct: ${correctAnswers.q3}%</div>
+        </div>
+        <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.02)); border-radius: 0.5rem; border-left: 3px solid ${answers.q4 === correctAnswers.q4 ? '#10b981' : '#ef4444'};">
+          <div style="font-weight: 700; color: ${answers.q4 === correctAnswers.q4 ? '#047857' : '#7f1d1d'};">Q4: Pollinator-Dependent Crops</div>
+          <div style="color: #4b5563; margin-top: 0.25rem; font-size: 0.85rem;">Your answer: ${answers.q4} | Correct: ${correctAnswers.q4}</div>
+        </div>
+        <div style="padding: 0.75rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(52, 211, 153, 0.02)); border-radius: 0.5rem; border-left: 3px solid ${answers.q5 === correctAnswers.q5 ? '#10b981' : '#ef4444'};">
+          <div style="font-weight: 700; color: ${answers.q5 === correctAnswers.q5 ? '#047857' : '#7f1d1d'};">Q5: Protected Land Area</div>
+          <div style="color: #4b5563; margin-top: 0.25rem; font-size: 0.85rem;">Your answer: ${answers.q5}% | Correct: ${correctAnswers.q5}%</div>
+        </div>
+      `;
+
+            const resultsContent = document.getElementById('results-content');
+            resultsContent.innerHTML = `
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">${emoji}</div>
+          <div style="font-size: 1.4rem; font-weight: 700; color: ${performanceColor}; margin-bottom: 0.5rem;">Score: ${score} / 5</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: ${performanceColor}; margin-bottom: 1rem;">${performanceLevel}</div>
+          <div style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">${message}</div>
+        </div>
+        <div style="background: white; border-radius: 1rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid rgba(16, 185, 129, 0.1);">
+          <div style="font-weight: 700; color: #047857; margin-bottom: 1rem; font-size: 1rem;">📊 Answer Review:</div>
+          <div style="display: grid; gap: 1rem; font-size: 0.9rem;">
+            ${resultReview}
+          </div>
+        </div>
+      `;
+
+            document.getElementById('quiz-results').style.display = 'block';
+            document.getElementById('quiz-results').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            const feedback = document.getElementById('feedback');
+            feedback.innerHTML = `<strong>✓ Quiz Complete!</strong><br>You scored ${score} out of 5 correct answers.`;
+            feedback.className = 'assessment-feedback success show';
+        }
+
+        function resetBiodiversityQuiz() {
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+            document.getElementById('quiz-results').style.display = 'none';
+            document.getElementById('feedback').className = 'assessment-feedback';
+        }
+
+        const defaultConfig = {
+            page_title: "Effect of Biodiversity Loss",
+            hero_subtitle: "How species extinction threatens food security, medicine, and the foundation of life on Earth",
+            intro_text: "Biodiversity loss is one of the most pressing global challenges, threatening food security, medicine, and ecological balance. As species disappear due to human activities like deforestation, pollution, and climate change, the stability of ecosystems — and the services they provide — is severely compromised. This guide explores how species extinction cascades through our interconnected world.",
+            conclusion_text: "Biodiversity loss is not just an environmental issue — it is a global crisis affecting food, medicine, climate stability, and human health. Protecting biodiversity is essential for ecological balance and long-term survival. As species continue to disappear at an alarming rate, we lose not only genetic treasures but also the ecosystem services and cultural heritage that sustain human civilization. The time to act is now.",
+            font_family: "Playfair Display",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = key => config[key] || defaultConfig[key];
+            document.getElementById('page-title').textContent = c('page_title');
+            document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+            document.getElementById('intro-text').textContent = c('intro_text');
+            document.getElementById('conclusion-text').textContent = c('conclusion_text');
+
+            const font = c('font_family');
+            document.querySelectorAll('.font-heading').forEach(el => {
+                el.style.fontFamily = `${font}, serif`;
+            });
+
+            const size = c('font_size');
+            document.getElementById('intro-text').style.fontSize = `${size * 1.1}px`;
+            document.getElementById('conclusion-text').style.fontSize = `${size * 1.1}px`;
+        }
+
+        function mapToCapabilities(config) {
+            const c = key => config[key] || defaultConfig[key];
+            const mut = key => ({
+                get: () => c(key),
+                set: (v) => {
+                    config[key] = v;
+                    window.elementSdk.setConfig({
+                        [key]: v
+                    });
+                }
+            });
+
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: mut('font_family'),
+                fontSizeable: mut('font_size')
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            const c = key => config[key] || defaultConfig[key];
+            return new Map([
+                ["page_title", c('page_title')],
+                ["hero_subtitle", c('hero_subtitle')],
+                ["intro_text", c('intro_text')],
+                ["conclusion_text", c('conclusion_text')]
+            ]);
+        }
+
+        lucide.createIcons();
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9e33093683a1b9ff',t:'MTc3NDY2MzE3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
