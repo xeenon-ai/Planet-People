@@ -10,12 +10,19 @@
     <script src="/_sdk/element_sdk.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
-        html,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             height: 100%;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow: hidden;
         }
         
         * {
@@ -1301,11 +1308,69 @@
             line-height: 1.6;
         }
         
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 1.25rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 48px rgba(16, 185, 129, 0.15);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            display: flex;
+            align-items: flex-start;
+            min-width: 60px;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-details h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: 0.3px;
+        }
+        
+        .contact-details a {
+            color: #a7f3d0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .contact-details a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .contact-details p {
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
         }
         
         .form-group {
@@ -1795,22 +1860,34 @@
                 <div class="contact-content">
                     <div class="contact-header">
                         <h2>🤝 Get in Touch</h2>
-                        <p>Join our community of environmental advocates! Share your ideas, questions, and feedback about environmental action.</p>
+                        <p>Reach out to us with your ideas, questions, and feedback about environmental action.</p>
                     </div>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group"><label for="name" class="form-label">Your Name</label> <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                📧
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3><a href="mailto:jafe.santiago.sjc@phinmaed.com">jafe.santiago.sjc@phinmaed.com</a>
+                            </div>
                         </div>
-                        <div class="form-group"><label for="email" class="form-label">Email Address</label> <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                📱
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3><a href="tel:+639926212254">0992 621 2254</a>
+                            </div>
                         </div>
-                        <div class="form-group"><label for="subject" class="form-label">Subject</label> <input type="text" id="subject" class="form-input" placeholder="What is this about?" required>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                📍
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>PHINMA Saint Jude College<br> 1353 Don Quijote St, corner Dimasalang St<br> Sampaloc, Manila</p>
+                            </div>
                         </div>
-                        <div class="form-group"><label for="message" class="form-label">Message</label> <textarea id="message" class="form-textarea" placeholder="Share your thoughts, questions, or ideas..." required></textarea>
-                        </div><button type="submit" class="form-submit">Send Message 📬</button>
-                        <div class="form-success" id="form-success">
-                            ✨ Thanks for reaching out! We'll get back to you soon.
-                        </div>
-                    </form>
-                </div>
             </section>
             <div class="section-divider"></div>
             <section id="references" class="references-section">
@@ -1841,61 +1918,61 @@
             <p>🌿 People &amp; Planet — Environmental Awareness Hub</p>
             <p>Empowering communities for a sustainable future • 2025</p>
         </footer>
-    </div>
-    <div id="topic-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modal-title"></h2><button class="modal-close" onclick="closeModal()">×</button>
-            </div>
-            <div class="modal-body" id="modal-body"></div>
         </div>
-    </div>
-    <script>
-        const members = [{
-            name: "Mr. Jake Israel Santiago",
-            role: "Project Manager & Full Stack Developer",
-            emoji: "💻",
-            bio: "Driving software projects with 12+ years of experience in full stack development, agile leadership, and scalable system design.",
-            expertise: ["Project Management", "Web Development", "Agile Methodologies", "UI/UX Design", "Database Systems"],
-            facebook: "https://www.facebook.com/profile.php?id=61586492722527"
-        }, {
-            name: "Cotillon, Nina Jazmyne",
-            role: "Biodiversity Researcher",
-            emoji: "🦋",
-            bio: "Exploring the definition of biodiversity and why it matters, highlighting its role in food security, medicine, and ecological balance.",
-            expertise: ["Biodiversity", "Ecology", "Environmental Awareness"],
-            facebook: "https://www.facebook.com/nina.cotillon.14"
-        }, {
-            name: "Guteza, Mecah",
-            role: "Environmental Analyst",
-            emoji: "🌊",
-            bio: "Investigating causes of biodiversity loss such as habitat destruction, pollution, and overfishing, with Philippine examples like coral reef decline and endangered species.",
-            expertise: ["Conservation", "Wildlife Research", "Philippine Ecology"],
-            facebook: "https://www.facebook.com/aikgtz"
-        }, {
-            name: "Ramoso, Alexsandra Nicole",
-            role: "Waste Management Researcher",
-            emoji: "🗑️",
-            bio: "Examining the current state of waste management in the Philippines, identifying common issues such as plastic pollution and landfill overflow.",
-            expertise: ["Solid Waste Management", "Environmental Policy", "Philippine Governance"],
-            facebook: "https://www.facebook.com/alexsandra.nicole.ramoso"
-        }, {
-            name: "Liwanag, Allanis Murray",
-            role: "Community Sustainability Analyst",
-            emoji: "♻️",
-            bio: "Summarizing government policies like RA 9003 and highlighting community efforts such as barangay segregation and recycling initiatives.",
-            expertise: ["Sustainability", "Community Engagement", "Recycling Systems"],
-            facebook: "https://www.facebook.com/allanisiwanag"
-        }];
+        <div id="topic-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-title"></h2><button class="modal-close" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+            </div>
+        </div>
+        <script>
+            const members = [{
+                name: "Mr. Jake Israel Santiago",
+                role: "Project Manager & Full Stack Developer",
+                emoji: "💻",
+                bio: "Driving software projects with 12+ years of experience in full stack development, agile leadership, and scalable system design.",
+                expertise: ["Project Management", "Web Development", "Agile Methodologies", "UI/UX Design", "Database Systems"],
+                facebook: "https://www.facebook.com/profile.php?id=."
+            }, {
+                name: "Cotillon, Nina Jazmyne",
+                role: "Biodiversity Researcher",
+                emoji: "🦋",
+                bio: "Exploring the definition of biodiversity and why it matters, highlighting its role in food security, medicine, and ecological balance.",
+                expertise: ["Biodiversity", "Ecology", "Environmental Awareness"],
+                facebook: "https://www.facebook.com/nina.cotillon.14"
+            }, {
+                name: "Guteza, Mecah",
+                role: "Environmental Analyst",
+                emoji: "🌊",
+                bio: "Investigating causes of biodiversity loss such as habitat destruction, pollution, and overfishing, with Philippine examples like coral reef decline and endangered species.",
+                expertise: ["Conservation", "Wildlife Research", "Philippine Ecology"],
+                facebook: "https://www.facebook.com/aikgtz"
+            }, {
+                name: "Ramoso, Alexsandra Nicole",
+                role: "Waste Management Researcher",
+                emoji: "🗑️",
+                bio: "Examining the current state of waste management in the Philippines, identifying common issues such as plastic pollution and landfill overflow.",
+                expertise: ["Solid Waste Management", "Environmental Policy", "Philippine Governance"],
+                facebook: "https://www.facebook.com/alexsandra.nicole.ramoso"
+            }, {
+                name: "Liwanag, Allanis Murray",
+                role: "Community Sustainability Analyst",
+                emoji: "♻️",
+                bio: "Summarizing government policies like RA 9003 and highlighting community efforts such as barangay segregation and recycling initiatives.",
+                expertise: ["Sustainability", "Community Engagement", "Recycling Systems"],
+                facebook: "https://www.facebook.com/allanisiwanag"
+            }];
 
-        function renderMembers() {
-            const grid = document.getElementById('members-grid');
-            grid.innerHTML = '';
-            members.forEach((member, index) => {
-                        const card = document.createElement('div');
-                        card.className = 'member-card';
-                        card.style.animationDelay = `${index * 0.1}s`;
-                        card.innerHTML = `
+            function renderMembers() {
+                const grid = document.getElementById('members-grid');
+                grid.innerHTML = '';
+                members.forEach((member, index) => {
+                            const card = document.createElement('div');
+                            card.className = 'member-card';
+                            card.style.animationDelay = `${index * 0.1}s`;
+                            card.innerHTML = `
                     <div class="member-avatar">${member.emoji}</div>
                     <h3 class="member-name">${member.name}</h3>
                     <p class="member-role">${member.role}</p>
@@ -1916,7 +1993,7 @@
 
         const supporters = [
             "Ambion, Sherramaine B.", "Bales, Alex, Jr. B.", "Borromeo, Salvador S. Jr.",
-            "Botulan, Dowwie Eve. S.", "Dacillio Joshee", "Juan Carlos Ruiz", "Joey, Tatel G.",
+            "Botulan, Dowwie Eve. S.", "Dacillio Joshee", "Juan Carlos Ruiz", "Joey, Tatel G."
         ];
 
         function renderSupporters() {
@@ -2059,18 +2136,7 @@
             document.getElementById('topic-modal').classList.remove('active');
         }
 
-        // Contact Form
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formSuccess = document.getElementById('form-success');
-            formSuccess.classList.add('show');
-            this.reset();
-            setTimeout(() => {
-                formSuccess.classList.remove('show');
-            }, 4000);
-        });
-
-        // Mobile Menu Toggle
+        
         document.getElementById('menu-toggle').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('active');
         });
@@ -2146,39 +2212,39 @@
                 mapToEditPanelValues
             });
         }
-    </script>
-    <script>
-        (function() {
-            function c() {
-                var b = a.contentDocument || a.contentWindow.document;
-                if (b) {
-                    var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'9e33881c4408b9ff',t:'MTc3NDY2ODM2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                    b.getElementsByTagName('head')[0].appendChild(d)
-                }
-            }
-            if (document.body) {
-                var a = document.createElement('iframe');
-                a.height = 1;
-                a.width = 1;
-                a.style.position = 'absolute';
-                a.style.top = 0;
-                a.style.left = 0;
-                a.style.border = 'none';
-                a.style.visibility = 'hidden';
-                document.body.appendChild(a);
-                if ('loading' !== document.readyState) c();
-                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-                else {
-                    var e = document.onreadystatechange || function() {};
-                    document.onreadystatechange = function(b) {
-                        e(b);
-                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+        </script>
+        <script>
+            (function() {
+                function c() {
+                    var b = a.contentDocument || a.contentWindow.document;
+                    if (b) {
+                        var d = b.createElement('script');
+                        d.innerHTML = "window.__CF$cv$params={r:'9e33a07a9679b9ff',t:'MTc3NDY2OTM2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                        b.getElementsByTagName('head')[0].appendChild(d)
                     }
                 }
-            }
-        })();
-    </script>
+                if (document.body) {
+                    var a = document.createElement('iframe');
+                    a.height = 1;
+                    a.width = 1;
+                    a.style.position = 'absolute';
+                    a.style.top = 0;
+                    a.style.left = 0;
+                    a.style.border = 'none';
+                    a.style.visibility = 'hidden';
+                    document.body.appendChild(a);
+                    if ('loading' !== document.readyState) c();
+                    else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                    else {
+                        var e = document.onreadystatechange || function() {};
+                        document.onreadystatechange = function(b) {
+                            e(b);
+                            'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                        }
+                    }
+                }
+            })();
+        </script>
 </body>
 
 </html>
