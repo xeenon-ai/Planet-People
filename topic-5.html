@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 5Rs Framework: Refuse, Reduce, Reuse, Repair &amp; Recycle</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .font-body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .app-wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            background: linear-gradient(135deg, #faf7f2 0%, #f5f0ff 50%, #faf7f2 100%);
+        }
+        
+        .app-wrapper::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-track {
+            background: rgba(168, 85, 247, 0.03);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #a855f7, #d8b4fe);
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(168, 85, 247, 0.3);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #9333ea, #a855f7);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid rgba(217, 119, 6, 0.2);
+            box-shadow: 0 4px 20px rgba(123, 58, 237, 0.15);
+        }
+        
+        nav {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(217, 119, 6, 0.15);
+            color: #f59e0b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(217, 119, 6, 0.25);
+            transform: translateX(-4px);
+        }
+        
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            color: #fcd34d;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 5rem 1rem;
+            }
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 25%, #a855f7 50%, #d946ef 75%, #7c3aed 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(217, 119, 6, 0.25) 0%, transparent 40%), radial-gradient(ellipse at 80% 20%, rgba(249, 158, 11, 0.2) 0%, transparent 40%);
+            animation: meshShift 25s ease infinite;
+            z-index: 1;
+        }
+        
+        @keyframes meshShift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: 5rem;
+            }
+        }
+        
+        .hero-divider {
+            height: 4px;
+            width: 128px;
+            margin: 2rem auto;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            color: #fef3c7;
+            opacity: 0.95;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .content-wrapper {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        .intro-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(217, 119, 6, 0.04));
+            border-radius: 1.5rem;
+            border: 2px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.08);
+        }
+        
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #2d1b69;
+            margin: 0;
+        }
+        
+        .impact-card {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 16px rgba(168, 85, 247, 0.1);
+            position: relative;
+        }
+        
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #a855f7, #d946ef);
+            z-index: 10;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 24px 48px rgba(168, 85, 247, 0.25);
+        }
+        
+        .impact-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #ede9fe, #f3e8ff);
+            position: relative;
+        }
+        
+        .impact-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(168, 85, 247, 0.1) 100%);
+        }
+        
+        .impact-card-content {
+            padding: 2rem;
+        }
+        
+        .impact-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        
+        .impact-card h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0 0 1rem 0;
+            color: #5b21b6;
+        }
+        
+        .impact-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0.75rem 0;
+        }
+        
+        .impact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .impact-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .impact-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-weight: bold;
+        }
+        
+        .source-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(217, 119, 6, 0.1));
+            border: 1.5px solid rgba(168, 85, 247, 0.3);
+            font-size: 0.875rem;
+            color: #5b21b6;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .icon-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section {
+            position: relative;
+            padding: 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #faf7f2, #ede9fe);
+            border-radius: 1.5rem;
+            border: 2px solid #a855f7;
+            margin: 3rem 0;
+            box-shadow: 0 12px 32px rgba(168, 85, 247, 0.12);
+        }
+        
+        .summary-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .summary-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -30%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .summary-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .summary-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #5b21b6;
+            margin: 0 0 1rem 0;
+        }
+        
+        .summary-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #2d1b69;
+            margin: 0;
+        }
+        /* Assessment Styles */
+        
+        .assessment-section {
+            margin: 3rem 0;
+        }
+        
+        .assessment-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 2px solid rgba(168, 85, 247, 0.15);
+            box-shadow: 0 12px 32px rgba(168, 85, 247, 0.08);
+            position: relative;
+        }
+        
+        .assessment-container::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #a855f7, #d946ef);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+        
+        .scenario-card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(217, 119, 6, 0.04));
+            border: 2px solid rgba(168, 85, 247, 0.2);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.35);
+        }
+        
+        .scenario-card:hover::before {
+            left: 100%;
+        }
+        
+        .scenario-number {
+            display: inline-block;
+            font-weight: 700;
+            color: #5b21b6;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(168, 85, 247, 0.1);
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+        }
+        
+        .scenario-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #5b21b6;
+            margin: 0.75rem 0 1rem 0;
+        }
+        
+        .scenario-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            border-radius: 1rem;
+            border-left: 3px solid #a855f7;
+        }
+        
+        .scenario-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-button {
+            padding: 1rem;
+            background: white;
+            border: 2px solid rgba(168, 85, 247, 0.25);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            color: #5b21b6;
+            text-align: center;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.06);
+        }
+        
+        .option-button:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(217, 119, 6, 0.04));
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(168, 85, 247, 0.15);
+        }
+        
+        .option-button.selected {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(217, 119, 6, 0.1));
+            border-color: #a855f7;
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+            transform: scale(1.02);
+        }
+        
+        .submit-scenario-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(168, 85, 247, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-scenario-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .submit-scenario-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(168, 85, 247, 0.4);
+        }
+        
+        .submit-scenario-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-scenario-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .feedback-message {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: none;
+            animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .feedback-message.show {
+            display: block;
+        }
+        
+        .feedback-correct {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(217, 119, 6, 0.08));
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            border-left: 4px solid #a855f7;
+            color: #5b21b6;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+        }
+        
+        .feedback-explanation {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #2d1b69;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #047857;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.02), rgba(52, 211, 153, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(16, 185, 129, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #047857;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #047857;
+            background: rgba(16, 185, 129, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+            background: linear-gradient(135deg, #064e3b 0%, #0d7377 100%);
+            color: #a7f3d0;
+        }
+        
+        footer p:first-child {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: rgba(167, 243, 208, 0.6);
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #10b981;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #047857;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #5b21b6;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.04), rgba(217, 119, 6, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(168, 85, 247, 0.15);
+            border-left: 4px solid #a855f7;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(168, 85, 247, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-6px) translateX(4px);
+            box-shadow: 0 16px 32px rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.25);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #5b21b6;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #a855f7;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #7c3aed;
+            background: rgba(168, 85, 247, 0.12);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 2px solid rgba(168, 85, 247, 0.15);
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+            color: #e9d5ff;
+        }
+        
+        footer p:first-child {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: rgba(233, 213, 255, 0.6);
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(217, 119, 6, 0.04));
+            border-radius: 1rem;
+            border-left: 4px solid #a855f7;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.08);
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #5b21b6;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 640px) {
+            .impact-card-image {
+                height: 350px;
+            }
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+    <div class="app-wrapper">
+        <header>
+            <nav><a href="index.html" class="back-button"><i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics</a>
+                <div class="logo">
+                    <span>♻️</span> <span id="page-title">Topic 5: The 5Rs Framework</span>
+                </div>
+                <div class="nav-desktop"></div>
+            </nav>
+        </header>
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="font-heading">♻️ The 5Rs Framework</h1>
+                    <div class="hero-divider"></div>
+                    <p class="hero-subtitle" id="hero-subtitle">Refuse, Reduce, Reuse, Repair &amp; Recycle — A practical guide for sustainable living and environmental responsibility</p>
+                </div>
+            </section>
+            <div class="content-wrapper">
+                <section class="intro-section">
+                    <p id="intro-text">The 5Rs framework is a practical guide for sustainable living that helps minimize waste, conserve resources, and protect the environment. As students and citizens, practicing the 5Rs creates meaningful change in our communities and
+                        on our planet. By understanding and applying each principle—from refusing unnecessary items to properly recycling waste—we can reduce our environmental footprint and contribute to a circular economy.</p>
+                </section>
+                <!-- Impact 1: Refuse -->
+                <article class="impact-card"><img src="/images/refuse.jpg" alt="Refuse Single-Use Plastics" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🛑';">
+                    <div class="impact-card-content"><span class="icon-emoji">🛑</span>
+                        <div class="impact-number">
+                            1
+                        </div>
+                        <h3>Refuse — Say No to Unnecessary Items</h3>
+                        <p><strong>Meaning:</strong> Say no to unnecessary items, especially single-use plastics and products with excessive packaging. Refuse is the most effective R because it stops waste before it starts.</p>
+                        <ul>
+                            <li>Refuse plastic straws, bags, and utensils</li>
+                            <li>Avoid freebies or promotional items that will end up as waste</li>
+                            <li>Decline products with excessive packaging</li>
+                            <li>Say no to single-use items when reusable alternatives are available</li>
+                            <li>Politely decline unwanted items at stores or events</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                💡
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Student &amp; Citizen Impact
+                                </div>
+                                <div class="info-box-text">
+                                    By refusing single-use items, you reduce demand for disposable products, cutting plastic pollution at the source and saving money in the process.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">✅ Highest Impact Strategy</span>
+                    </div>
+                </article>
+                <!-- Impact 2: Reduce -->
+                <article class="impact-card"><img src="/images/reduce.jpg" alt="Reduce Consumption" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='✂️';">
+                    <div class="impact-card-content"><span class="icon-emoji">✂️</span>
+                        <div class="impact-number">
+                            2
+                        </div>
+                        <h3>Reduce — Minimize Consumption &amp; Waste</h3>
+                        <p><strong>Meaning:</strong> Minimize consumption and waste generation by being intentional about what you buy and how much you use.</p>
+                        <ul>
+                            <li>Print only when necessary—go digital when possible</li>
+                            <li>Buy in bulk to reduce packaging waste</li>
+                            <li>Conserve electricity and water</li>
+                            <li>Choose products with minimal packaging</li>
+                            <li>Avoid impulse purchases you don't truly need</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📊
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The Power of Reduction
+                                </div>
+                                <div class="info-box-text">
+                                    Less waste produced means a lower carbon footprint, reduced strain on landfills, and conservation of precious natural resources.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">✅ Second Most Effective</span>
+                    </div>
+                </article>
+                <!-- Impact 3: Reuse -->
+                <article class="impact-card"><img src="/images/reuse.jpg" alt="Reuse Items" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🔄';">
+                    <div class="impact-card-content"><span class="icon-emoji">🔄</span>
+                        <div class="impact-number">
+                            3
+                        </div>
+                        <h3>Reuse — Extend the Life of Items</h3>
+                        <p><strong>Meaning:</strong> Extend the life of items by using them multiple times before discarding them.</p>
+                        <ul>
+                            <li>Use refillable water bottles and eco-bags instead of disposables</li>
+                            <li>Repurpose jars, containers, and old clothes for new purposes</li>
+                            <li>Buy secondhand items instead of new ones</li>
+                            <li>Donate or gift items you no longer need</li>
+                            <li>Invest in quality, durable products that last longer</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                💰
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Economic &amp; Environmental Benefit
+                                </div>
+                                <div class="info-box-text">
+                                    Reusing cuts down on new resource extraction, saves money, and reduces the amount of items ending up in landfills.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">✅ Practical &amp; Cost-Effective</span>
+                    </div>
+                </article>
+                <!-- Impact 4: Repair -->
+                <article class="impact-card"><img src="/images/repair.jpg" alt="Repair Items" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🔧';">
+                    <div class="impact-card-content"><span class="icon-emoji">🔧</span>
+                        <div class="impact-number">
+                            4
+                        </div>
+                        <h3>Repair — Fix Broken Items</h3>
+                        <p><strong>Meaning:</strong> Fix broken items instead of discarding them and buying replacements.</p>
+                        <ul>
+                            <li>Mend clothes—sew holes, replace zippers, patch tears</li>
+                            <li>Repair gadgets and electronics before replacing them</li>
+                            <li>Maintain bicycles and sports equipment</li>
+                            <li>Support repair shops in your community instead of always buying new</li>
+                            <li>Learn basic repair skills like sewing, fixing appliances, or furniture repair</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🌍
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    E-Waste Prevention
+                                </div>
+                                <div class="info-box-text">
+                                    Repairing electronics extends product lifespan, reduces e-waste significantly, and supports local repair businesses in your community.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">✅ Builds Skills &amp; Saves Money</span>
+                    </div>
+                </article>
+                <!-- Impact 5: Recycle -->
+                <article class="impact-card"><img src="/images/recycle.jpg" alt="Recycle Materials" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #d1fae5, #a7f3d0)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='♻️';">
+                    <div class="impact-card-content"><span class="icon-emoji">♻️</span>
+                        <div class="impact-number">
+                            5
+                        </div>
+                        <h3>Recycle — Process Materials into New Products</h3>
+                        <p><strong>Meaning:</strong> Process waste materials into new products. Recycling is the last resort when items cannot be refused, reduced, reused, or repaired.</p>
+                        <ul>
+                            <li>Segregate waste properly (biodegradable, recyclable, residual, hazardous)</li>
+                            <li>Participate in school or community recycling programs</li>
+                            <li>Know what can and cannot be recycled in your area</li>
+                            <li>Support businesses that use recycled materials</li>
+                            <li>Learn about proper disposal of hazardous materials like batteries and electronics</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🌱
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Circular Economy
+                                </div>
+                                <div class="info-box-text">
+                                    Recycling conserves raw materials, reduces landfill use, saves energy, and supports the circular economy where materials are continuously reused.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">✅ Last Resort (but Important)</span>
+                    </div>
+                </article>
+                <!-- Summary Section -->
+                <section class="summary-section">
+                    <div class="summary-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            🎯
+                        </div>
+                        <h2>Why the Order Matters</h2>
+                        <p id="conclusion-text">The 5Rs are listed in order of effectiveness: REFUSE first (eliminate waste at the source), REDUCE second (consume less), REUSE third (extend product life), REPAIR fourth (fix instead of replace), and RECYCLE last (when all else
+                            fails). By prioritizing the first four Rs, we address the waste crisis at its root before relying on recycling. Small daily actions—like refusing single-use plastics, reusing shopping bags, repairing broken items, and participating
+                            in recycling programs—add up to significant environmental benefits. The collective impact includes cleaner communities, reduced pollution, lower carbon footprints, and a more sustainable future for all.</p>
+                    </div>
+                </section>
+                <div class="visual-divider" style="height: 2px; background: linear-gradient(90deg, transparent, #10b981, transparent); margin: 2rem 0; border-radius: 9999px;"></div>
+                <!-- Assessment Section: Scenario-Based Problems -->
+                <section class="assessment-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            🎯
+                        </div>
+                        <h2 class="references-title">5Rs Decision Challenge</h2>
+                    </div>
+                    <div class="assessment-container">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <p style="font-size: 1.05rem; color: #1f2937; line-height: 1.6; margin: 0;">Read each real-world scenario and decide which R strategy is <strong>most appropriate</strong> to solve the problem. Choose the best answer and learn why!</p>
+                            <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(217, 119, 6, 0.06)); padding: 0.75rem 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(168, 85, 247, 0.2); font-weight: 600; color: #5b21b6; font-size: 0.9rem;">
+                                Progress: <span id="assessment-progress">0 of 5 answered</span>
+                            </div>
+                        </div>
+                        <!-- Scenario 1 -->
+                        <div class="scenario-card" id="scenario-1">
+                            <div class="scenario-number">
+                                Scenario 1 of 5
+                            </div>
+                            <h3 class="scenario-title">The Freebie Problem</h3>
+                            <p class="scenario-description">You're at a mall and a store offers free promotional t-shirts to every customer. You already have many shirts at home. What should you do?</p>
+                            <div class="scenario-options">
+                                <button class="option-button" data-answer="refuse">🛑 Refuse it</button> <button class="option-button" data-answer="reduce">✂️ Reduce shopping</button> <button class="option-button" data-answer="recycle">♻️ Take &amp; recycle</button>
+                            </div><button class="submit-scenario-btn" onclick="checkScenarioAnswer(1)">Check Answer</button>
+                            <div class="feedback-message" id="feedback-1"></div>
+                        </div>
+                        <!-- Scenario 2 -->
+                        <div class="scenario-card" id="scenario-2">
+                            <div class="scenario-number">
+                                Scenario 2 of 5
+                            </div>
+                            <h3 class="scenario-title">The Broken Phone Screen</h3>
+                            <p class="scenario-description">Your phone screen cracks, but the phone still works. Your friends suggest buying a new phone. What's the best R to apply?</p>
+                            <div class="scenario-options">
+                                <button class="option-button" data-answer="repair">🔧 Repair it</button> <button class="option-button" data-answer="reduce">✂️ Reduce usage</button> <button class="option-button" data-answer="recycle">♻️ Recycle old phone</button>
+                            </div><button class="submit-scenario-btn" onclick="checkScenarioAnswer(2)">Check Answer</button>
+                            <div class="feedback-message" id="feedback-2"></div>
+                        </div>
+                        <!-- Scenario 3 -->
+                        <div class="scenario-card" id="scenario-3">
+                            <div class="scenario-number">
+                                Scenario 3 of 5
+                            </div>
+                            <h3 class="scenario-title">The Paper Overload</h3>
+                            <p class="scenario-description">Your school prints thousands of pages of materials for students each month. Many end up unused or thrown away. How can students help?</p>
+                            <div class="scenario-options">
+                                <button class="option-button" data-answer="reduce">✂️ Request digital copies</button> <button class="option-button" data-answer="reuse">🔄 Reuse printouts</button> <button class="option-button" data-answer="recycle">♻️ Recycle paper</button>
+                            </div><button class="submit-scenario-btn" onclick="checkScenarioAnswer(3)">Check Answer</button>
+                            <div class="feedback-message" id="feedback-3"></div>
+                        </div>
+                        <!-- Scenario 4 -->
+                        <div class="scenario-card" id="scenario-4">
+                            <div class="scenario-number">
+                                Scenario 4 of 5
+                            </div>
+                            <h3 class="scenario-title">The Clothing Dilemma</h3>
+                            <p class="scenario-description">You have old jeans with small holes that you don't wear anymore. What's the most sustainable choice?</p>
+                            <div class="scenario-options">
+                                <button class="option-button" data-answer="repair">🔧 Mend &amp; reuse</button> <button class="option-button" data-answer="reuse">🔄 Donate to charity</button> <button class="option-button" data-answer="refuse">🛑 Throw away</button>
+                            </div><button class="submit-scenario-btn" onclick="checkScenarioAnswer(4)">Check Answer</button>
+                            <div class="feedback-message" id="feedback-4"></div>
+                        </div>
+                        <!-- Scenario 5 -->
+                        <div class="scenario-card" id="scenario-5">
+                            <div class="scenario-number">
+                                Scenario 5 of 5
+                            </div>
+                            <h3 class="scenario-title">The Water Bottle Choice</h3>
+                            <p class="scenario-description">You need a drink at school but there's only a single-use plastic bottle available. What's the best R to apply here?</p>
+                            <div class="scenario-options">
+                                <button class="option-button" data-answer="refuse">🛑 Refuse &amp; bring water</button> <button class="option-button" data-answer="reuse">🔄 Buy &amp; reuse bottle</button> <button class="option-button" data-answer="recycle">♻️ Buy &amp; recycle</button>
+                            </div><button class="submit-scenario-btn" onclick="checkScenarioAnswer(5)">Check Answer</button>
+                            <div class="feedback-message" id="feedback-5"></div>
+                        </div>
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(16, 185, 129, 0.1); text-align: center;">
+                            <p style="color: #6b7280; font-size: 0.95rem;">✨ Remember: The order matters! Refuse &amp; Reduce are more effective than Recycle.</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="visual-divider" style="height: 2px; background: linear-gradient(90deg, transparent, #10b981, transparent); margin: 2rem 0; border-radius: 9999px;"></div>
+                <!-- References Section -->
+                <section class="references-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📚
+                        </div>
+                        <h2 class="references-title">Learn More &amp; Sources</h2>
+                    </div>
+                    <div class="references-list">
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>UN Environment Programme – Waste Management &amp; the 5Rs</h4>
+                                <p>Official UN resources on the 5Rs framework and sustainable waste management practices for communities worldwide.</p><a href="https://www.unep.org/resources/toolkits-manuals-and-guides" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit UNEP</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>WWF Philippines – Plastic Pollution &amp; the 5Rs</h4>
+                                <p>Comprehensive guide on how the 5Rs specifically address plastic pollution challenges in the Philippines and Southeast Asia.</p><a href="https://wwf.org.ph/resource-center/plastic-pollution/" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit WWF Philippines</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Greenpeace – 5Rs for Sustainable Living</h4>
+                                <p>Practical action guide for implementing the 5Rs in daily life, with tips for students and families.</p><a href="https://www.greenpeace.org/philippines/story/5rs-sustainable-living/" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit Greenpeace</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Ellen MacArthur Foundation – Circular Economy</h4>
+                                <p>Explore how the 5Rs support circular economy principles where products and materials are continuously reused.</p><a href="https://www.ellenmacarthurfoundation.org" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit Ellen MacArthur Foundation</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Zero Waste International Alliance – Certification &amp; Best Practices</h4>
+                                <p>Standards and best practices for zero waste communities implementing the 5Rs framework effectively.</p><a href="https://zwia.org" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit ZWIA</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Navigation -->
+                <div class="footer-nav"><a href="index.html" class="back-button">← Back to All Topics</a> <span style="color: #999;">|</span> <a href="topic-1.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:0.75rem; background:rgba(16,185,129,0.1); color:#10b981; text-decoration:none; font-weight:600; transition:all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(16,185,129,0.2)'" onmouseout="this.style.background='rgba(16,185,129,0.1)'">Previous Topic <i data-lucide="arrow-left" style="width:20px;height:20px;"></i></a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>♻️ Topic 5: The 5Rs Framework — Practical Guide for Sustainable Living</p>
+            <p>Part of Our Environmental Sustainability Initiative • 2025</p>
+        </footer>
+    </div>
+    <script>
+        // Scenario Assessment Data
+        const scenarios = {
+            1: {
+                correct: 'refuse',
+                explanation: '🎯 Correct! REFUSE is the best answer. By refusing unnecessary items (like free promotional items you won\'t use), you stop waste before it starts. This is the most effective R because it prevents items from entering the waste stream entirely.'
+            },
+            2: {
+                correct: 'repair',
+                explanation: '🎯 Correct! REPAIR is the best choice. Instead of replacing the phone, repair the screen. This extends the product\'s lifespan and prevents e-waste. Repairing is often cheaper than buying new and saves valuable resources.'
+            },
+            3: {
+                correct: 'reduce',
+                explanation: '🎯 Correct! REDUCE is the best strategy. Requesting digital copies addresses the problem at its root by reducing paper consumption. This is more effective than trying to reuse or recycle papers that were unnecessarily printed in the first place.'
+            },
+            4: {
+                correct: 'reuse',
+                explanation: '🎯 Great! REUSE (donate) is the best choice. Donating your jeans to charity gives them a second life and helps someone in need. If the jeans were damaged, repair would be next. Either way, you\'re keeping them out of the landfill.'
+            },
+            5: {
+                correct: 'refuse',
+                explanation: '🎯 Correct! REFUSE is the best answer. Bring a reusable water bottle from home. This avoids creating plastic waste entirely. If you don\'t have a bottle, buying and reusing is second best, but refusing to generate waste in the first place is ideal.'
+            }
+        };
+
+        let selectedAnswers = {};
+        let answeredScenarios = new Set();
+
+        function selectOption(event) {
+            const scenarioId = event.target.closest('.scenario-card').id.split('-')[1];
+            const buttons = document.querySelectorAll(`#scenario-${scenarioId} .option-button`);
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+            selectedAnswers[scenarioId] = event.target.dataset.answer;
+        }
+
+        function checkScenarioAnswer(scenarioId) {
+            const selected = selectedAnswers[scenarioId];
+            const feedback = document.getElementById(`feedback-${scenarioId}`);
+            const scenario = scenarios[scenarioId];
+            const submitBtn = document.querySelector(`#scenario-${scenarioId} .submit-scenario-btn`);
+
+            if (!selected) {
+                feedback.innerHTML = '<strong style="color: #d97706;">⚠️ Please select an answer first!</strong>';
+                feedback.className = 'feedback-message show feedback-correct';
+                return;
+            }
+
+            const isCorrect = selected === scenario.correct;
+            answeredScenarios.add(parseInt(scenarioId));
+
+            let html = '';
+
+            if (isCorrect) {
+                html = `<strong>${scenario.explanation}</strong>`;
+                html += `<div class="feedback-explanation" style="margin-top: 1rem;">✨ You're thinking like a sustainability champion! Understanding which R applies to each situation is key to reducing waste effectively.</div>`;
+                feedback.className = 'feedback-message show feedback-correct';
+            } else {
+                html = `<strong style="color: #dc2626;">❌ Not quite right.</strong>`;
+                html += `<div class="feedback-explanation" style="margin-top: 1rem;">The correct answer was: <strong>${scenario.correct.toUpperCase()}</strong><br><br>${scenario.explanation}</div>`;
+                feedback.className = 'feedback-message show';
+                feedback.style.background = 'linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(239, 68, 68, 0.08))';
+                feedback.style.borderColor = 'rgba(220, 38, 38, 0.3)';
+                feedback.style.borderLeftColor = '#dc2626';
+                feedback.style.color = '#7f1d1d';
+            }
+
+            feedback.innerHTML = html;
+
+            // Disable button after answering
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.cursor = 'not-allowed';
+
+            updateAssessmentProgress();
+        }
+
+        function updateAssessmentProgress() {
+            const total = Object.keys(scenarios).length;
+            const answered = answeredScenarios.size;
+            const progressEl = document.getElementById('assessment-progress');
+            if (progressEl) {
+                progressEl.textContent = `${answered} of ${total} answered`;
+            }
+        }
+
+        document.querySelectorAll('.option-button').forEach(btn => {
+            btn.addEventListener('click', selectOption);
+        });
+
+        const defaultConfig = {
+            page_title: "Topic 5: The 5Rs Framework",
+            hero_subtitle: "Refuse, Reduce, Reuse, Repair & Recycle — A practical guide for sustainable living and environmental responsibility",
+            intro_text: "The 5Rs framework is a practical guide for sustainable living that helps minimize waste, conserve resources, and protect the environment. As students and citizens, practicing the 5Rs creates meaningful change in our communities and on our planet. By understanding and applying each principle—from refusing unnecessary items to properly recycling waste—we can reduce our environmental footprint and contribute to a circular economy.",
+            conclusion_text: "The 5Rs are listed in order of effectiveness: REFUSE first (eliminate waste at the source), REDUCE second (consume less), REUSE third (extend product life), REPAIR fourth (fix instead of replace), and RECYCLE last (when all else fails). By prioritizing the first four Rs, we address the waste crisis at its root before relying on recycling. Small daily actions—like refusing single-use plastics, reusing shopping bags, repairing broken items, and participating in recycling programs—add up to significant environmental benefits. The collective impact includes cleaner communities, reduced pollution, lower carbon footprints, and a more sustainable future for all.",
+            refuse_title: "Refuse — Say No to Unnecessary Items",
+            reduce_title: "Reduce — Minimize Consumption & Waste",
+            reuse_title: "Reuse — Extend the Life of Items",
+            repair_title: "Repair — Fix Broken Items",
+            recycle_title: "Recycle — Process Materials into New Products",
+            font_family: "Playfair Display",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = key => config[key] || defaultConfig[key];
+            document.getElementById('page-title').textContent = c('page_title');
+            document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+            document.getElementById('intro-text').textContent = c('intro_text');
+            document.getElementById('conclusion-text').textContent = c('conclusion_text');
+
+            const font = c('font_family');
+            document.querySelectorAll('.font-heading').forEach(el => {
+                el.style.fontFamily = `${font}, serif`;
+            });
+
+            const size = c('font_size');
+            document.getElementById('intro-text').style.fontSize = `${size * 1.1}px`;
+            document.getElementById('conclusion-text').style.fontSize = `${size * 1.1}px`;
+        }
+
+        function mapToCapabilities(config) {
+            const c = key => config[key] || defaultConfig[key];
+            const mut = key => ({
+                get: () => c(key),
+                set: (v) => {
+                    config[key] = v;
+                    window.elementSdk.setConfig({
+                        [key]: v
+                    });
+                }
+            });
+
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: mut('font_family'),
+                fontSizeable: mut('font_size')
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            const c = key => config[key] || defaultConfig[key];
+            return new Map([
+                ["page_title", c('page_title')],
+                ["hero_subtitle", c('hero_subtitle')],
+                ["intro_text", c('intro_text')],
+                ["conclusion_text", c('conclusion_text')],
+                ["refuse_title", c('refuse_title')],
+                ["reduce_title", c('reduce_title')],
+                ["reuse_title", c('reuse_title')],
+                ["repair_title", c('repair_title')],
+                ["recycle_title", c('recycle_title')]
+            ]);
+        }
+
+        lucide.createIcons();
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9e335e5c526eb9ff',t:'MTc3NDY2NjY1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
