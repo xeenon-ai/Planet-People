@@ -52,6 +52,10 @@
             box-shadow: 0 0 6px rgba(220, 38, 38, 0.3);
         }
         
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #991b1b, #7f1d1d);
+        }
+        
         header {
             position: sticky;
             top: 0;
@@ -81,6 +85,47 @@
             letter-spacing: -0.02em;
         }
         
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #fecaca;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #dc2626, #f87171);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -97,6 +142,26 @@
         .back-button:hover {
             background: rgba(220, 38, 38, 0.2);
             transform: translateX(-4px);
+        }
+        
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            color: #fecaca;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
         }
         
         .hero-section {
@@ -241,6 +306,14 @@
             box-shadow: 0 20px 40px rgba(220, 38, 38, 0.1);
         }
         
+        .cause-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+        
         .cause-card-content {
             padding: 2rem;
         }
@@ -354,6 +427,416 @@
             color: #4b5563;
             margin: 0;
         }
+        /* Quiz Styles */
+        
+        .quiz-section {
+            margin: 3rem 0;
+        }
+        
+        .quiz-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .quiz-progress-wrapper {
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        
+        .quiz-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #dc2626, #f87171);
+            border-radius: 9999px;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.4);
+        }
+        
+        .quiz-question {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .quiz-question-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-question-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .quiz-question h3 {
+            font-size: 1.35rem;
+            color: #001f3f;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .quiz-options {
+            display: grid;
+            gap: 0.85rem;
+        }
+        
+        .quiz-option {
+            padding: 1.15rem 1.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 500;
+            color: #374151;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(220, 38, 38, 0.05);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+        
+        .quiz-option:hover:not(:disabled) {
+            border-color: #dc2626;
+            transform: translateX(4px);
+        }
+        
+        .quiz-option:hover:not(:disabled)::before {
+            left: 0;
+        }
+        
+        .quiz-option>* {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quiz-option:disabled {
+            cursor: not-allowed;
+        }
+        
+        .quiz-option.correct {
+            border-color: #16a34a;
+            background: rgba(22, 163, 74, 0.08);
+            color: #15803d;
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .quiz-option.incorrect {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.08);
+            color: #991b1b;
+            animation: shake 0.4s ease;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-4px);
+            }
+            75% {
+                transform: translateX(4px);
+            }
+        }
+        
+        .quiz-feedback {
+            padding: 1.25rem 1.75rem;
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            display: none;
+            border-left: 4px solid;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .quiz-feedback.show {
+            display: block;
+        }
+        
+        .quiz-feedback.correct {
+            background: rgba(22, 163, 74, 0.08);
+            color: #15803d;
+            border-color: #16a34a;
+        }
+        
+        .quiz-feedback.incorrect {
+            background: rgba(220, 38, 38, 0.08);
+            color: #991b1b;
+            border-color: #dc2626;
+        }
+        
+        .quiz-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 1.5rem;
+            border: 2px solid #dc2626;
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        .quiz-results-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .quiz-results h3 {
+            font-size: 1.75rem;
+            color: #7f1d1d;
+            margin: 0.5rem 0;
+            font-weight: 700;
+        }
+        
+        .quiz-results p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin: 0.5rem 0;
+        }
+        
+        .quiz-score {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin: 1.5rem 0;
+            animation: countUp 1s ease-out;
+        }
+        
+        .quiz-message {
+            font-size: 1.2rem;
+            color: #374151;
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+        
+        .quiz-restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: white;
+            border: none;
+            border-radius: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+        
+        .quiz-restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        }
+        
+        .quiz-restart-btn:active {
+            transform: translateY(-1px);
+        }
+        /* References Styles */
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #001f3f;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.02), rgba(239, 68, 68, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(220, 38, 38, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: 0 12px 24px rgba(220, 38, 38, 0.12);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #001f3f;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #991b1b;
+            background: rgba(220, 38, 38, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
         
         footer {
             text-align: center;
@@ -374,21 +857,672 @@
             margin-top: 0.5rem;
             color: rgba(254, 202, 202, 0.6);
         }
+        /* Decorative Elements */
         
-        @keyframes bounce {
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.08;
+            animation: float 20s infinite;
+            z-index: -1;
+        }
+        
+        .float-1 {
+            animation-delay: 0s;
+            top: 10%;
+            left: 5%;
+        }
+        
+        .float-2 {
+            animation-delay: 3s;
+            top: 20%;
+            right: 8%;
+        }
+        
+        .float-3 {
+            animation-delay: 6s;
+            top: 40%;
+            left: 10%;
+        }
+        
+        .float-4 {
+            animation-delay: 9s;
+            bottom: 20%;
+            right: 5%;
+        }
+        
+        .float-5 {
+            animation-delay: 12s;
+            bottom: 30%;
+            left: 15%;
+        }
+        
+        @keyframes float {
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(0px) rotate(0deg);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+        /* Stats Section */
+        
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(239, 68, 68, 0.05));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(220, 38, 38, 0.15);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 12px 30px rgba(220, 38, 38, 0.15);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #dc2626;
+            margin: 0.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        /* Impact Timeline */
+        
+        .impact-timeline {
+            margin: 3rem 0;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            opacity: 0;
+            animation: slideInTimeline 0.8s ease-out forwards;
+        }
+        
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes slideInTimeline {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
         
-        @keyframes slideIn {
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .timeline-content {
+            padding-bottom: 2rem;
+            border-left: 3px solid rgba(220, 38, 38, 0.2);
+            padding-left: 2rem;
+        }
+        
+        .timeline-item:last-child .timeline-content {
+            border-left: 3px solid transparent;
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: #dc2626;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-text {
+            color: #4b5563;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        /* Comparison Section */
+        
+        .comparison-section {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(239, 68, 68, 0.05));
+            border-radius: 1.5rem;
+            border: 2px solid rgba(220, 38, 38, 0.15);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .comparison-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .comparison-item h4 {
+            margin: 0 0 0.75rem 0;
+            color: #001f3f;
+            font-weight: 700;
+        }
+        
+        .comparison-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .comparison-item li {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        
+        .comparison-item li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #dc2626;
+            font-weight: bold;
+        }
+        /* Info Boxes */
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.06), rgba(239, 68, 68, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #dc2626;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #001f3f;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        /* Highlight Bar */
+        
+        .highlight-bar {
+            padding: 1.25rem 1.75rem;
+            background: linear-gradient(90deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.05), rgba(220, 38, 38, 0.1));
+            border-left: 4px solid #dc2626;
+            border-right: 4px solid #f87171;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            color: #001f3f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .highlight-bar strong {
+            color: #dc2626;
+        }
+        /* Visual Divider */
+        
+        .visual-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+            margin: 2rem 0;
+            border-radius: 9999px;
+        }
+        
+        @media (min-width: 640px) {
+            .cause-card-image {
+                height: 350px;
+            }
+        }
+        /* Background Decorative Elements */
+        
+        .bg-decoration-left {
+            position: fixed;
+            left: -200px;
+            top: 15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 30s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-right {
+            position: fixed;
+            right: -150px;
+            bottom: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 35s infinite ease-in-out reverse;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-top {
+            position: fixed;
+            right: 5%;
+            top: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 40s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-bottom {
+            position: fixed;
+            left: 10%;
+            bottom: -150px;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 32s infinite ease-in-out reverse;
+            pointer-events: none;
+        }
+        /* Side accent lines */
+        
+        .accent-line-left {
+            position: fixed;
+            left: 0;
+            top: 20%;
+            width: 3px;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0), rgba(220, 38, 38, 0.3), rgba(220, 38, 38, 0));
+            z-index: -1;
+            animation: expandLine 3s ease-in-out infinite;
+        }
+        
+        .accent-line-right {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            width: 3px;
+            height: 250px;
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0), rgba(220, 38, 38, 0.25), rgba(220, 38, 38, 0));
+            z-index: -1;
+            animation: expandLine 4s ease-in-out infinite reverse;
+        }
+        
+        @keyframes expandLine {
+            0%,
+            100% {
+                height: 250px;
+                opacity: 0.5;
+            }
+            50% {
+                height: 350px;
+                opacity: 1;
+            }
+        }
+        /* Corner decorations */
+        
+        .corner-decoration {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            z-index: -1;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        
+        .corner-top-left {
+            top: 0;
+            left: 0;
+            background: conic-gradient(from 0deg, #dc2626, transparent 90deg);
+            border-radius: 0 0 150px 0;
+        }
+        
+        .corner-top-right {
+            top: 0;
+            right: 0;
+            background: conic-gradient(from 90deg, #dc2626, transparent 90deg);
+            border-radius: 0 0 0 150px;
+        }
+        
+        .corner-bottom-left {
+            bottom: 0;
+            left: 0;
+            background: conic-gradient(from -90deg, #dc2626, transparent 90deg);
+            border-radius: 0 150px 0 0;
+        }
+        
+        .corner-bottom-right {
+            bottom: 0;
+            right: 0;
+            background: conic-gradient(from 180deg, #dc2626, transparent 90deg);
+            border-radius: 150px 0 0 0;
+        }
+        /* Animated side panels */
+        
+        .side-panel-content {
+            position: fixed;
+            display: none;
+            z-index: -1;
+            opacity: 0.15;
+            font-size: 12rem;
+            line-height: 1;
+        }
+        
+        @media (min-width: 1200px) {
+            .side-panel-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #dc2626;
+            }
+        }
+        
+        .side-panel-left {
+            left: 20px;
+            width: 200px;
+            height: 100%;
+            top: 0;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .side-panel-right {
+            right: 20px;
+            width: 200px;
+            height: 100%;
+            top: 0;
+            animation: float 28s infinite ease-in-out reverse;
+        }
+        /* Gradient mesh background overlay */
+        
+        .mesh-background {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(239, 68, 68, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(220, 38, 38, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        /* Floating geometric shapes */
+        
+        .geometric-shape {
+            position: fixed;
+            z-index: -2;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+        
+        .shape-1 {
+            width: 250px;
+            height: 250px;
+            top: 10%;
+            left: 5%;
+            border: 2px solid #dc2626;
+            border-radius: 20px;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            border: 2px solid #f87171;
+            border-radius: 50% 10% 50% 10%;
+            animation: rotate 25s linear infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 180px;
+            height: 180px;
+            bottom: 15%;
+            left: 15%;
+            border: 2px dashed #dc2626;
+            border-radius: 50%;
+            animation: float 18s ease-in-out infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Discussion Section Styles */
+        
+        .discussion-section {
+            margin: 3rem 0;
+        }
+        
+        .discussion-container {
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(220, 38, 38, 0.1);
+        }
+        
+        .comment-input {
+            padding: 0.875rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: #374151;
+        }
+        
+        .comment-input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            background: rgba(220, 38, 38, 0.02);
+        }
+        
+        .comment-textarea {
+            padding: 1rem 1.25rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 120px;
+            max-height: 300px;
+            transition: all 0.3s ease;
+            color: #374151;
+            line-height: 1.5;
+        }
+        
+        .comment-textarea:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            background: rgba(220, 38, 38, 0.02);
+        }
+        
+        .submit-comment-btn {
+            padding: 0.95rem 2rem;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+            align-self: flex-start;
+        }
+        
+        .submit-comment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .submit-comment-btn:active {
+            transform: translateY(0px);
+        }
+        
+        .submit-comment-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-message {
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-height: 20px;
+            display: none;
+        }
+        
+        .form-message.show {
+            display: block;
+        }
+        
+        .form-message.success {
+            color: #16a34a;
+        }
+        
+        .form-message.error {
+            color: #dc2626;
+        }
+        
+        .form-message.warning {
+            color: #f59e0b;
+        }
+        
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .comment-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.03), rgba(239, 68, 68, 0.02));
+            border-radius: 1rem;
+            border: 1px solid rgba(220, 38, 38, 0.08);
+            border-left: 4px solid #dc2626;
+            transition: all 0.3s ease;
+            animation: slideInComment 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        @keyframes slideInComment {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -396,55 +1530,87 @@
             }
         }
         
-        @keyframes popIn {
-            0% {
-                transform: scale(0);
-            }
-            70% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .comment-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);
         }
         
-        @keyframes correctPulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
-        @keyframes incorrectShake {
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-8px);
-            }
-            75% {
-                transform: translateX(8px);
-            }
+        .comment-author {
+            font-weight: 700;
+            color: #001f3f;
+            font-size: 1rem;
         }
         
-        .quiz-option-correct {
-            background: #ecfdf5 !important;
-            border-color: #10b981 !important;
-            color: #065f46 !important;
-            animation: correctPulse 0.6s ease;
+        .comment-time {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            font-weight: 500;
         }
         
-        .quiz-option-incorrect {
-            background: #fee2e2 !important;
-            border-color: #ef4444 !important;
-            color: #7f1d1d !important;
-            animation: incorrectShake 0.5s ease;
+        .comment-delete-btn {
+            background: rgba(220, 38, 38, 0.1);
+            border: none;
+            color: #dc2626;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        
+        .comment-delete-btn:hover {
+            background: rgba(220, 38, 38, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .comment-text {
+            color: #4b5563;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+            word-wrap: break-word;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .empty-state-text {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(220, 38, 38, 0.2);
+            border-top-color: #dc2626;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -452,10 +1618,50 @@
 
 <body class="h-full font-body">
     <div class="app-wrapper">
+        <!-- Background Decorative Layer -->
+        <div class="mesh-background"></div>
+        <div class="bg-decoration-left"></div>
+        <div class="bg-decoration-right"></div>
+        <div class="bg-decoration-top"></div>
+        <div class="bg-decoration-bottom"></div>
+        <div class="accent-line-left"></div>
+        <div class="accent-line-right"></div>
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+        <div class="side-panel-content side-panel-left">
+            🔥
+        </div>
+        <div class="side-panel-content side-panel-right">
+            🌍
+        </div>
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
+        <div class="floating-elements">
+            <div class="floating-emoji float-1">
+                🌍
+            </div>
+            <div class="floating-emoji float-2">
+                🔥
+            </div>
+            <div class="floating-emoji float-3">
+                ☀️
+            </div>
+            <div class="floating-emoji float-4">
+                💨
+            </div>
+            <div class="floating-emoji float-5">
+                🌡️
+            </div>
+        </div>
         <header>
-            <nav><a href="index.html" class="back-button"><i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics</a>
+            <nav>
+                <a href="index.html" class="back-button"> <i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics </a>
                 <div class="logo"><span>🌡️</span> <span id="page-title">Global Warming</span>
                 </div>
+                <div class="nav-desktop"></div>
             </nav>
         </header>
         <main>
@@ -471,291 +1677,533 @@
                     <p id="intro-text">Global warming is the long-term increase in Earth's average temperature, mainly caused by human activities that release heat-trapping greenhouse gases into the atmosphere. This comprehensive guide explores the six major causes and
                         why understanding them is crucial for our planet's future.</p>
                 </section>
-                <article class="cause-card">
+                <!-- Key Statistics -->
+                <section class="stats-section">
+                    <div class="stat-card">
+                        <span class="stat-emoji">📈</span>
+                        <div class="stat-number">
+                            +1.1°C
+                        </div>
+                        <div class="stat-label">
+                            Temperature Rise Since 1850
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-emoji">97%</span>
+                        <div class="stat-number">
+                            Human
+                        </div>
+                        <div class="stat-label">
+                            Caused Climate Change
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-emoji">10B</span>
+                        <div class="stat-number">
+                            Trees Cut
+                        </div>
+                        <div class="stat-label">
+                            Annually Worldwide
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-emoji">75%</span>
+                        <div class="stat-number">
+                            Energy
+                        </div>
+                        <div class="stat-label">
+                            From Fossil Fuels
+                        </div>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <article class="cause-card"><img src="/images/fossil-fuels.jpg" alt="Burning of Fossil Fuels" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🔥';">
                     <div class="cause-card-content"><span class="icon-emoji">🔥</span>
                         <div class="cause-number">
                             1
                         </div>
                         <h3>Burning of Fossil Fuels (Main Cause)</h3>
-                        <p>Human use of coal, oil, and natural gas for electricity, transportation, and industry releases large amounts of carbon dioxide (CO₂). This is the single largest contributor to global warming.</p>
+                        <p>Human use of coal, oil, and natural gas for electricity, transportation, and industry releases large amounts of carbon dioxide (CO₂).</p>
                         <ul>
-                            <li>CO₂ is the most significant greenhouse gas driving modern warming, accounting for ~75% of total emissions</li>
-                            <li>Since the Industrial Revolution, atmospheric CO₂ has increased by 50% from 280 ppm to over 420 ppm</li>
-                            <li>Coal power plants alone emit approximately 10 gigatons of CO₂ annually</li>
-                            <li>Transportation contributes ~27% of energy-related CO₂ emissions</li>
-                            <li>One gallon of gasoline produces approximately 19.6 pounds of CO₂ when burned</li>
-                        </ul><span class="source-badge">🔗 NASA Climate Science</span> <span class="source-badge">🔗 IEA Energy Report</span>
+                            <li>CO₂ is the most significant greenhouse gas driving modern warming</li>
+                            <li>Energy production accounts for approximately 75% of global greenhouse gas emissions</li>
+                            <li>Transportation and industrial processes amplify this impact</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ⚡
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Did You Know?
+                                </div>
+                                <div class="info-box-text">
+                                    A single coal plant can emit as much CO₂ annually as 2+ million cars!
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NASA – Human activities are the primary driver of warming since the mid-20th century</span>
                     </div>
                 </article>
-                <article class="cause-card">
+                <!-- Cause 2: Agriculture & Livestock -->
+                <article class="cause-card"><img src="/images/livestock-agriculture.jpg" alt="Agriculture and Livestock" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🐄';">
                     <div class="cause-card-content"><span class="icon-emoji">🐄</span>
                         <div class="cause-number">
                             2
                         </div>
                         <h3>Agriculture &amp; Livestock</h3>
-                        <p>Livestock farming produces 14.5-18% of global greenhouse gas emissions. Cows produce methane (CH₄) during digestion, which is 28-34 times more potent than CO₂ over 100 years.</p>
+                        <p>Cows and other ruminants produce methane (CH₄) during digestion, a potent greenhouse gas.</p>
                         <ul>
-                            <li>One cow produces 200-500 liters of methane per day</li>
-                            <li>Rice paddies release methane from anaerobic decomposition</li>
-                            <li>Manure management contributes 65% of the sector's nitrous oxide emissions</li>
-                            <li>Land-use conversion for agriculture is the second-largest cause of forest loss</li>
-                        </ul><span class="source-badge">🔗 FAO Report</span> <span class="source-badge">🔗 IPCC Agriculture</span>
+                            <li>Rice farming and manure management also release significant methane</li>
+                            <li>Methane traps far more heat per molecule than CO₂ over a 20-year period</li>
+                            <li>Global livestock production contributes approximately 14-18% of total greenhouse gas emissions</li>
+                            <li>Agricultural expansion often requires deforestation, compounding the problem</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🧪
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Methane Potency
+                                </div>
+                                <div class="info-box-text">
+                                    Methane is 28-36x more potent at trapping heat than CO₂ over a 100-year period!
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Sciencing – Methane is one of the major greenhouse gases produced by human activity</span>
                     </div>
                 </article>
-                <article class="cause-card">
+                <!-- Cause 3: Industrial Processes -->
+                <article class="cause-card"><img src="/images/industrial-processes.jpg" alt="Industrial Processes" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🏭';">
                     <div class="cause-card-content"><span class="icon-emoji">🏭</span>
                         <div class="cause-number">
                             3
                         </div>
                         <h3>Industrial Processes</h3>
-                        <p>Manufacturing releases potent greenhouse gases including nitrous oxide (N₂O), which is 265-310 times more effective than CO₂ at trapping heat.</p>
+                        <p>Factories emit nitrous oxide (N₂O) and chlorofluorocarbons (CFCs) during manufacturing operations.</p>
                         <ul>
-                            <li>Industrial emissions account for 21% of global greenhouse gas emissions</li>
-                            <li>Cement production alone accounts for 5-8% of global CO₂ emissions</li>
-                            <li>Steel manufacturing contributes 7% of global CO₂ emissions</li>
-                            <li>HFCs used in refrigeration are 1,000-10,000 times more potent than CO₂</li>
-                        </ul><span class="source-badge">🔗 IEA Industrial Report</span> <span class="source-badge">🔗 EPA Inventory</span>
+                            <li>These gases are extremely potent and remain in the atmosphere for decades</li>
+                            <li>N₂O is approximately 310 times more effective at trapping heat than CO₂</li>
+                            <li>Chemical manufacturing, cement production, and steel mills are major contributors</li>
+                            <li>Industrial emissions account for roughly 21% of global greenhouse gases</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🏭
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Industrial Impact
+                                </div>
+                                <div class="info-box-text">
+                                    Cement production alone accounts for ~8% of global CO₂ emissions!
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Sciencing – CFCs and N₂O contribute significantly to the greenhouse effect</span>
                     </div>
                 </article>
-                <article class="cause-card">
+                <!-- Cause 4: Deforestation -->
+                <article class="cause-card"><img src="/images/deforestation.jpg" alt="Deforestation" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌳';">
                     <div class="cause-card-content"><span class="icon-emoji">🌳</span>
                         <div class="cause-number">
                             4
                         </div>
                         <h3>Deforestation</h3>
-                        <p>Forests act as carbon sinks, absorbing and storing CO₂. Deforestation accounts for 10-15% of global greenhouse gas emissions.</p>
+                        <p>Cutting down forests reduces Earth's natural ability to absorb CO₂ from the atmosphere.</p>
                         <ul>
-                            <li>Approximately 10 billion trees are cut down annually; only 5 billion are replanted</li>
-                            <li>Tropical rainforests store 250 tons of carbon per hectare</li>
-                            <li>The Amazon stores 150-200 billion tons of carbon</li>
-                            <li>A single mature tree absorbs 20 kg of CO₂ annually</li>
-                        </ul><span class="source-badge">🔗 FAO Assessment</span> <span class="source-badge">🔗 Global Forest Watch</span>
+                            <li>When trees are burned or decay, they release stored carbon back into the atmosphere</li>
+                            <li>Approximately 10 billion trees are cut down annually worldwide</li>
+                            <li>Forests act as carbon sinks—their removal eliminates this critical function</li>
+                            <li>Deforestation accounts for about 15% of global greenhouse gas emissions</li>
+                            <li>Loss of forest cover also affects local rainfall patterns and biodiversity</li>
+                        </ul>
+                        <div class="highlight-bar">
+                            <strong>Critical Fact:</strong> One mature tree absorbs approximately 20kg of CO₂ over its lifetime!
+                        </div><span class="source-badge">🔗 Source: Britannica – Human activities, including land-use changes, contribute to global warming</span>
                     </div>
                 </article>
-                <article class="cause-card">
+                <!-- Cause 5: Waste Management & Landfills -->
+                <article class="cause-card"><img src="/images/waste-landfills.jpg" alt="Waste and Landfills" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🗑️';">
                     <div class="cause-card-content"><span class="icon-emoji">🗑️</span>
                         <div class="cause-number">
                             5
                         </div>
                         <h3>Waste Management &amp; Landfills</h3>
-                        <p>When organic waste decomposes in landfills without oxygen, it produces methane. Waste management contributes 3.2% of global emissions.</p>
+                        <p>Organic waste in landfills decomposes without oxygen, producing significant amounts of methane.</p>
                         <ul>
-                            <li>Approximately 1.3 billion tons of food waste generated annually</li>
-                            <li>Landfill methane is 25-28 times more potent than CO₂ over 100 years</li>
-                            <li>A single landfill can release 600,000 tons of methane annually</li>
-                            <li>Biogas capture can reduce emissions by 90%</li>
-                        </ul><span class="source-badge">🔗 EPA Waste Report</span> <span class="source-badge">🔗 UNEP Food Waste</span>
+                            <li>Poor waste systems increase greenhouse gas emissions substantially</li>
+                            <li>Approximately 1.3 billion tons of food waste is generated annually</li>
+                            <li>Landfill methane is 25-28 times more potent than CO₂ over a century</li>
+                            <li>Waste management contributes about 3-5% of global greenhouse gas emissions</li>
+                            <li>Proper recycling and composting can significantly reduce these emissions</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ♻️
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Solution Path
+                                </div>
+                                <div class="info-box-text">
+                                    Composting and recycling can reduce methane emissions by up to 75%!
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: EPA – Landfill emissions contribute significantly to climate change</span>
                     </div>
                 </article>
-                <article class="cause-card">
+                <!-- Cause 6: Natural Causes -->
+                <article class="cause-card"><img src="/images/natural-causes.jpg" alt="Natural Causes" class="cause-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fee2e2, #fecaca)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='☀️';">
                     <div class="cause-card-content"><span class="icon-emoji">☀️</span>
                         <div class="cause-number">
                             6
                         </div>
                         <h3>Natural Causes (Minor Impact)</h3>
-                        <p>Natural factors like solar radiation and volcanic activity play a minor role—accounting for less than 10% of observed warming since 1950.</p>
+                        <p>While natural factors do influence climate, they play a much smaller role in current warming trends.</p>
                         <ul>
-                            <li>Volcanic eruptions cause short-term cooling due to ash clouds</li>
-                            <li>Solar output has slightly decreased since 1950, yet temperatures rise</li>
-                            <li>Milankovitch cycles operate on 10,000-100,000 year timescales</li>
-                            <li>Humans are responsible for ~97% of current climate warming</li>
-                        </ul><span class="source-badge">🔗 NASA Natural Factors</span> <span class="source-badge">🔗 IPCC Attribution</span>
+                            <li>Volcanic eruptions release CO₂ but usually cause short-term cooling due to ash</li>
+                            <li>Solar variations influence climate but cannot explain current warming rates</li>
+                            <li>Natural factors account for less than 10% of observed warming since 1950</li>
+                            <li>Human activities amplify natural climate cycles significantly</li>
+                        </ul>
+                        <div class="comparison-section">
+                            <div style="display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem;">
+                                <div style="font-size: 2rem;">
+                                    🔍
+                                </div>
+                                <h4 style="margin: 0; color: #001f3f; font-size: 1.1rem;">Natural vs Human Impact</h4>
+                            </div>
+                            <div class="comparison-grid">
+                                <div class="comparison-item">
+                                    <h4>Natural Factors</h4>
+                                    <ul>
+                                        <li>Volcanic eruptions</li>
+                                        <li>Solar cycles</li>
+                                        <li>Orbital variations</li>
+                                        <li>&lt;10% of warming</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Human Activities</h4>
+                                    <ul>
+                                        <li>Fossil fuel burning</li>
+                                        <li>Deforestation</li>
+                                        <li>Industrial emissions</li>
+                                        <li>&gt;90% of warming</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NASA – Current warming cannot be explained by the Sun alone</span>
                     </div>
                 </article>
+                <!-- Summary Section -->
                 <section class="summary-section">
                     <div class="summary-content">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">
                             🧭
                         </div>
                         <h2>Key Takeaway</h2>
-                        <p id="conclusion-text">Global warming is primarily caused by human activities, especially burning fossil fuels, agriculture, industrial emissions, and deforestation. While natural factors exist, they play a much smaller role. Humans are responsible for
-                            approximately 97% of observed climate warming since 1950. Understanding these causes is the first step toward creating meaningful solutions for our planet's future.</p>
+                        <p id="conclusion-text">Global warming is primarily caused by human activities, especially burning fossil fuels, agriculture, industrial emissions, and deforestation. While natural factors like volcanic eruptions and solar variations exist, they play
+                            a much smaller role in today's rapid warming. The evidence is overwhelming: humans are responsible for approximately 97% of observed climate warming since 1950. Understanding these causes is the first step toward creating meaningful
+                            solutions for our planet's future.</p>
                     </div>
                 </section>
-                <!-- Interactive Quiz Game Section -->
-                <section style="margin: 4rem 0 2rem 0; padding: 3rem 2rem; background: linear-gradient(135deg, #001f3f 0%, #003d66 50%, #001f3f 100%); border-radius: 2rem; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(220, 38, 38, 0.1), transparent); border-radius: 50%; z-index: 0;"></div>
-                    <div style="position: absolute; bottom: -50px; left: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(239, 68, 68, 0.08), transparent); border-radius: 50%; z-index: 0;"></div>
-                    <div style="position: relative; z-index: 1; max-width: 800px; margin: 0 auto;">
-                        <div style="text-align: center; margin-bottom: 2rem;">
-                            <div style="font-size: 4rem; margin-bottom: 1rem; animation: bounce 2s infinite;">
-                                🎮
-                            </div>
-                            <h2 style="font-size: 2.5rem; font-weight: bold; color: white; margin: 0 0 0.5rem 0;">Climate Challenge Quiz</h2>
-                            <p style="font-size: 1.1rem; color: #fecaca;">Test your knowledge with our interactive game! 🌍</p>
+                <div class="visual-divider"></div>
+                <!-- Impact Timeline -->
+                <section class="impact-timeline">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="font-size: 2rem;">
+                            📊
                         </div>
-                        <div id="quiz-game-container" style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
-                            <!-- Quiz Start Screen -->
-                            <div id="quiz-start-screen" style="text-align: center; padding: 2rem 0;">
-                                <div style="font-size: 3rem; margin-bottom: 1rem;">
-                                    🌡️
-                                </div>
-                                <h3 style="font-size: 1.5rem; color: #001f3f; margin-bottom: 1rem; font-weight: 700;">Ready to become a Climate Expert?</h3>
-                                <p style="color: #4b5563; margin-bottom: 2rem; line-height: 1.6;">Answer 10 challenging questions about the causes of global warming. Each correct answer earns points and unlocks achievements! 🏆</p>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-                                    <div style="padding: 1rem; background: #fef2f2; border-radius: 0.75rem; border: 2px solid #dc2626;">
-                                        <div style="font-size: 1.5rem; font-weight: bold; color: #dc2626;">
-                                            10
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #991b1b;">
-                                            Questions
-                                        </div>
-                                    </div>
-                                    <div style="padding: 1rem; background: #fef2f2; border-radius: 0.75rem; border: 2px solid #dc2626;">
-                                        <div style="font-size: 1.5rem; font-weight: bold; color: #dc2626;">
-                                            100
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #991b1b;">
-                                            Max Points
-                                        </div>
-                                    </div>
-                                    <div style="padding: 1rem; background: #fef2f2; border-radius: 0.75rem; border: 2px solid #dc2626;">
-                                        <div style="font-size: 1.5rem; font-weight: bold; color: #dc2626;">
-                                            ∞
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #991b1b;">
-                                            Retries
-                                        </div>
-                                    </div>
-                                </div><button onclick="startQuizGame()" style="padding: 1.2rem 3rem; font-size: 1.2rem; font-weight: 700; color: white; background: linear-gradient(135deg, #dc2626, #f87171); border: none; border-radius: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3); text-transform: uppercase; letter-spacing: 1px;"
-                                    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 35px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(220, 38, 38, 0.3)'">🎯 Start Quiz</button>
+                        <h2 style="margin: 0; color: #001f3f; font-size: 1.75rem; font-weight: 700;">Climate Change Timeline</h2>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">
+                                1850s - Industrial Revolution Peak
                             </div>
-                            <!-- Quiz Game Screen -->
-                            <div id="quiz-game-screen" style="display: none;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-                                    <div style="flex: 1; min-width: 150px;">
-                                        <div style="font-size: 0.875rem; color: #4b5563; font-weight: 600; margin-bottom: 0.5rem;">
-                                            Question <span id="quiz-q-number">1</span>/10
-                                        </div>
-                                        <div style="height: 8px; background: #e5e7eb; border-radius: 999px; overflow: hidden;">
-                                            <div id="quiz-progress-fill" style="height: 100%; background: linear-gradient(90deg, #dc2626, #f87171); width: 10%; transition: width 0.5s ease;"></div>
-                                        </div>
-                                    </div>
-                                    <div style="text-align: center; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fef2f2, #fee2e2); border-radius: 0.75rem; border: 2px solid #dc2626; min-width: 100px;">
-                                        <div style="font-size: 1.5rem; font-weight: bold; color: #dc2626;" id="quiz-score-display">
-                                            0
-                                        </div>
-                                        <div style="font-size: 0.75rem; color: #991b1b; font-weight: 600;">
-                                            POINTS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin-bottom: 2rem;">
-                                    <div style="font-size: 0.875rem; color: #991b1b; font-weight: 700; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Question <span id="quiz-q-num-text">1</span>
-                                    </div>
-                                    <h3 id="quiz-question-text" style="font-size: 1.5rem; color: #001f3f; margin: 0; font-weight: 700; line-height: 1.5;"></h3>
-                                </div>
-                                <div id="quiz-options-container" style="display: grid; gap: 1rem; margin-bottom: 2rem;"></div>
-                                <div id="quiz-feedback" style="display: none; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem; font-weight: 600; text-align: center; animation: slideIn 0.3s ease;">
-                                    <span id="quiz-feedback-text"></span>
-                                </div>
+                            <div class="timeline-text">
+                                Global temperature rises accelerate as coal becomes the primary energy source for factories and transportation worldwide.
                             </div>
-                            <!-- Quiz Results Screen -->
-                            <div id="quiz-results-screen" style="display: none; text-align: center; padding: 2rem 0;">
-                                <div id="quiz-result-emoji" style="font-size: 5rem; margin-bottom: 1rem; animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
-                                    🎉
-                                </div>
-                                <h3 id="quiz-result-title" style="font-size: 2rem; color: #001f3f; margin-bottom: 0.5rem; font-weight: 700;"></h3>
-                                <div style="margin-bottom: 2rem;">
-                                    <div style="font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #dc2626, #f87171); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;" id="quiz-final-score"></div>
-                                    <div style="color: #4b5563; font-size: 0.95rem;" id="quiz-result-message"></div>
-                                </div>
-                                <div id="quiz-achievements-container" style="margin-bottom: 2rem;"></div>
-                                <div style="background: #f9fafb; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; text-align: left;">
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem;">
-                                        <div>
-                                            <div style="color: #4b5563; font-size: 0.85rem; margin-bottom: 0.25rem;">
-                                                Correct Answers
-                                            </div>
-                                            <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;" id="quiz-correct-count">
-                                                0
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div style="color: #4b5563; font-size: 0.85rem; margin-bottom: 0.25rem;">
-                                                Accuracy
-                                            </div>
-                                            <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;" id="quiz-accuracy">
-                                                0%
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><button onclick="restartQuizGame()" style="padding: 1rem 2rem; font-size: 1rem; font-weight: 700; color: white; background: linear-gradient(135deg, #dc2626, #f87171); border: none; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;"
-                                    onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">🔄 Try Again</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">
+                                1980s - Climate Science Alert
+                            </div>
+                            <div class="timeline-text">
+                                Scientists confirm global warming is real and accelerating. The first climate models predict serious future impacts.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">
+                                Present Day - Critical Decade
+                            </div>
+                            <div class="timeline-text">
+                                We're in the most critical decade for climate action. Every fraction of a degree of warming matters for our future.
                             </div>
                         </div>
                     </div>
                 </section>
+                <div class="visual-divider"></div>
+                <section class="quiz-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            🧠
+                        </div>
+                        <h2 class="references-title">Test Your Knowledge</h2>
+                    </div>
+                    <div id="quiz-container" class="quiz-container">
+                        <!-- Quiz will be populated by JavaScript -->
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
                 <!-- References Section -->
-                <section style="margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, rgba(127, 29, 29, 0.05), rgba(239, 68, 68, 0.03)); border-radius: 1.5rem; border: 1px solid rgba(220, 38, 38, 0.1);">
-                    <h2 style="font-size: 2rem; font-weight: bold; color: #7f1d1d; margin-bottom: 1.5rem;">📚 References &amp; Further Reading</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">NASA Climate Science</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Authoritative data on climate change causes, evidence, and impacts. Updated monthly with satellite data.</p><a href="https://science.nasa.gov/climate/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Visit NASA Climate →</a>
+                <section class="references-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📚
                         </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">IPCC Assessment Reports</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Intergovernmental Panel on Climate Change reports synthesizing peer-reviewed climate science studies.</p><a href="https://www.ipcc.ch/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Visit IPCC →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">IEA Energy Reports</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">International Energy Agency data on fossil fuel emissions and renewable energy trends.</p><a href="https://www.iea.org/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Visit IEA →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">FAO Livestock Impact</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Food and Agriculture Organization analysis of livestock's greenhouse gas emissions contribution.</p><a href="https://www.fao.org/3/a-a0701e.pdf" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Read FAO Report →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">Global Forest Watch</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Real-time data on deforestation and forest loss monitoring using satellite imagery.</p><a href="https://www.globalforestwatch.org/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Explore GFW →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">EPA Greenhouse Gas Inventory</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">U.S. Environmental Protection Agency comprehensive greenhouse gas emissions inventory by source.</p><a href="https://www.epa.gov/ghgemissions/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">View EPA Data →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">NOAA Global Monitoring</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Continuous atmospheric CO₂ and greenhouse gas measurements from around the world.</p><a href="https://gml.noaa.gov/ccgg/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">View NOAA Data →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">UNEP Food Waste Report</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">United Nations Environment Programme analysis of global food waste and climate implications.</p><a href="https://www.unep.org/foodwaste/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">Read UNEP Report →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">Nature Climate Change Journal</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">Peer-reviewed scientific journal publishing cutting-edge climate research and solutions.</p><a href="https://www.nature.com/nclimate/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">View Journal →</a>
-                        </div>
-                        <div style="padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid #dc2626;">
-                            <h3 style="margin: 0 0 0.75rem 0; color: #001f3f; font-size: 1.125rem;">Royal Society Climate Review</h3>
-                            <p style="margin: 0.5rem 0; color: #4b5563; font-size: 0.95rem;">UK's Royal Society scientific consensus on climate change evidence and policy responses.</p><a href="https://royalsociety.org/topics-policy/climate-change/" target="_blank" rel="noopener noreferrer" style="color: #dc2626; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem;">View Royal Society →</a>
-                        </div>
+                        <h2 class="references-title">References &amp; Sources</h2>
                     </div>
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fef2f2, #fee2e2); border-radius: 1rem; border: 2px solid #dc2626;">
-                        <h3 style="margin: 0 0 1rem 0; color: #7f1d1d; font-size: 1.25rem;">📊 Key Statistics Summary</h3>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.75rem; color: #4b5563;"><strong style="color: #001f3f;">Human Responsibility:</strong> 97% of climate scientists agree humans are causing climate change</li>
-                            <li style="margin-bottom: 0.75rem; color: #4b5563;"><strong style="color: #001f3f;">Temperature Rise:</strong> Earth's average temperature has increased by approximately 1.1°C since pre-industrial times</li>
-                            <li style="margin-bottom: 0.75rem; color: #4b5563;"><strong style="color: #001f3f;">Atmospheric CO₂:</strong> Increased from 280 ppm to 420+ ppm in just 150 years</li>
-                            <li style="margin-bottom: 0.75rem; color: #4b5563;"><strong style="color: #001f3f;">Emissions Growth:</strong> Global greenhouse gas emissions reached 37.5 gigatons in 2023</li>
-                            <li style="margin-bottom: 0; color: #4b5563;"><strong style="color: #001f3f;">Dominant Cause:</strong> 73% of global warming is driven by fossil fuel burning and related industrial processes</li>
-                        </ul>
+                    <div class="references-list">
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>NASA - Global Climate Change</h4>
+                                <p>Climate change: How do we know? (2024) - Comprehensive data and research on human-driven climate change.</p><a href="https://climate.nasa.gov/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit NASA Climate Portal</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>IPCC (Intergovernmental Panel on Climate Change)</h4>
+                                <p>Sixth Assessment Report on Climate Change (2021) - The most authoritative source on climate science and policy.</p><a href="https://www.ipcc.ch/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit IPCC</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>EPA - Climate Change Emissions Data</h4>
+                                <p>Greenhouse Gas Sources and Trends (2024) - Official US data on emissions by sector and source.</p><a href="https://www.epa.gov/ghgemissions" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit EPA Climate Data</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>World Resources Institute</h4>
+                                <p>Climate Analysis Dashboard &amp; Research - Interactive tools and research on global climate solutions.</p><a href="https://www.wri.org/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit WRI</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>FAO - Food and Agriculture Organization</h4>
+                                <p>Livestock's Long Shadow: Environmental Issues and Options (2006) - In-depth analysis of agriculture's climate impact.</p><a href="https://www.fao.org/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit FAO</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Britannica Educational Resources</h4>
+                                <p>Global Warming &amp; Climate Change Overview - Educational articles on climate science fundamentals.</p><a href="https://www.britannica.com/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit Britannica</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </section>
+                <!-- Navigation -->
+                <div class="footer-nav"><a href="index.html" class="back-button">← Back to All Topics</a> <span style="color: #999;">|</span> <a href="topic-2.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:0.75rem; background:rgba(220,38,38,0.1); color:#dc2626; text-decoration:none; font-weight:600; transition:all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(220,38,38,0.2)'" onmouseout="this.style.background='rgba(220,38,38,0.1)'"> Next Topic <i data-lucide="arrow-right" style="width:20px;height:20px;"></i> </a>
+                </div>
             </div>
         </main>
         <footer>
-            <p>🌡️ Causes of Global Warming — Interactive Topic Guide with Quiz</p>
+            <p>🌡️ Causes of Global Warming — In-Depth Topic Guide</p>
             <p>Part of Our Green Earth Environmental Awareness Initiative • 2025</p>
         </footer>
     </div>
     <script>
+        const quizData = [{
+            question: "Which human activity is the largest contributor to global greenhouse gas emissions?",
+            options: [
+                "Burning of fossil fuels",
+                "Livestock farming",
+                "Industrial manufacturing",
+                "Waste management"
+            ],
+            correct: 0,
+            explanation: "Burning of fossil fuels for energy production accounts for approximately 75% of global greenhouse gas emissions."
+        }, {
+            question: "Which gas is produced by livestock and is 25-28 times more potent than CO₂?",
+            options: [
+                "Nitrous Oxide (N₂O)",
+                "Methane (CH₄)",
+                "Carbon Dioxide (CO₂)",
+                "Ozone (O₃)"
+            ],
+            correct: 1,
+            explanation: "Methane is produced during livestock digestion and is significantly more potent at trapping heat than CO₂."
+        }, {
+            question: "What percentage of observed climate warming since 1950 is caused by human activities?",
+            options: [
+                "Approximately 50%",
+                "Approximately 75%",
+                "Approximately 97%",
+                "Approximately 25%"
+            ],
+            correct: 2,
+            explanation: "Scientific evidence shows that humans are responsible for approximately 97% of observed climate warming since 1950."
+        }, {
+            question: "Which of the following is NOT a major cause of global warming?",
+            options: [
+                "Ocean currents",
+                "Burning of fossil fuels",
+                "Deforestation",
+                "Industrial processes"
+            ],
+            correct: 0,
+            explanation: "While ocean currents affect climate patterns, they are not a cause of global warming. The other three are major contributors."
+        }, {
+            question: "How many trees are cut down annually worldwide?",
+            options: [
+                "Approximately 1 billion",
+                "Approximately 10 billion",
+                "Approximately 50 billion",
+                "Approximately 100 billion"
+            ],
+            correct: 1,
+            explanation: "Approximately 10 billion trees are cut down annually worldwide, reducing Earth's natural CO₂ absorption capacity."
+        }];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            if (currentQuestion < quizData.length) {
+                const q = quizData[currentQuestion];
+                const progressPercent = ((currentQuestion) / quizData.length) * 100;
+                let html = `
+                    <div class="quiz-progress-wrapper">
+                        <div class="quiz-progress-text">
+                            <span>Progress</span>
+                            <span>${currentQuestion} of ${quizData.length}</span>
+                        </div>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" style="width: ${progressPercent}%"></div>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <div class="quiz-question-header">
+                            <div class="quiz-question-number">${currentQuestion + 1}</div>
+                            <h3>${q.question}</h3>
+                        </div>
+                        <div class="quiz-options">
+                `;
+
+                q.options.forEach((option, idx) => {
+                    html += `
+                        <button class="quiz-option" onclick="answerQuestion(${idx})" data-option="${idx}">
+                            ${option}
+                        </button>
+                    `;
+                });
+
+                html += `
+                        </div>
+                        <div class="quiz-feedback" id="feedback"></div>
+                    </div>
+                `;
+
+                container.innerHTML = html;
+                answered = false;
+            } else {
+                showResults();
+            }
+        }
+
+        function answerQuestion(selectedIdx) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQuestion];
+            const buttons = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback');
+            const isCorrect = selectedIdx === q.correct;
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.classList.add('correct');
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            feedback.classList.add('show');
+            feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+            const icon = isCorrect ? '✓' : '✗';
+            const message = isCorrect ? 'Correct!' : 'Incorrect';
+            feedback.innerHTML = `<strong>${icon} ${message}</strong><br>${q.explanation}`;
+
+            if (isCorrect) score++;
+
+            setTimeout(() => {
+                currentQuestion++;
+                loadQuiz();
+            }, 3500);
+        }
+
+        function showResults() {
+            const container = document.getElementById('quiz-container');
+            const percentage = Math.round((score / quizData.length) * 100);
+            let emoji = '🏆';
+            let message = '';
+
+            if (percentage === 100) {
+                emoji = '🌟';
+                message = "Perfect score! You're a climate expert!";
+            } else if (percentage >= 80) {
+                emoji = '🎉';
+                message = "Excellent! You have strong climate knowledge!";
+            } else if (percentage >= 60) {
+                emoji = '👍';
+                message = "Good job! You understand climate change well.";
+            } else if (percentage >= 40) {
+                emoji = '📚';
+                message = "Not bad! Keep learning about climate issues.";
+            } else {
+                emoji = '💪';
+                message = "Keep studying to improve your knowledge!";
+            }
+
+            container.innerHTML = `
+                <div class="quiz-results">
+                    <div class="quiz-results-emoji">${emoji}</div>
+                    <h3>Quiz Complete!</h3>
+                    <div class="quiz-score">${score}/${quizData.length}</div>
+                    <p>${percentage}%</p>
+                    <p class="quiz-message">${message}</p>
+                    <button class="quiz-restart-btn" onclick="restartQuiz()">Try Again</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            loadQuiz();
+        }
+
         const defaultConfig = {
             page_title: "Causes of Global Warming",
             hero_subtitle: "Understanding the human activities and natural factors driving Earth's temperature rise",
             section_intro: "Global warming is the long-term increase in Earth's average temperature, mainly caused by human activities that release heat-trapping greenhouse gases into the atmosphere. This comprehensive guide explores the six major causes and why understanding them is crucial for our planet's future.",
-            conclusion_text: "Global warming is primarily caused by human activities, especially burning fossil fuels, agriculture, industrial emissions, and deforestation. While natural factors exist, they play a much smaller role. Humans are responsible for approximately 97% of observed climate warming since 1950. Understanding these causes is the first step toward creating meaningful solutions for our planet's future.",
+            conclusion_text: "Global warming is primarily caused by human activities, especially burning fossil fuels, agriculture, industrial emissions, and deforestation. While natural factors like volcanic eruptions and solar variations exist, they play a much smaller role in today's rapid warming. The evidence is overwhelming: humans are responsible for approximately 97% of observed climate warming since 1950. Understanding these causes is the first step toward creating meaningful solutions for our planet's future.",
             font_family: "Playfair Display",
             font_size: 16
         };
@@ -808,7 +2256,9 @@
         }
 
         lucide.createIcons();
+        loadQuiz();
 
+        // Element SDK Configuration
         if (window.elementSdk) {
             window.elementSdk.init({
                 defaultConfig,
@@ -817,214 +2267,6 @@
                 mapToEditPanelValues
             });
         }
-
-        // Interactive Quiz Game
-        const quizQuestionsGame = [{
-            question: "What percentage of global warming is caused by human activities?",
-            options: ["50%", "75%", "97%", "30%"],
-            correct: 2,
-            pointsIfCorrect: 10
-        }, {
-            question: "Which is the SINGLE LARGEST contributor to global warming?",
-            options: ["Deforestation", "Livestock farming", "Burning fossil fuels", "Waste management"],
-            correct: 2,
-            pointsIfCorrect: 10
-        }, {
-            question: "How many times more potent is methane than CO₂ over 100 years?",
-            options: ["5-10x", "28-34x", "50-75x", "100x+"],
-            correct: 1,
-            pointsIfCorrect: 10
-        }, {
-            question: "What percentage of global emissions come from livestock?",
-            options: ["5-8%", "14.5-18%", "25-30%", "35-40%"],
-            correct: 1,
-            pointsIfCorrect: 10
-        }, {
-            question: "By how much has atmospheric CO₂ increased since the Industrial Revolution?",
-            options: ["20%", "30%", "40%", "50%"],
-            correct: 3,
-            pointsIfCorrect: 10
-        }, {
-            question: "What percentage of global emissions come from deforestation?",
-            options: ["5-8%", "10-15%", "20-25%", "30-35%"],
-            correct: 1,
-            pointsIfCorrect: 10
-        }, {
-            question: "Which gas is released from rice paddies and animal manure?",
-            options: ["CO₂", "N₂O (Nitrous Oxide)", "Methane", "Ozone"],
-            correct: 2,
-            pointsIfCorrect: 10
-        }, {
-            question: "What is the PRIMARY role of forests in fighting climate change?",
-            options: ["They increase warming", "They absorb and store carbon", "They have no climate impact", "They release greenhouse gases"],
-            correct: 1,
-            pointsIfCorrect: 10
-        }, {
-            question: "Which is a MINOR cause of modern global warming?",
-            options: ["Fossil fuels", "Agriculture", "Natural solar variations", "Industry"],
-            correct: 2,
-            pointsIfCorrect: 10
-        }, {
-            question: "How much has Earth's temperature increased since pre-industrial times?",
-            options: ["0.5°C", "~1.1°C", "2.5°C", "3.5°C"],
-            correct: 1,
-            pointsIfCorrect: 10
-        }];
-
-        let currentQuestionIndexGame = 0;
-        let scoreGame = 0;
-        let answeredQuestions = [];
-        let quizGameActive = false;
-
-        function startQuizGame() {
-            currentQuestionIndexGame = 0;
-            scoreGame = 0;
-            answeredQuestions = [];
-            quizGameActive = true;
-            document.getElementById('quiz-start-screen').style.display = 'none';
-            document.getElementById('quiz-results-screen').style.display = 'none';
-            document.getElementById('quiz-game-screen').style.display = 'block';
-            displayQuestionGame();
-        }
-
-        function displayQuestionGame() {
-            const question = quizQuestionsGame[currentQuestionIndexGame];
-            document.getElementById('quiz-question-text').textContent = question.question;
-            document.getElementById('quiz-q-number').textContent = currentQuestionIndexGame + 1;
-            document.getElementById('quiz-q-num-text').textContent = currentQuestionIndexGame + 1;
-            document.getElementById('quiz-progress-fill').style.width = ((currentQuestionIndexGame + 1) / quizQuestionsGame.length * 100) + '%';
-            document.getElementById('quiz-score-display').textContent = scoreGame;
-
-            const optionsContainer = document.getElementById('quiz-options-container');
-            optionsContainer.innerHTML = '';
-
-            question.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.style.cssText = `padding: 1.25rem; text-align: left; background: white; border: 2px solid #e5e7eb; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease; font-size: 1rem; font-weight: 500; color: #374151; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 1rem;`;
-                button.innerHTML = `<span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, #dc2626, #f87171); color: white; border-radius: 50%; font-weight: bold; flex-shrink: 0;">${String.fromCharCode(65 + index)}</span><span>${option}</span>`;
-                button.onclick = () => selectAnswerGame(index);
-                button.onmouseover = function() {
-                    if (!this.classList.contains('quiz-option-correct') && !this.classList.contains('quiz-option-incorrect')) {
-                        this.style.borderColor = '#dc2626';
-                        this.style.background = '#fef2f2';
-                    }
-                };
-                button.onmouseout = function() {
-                    if (!this.classList.contains('quiz-option-correct') && !this.classList.contains('quiz-option-incorrect')) {
-                        this.style.borderColor = '#e5e7eb';
-                        this.style.background = 'white';
-                    }
-                };
-                optionsContainer.appendChild(button);
-            });
-
-            document.getElementById('quiz-feedback').style.display = 'none';
-        }
-
-        function selectAnswerGame(selectedIndex) {
-            if (!quizGameActive) return;
-
-            const question = quizQuestionsGame[currentQuestionIndexGame];
-            const buttons = document.querySelectorAll('#quiz-options-container button');
-
-            buttons.forEach(btn => btn.style.pointerEvents = 'none');
-
-            const isCorrect = selectedIndex === question.correct;
-            const feedbackDiv = document.getElementById('quiz-feedback');
-            const feedbackText = document.getElementById('quiz-feedback-text');
-
-            if (isCorrect) {
-                buttons[selectedIndex].classList.add('quiz-option-correct');
-                scoreGame += question.pointsIfCorrect;
-                feedbackText.innerHTML = `✨ Correct! +${question.pointsIfCorrect} points`;
-                feedbackDiv.style.background = '#ecfdf5';
-                feedbackDiv.style.color = '#065f46';
-                feedbackDiv.style.borderLeft = '4px solid #10b981';
-            } else {
-                buttons[selectedIndex].classList.add('quiz-option-incorrect');
-                buttons[question.correct].classList.add('quiz-option-correct');
-                feedbackText.innerHTML = `❌ Incorrect! The answer is ${String.fromCharCode(65 + question.correct)}`;
-                feedbackDiv.style.background = '#fee2e2';
-                feedbackDiv.style.color = '#7f1d1d';
-                feedbackDiv.style.borderLeft = '4px solid #ef4444';
-            }
-
-            feedbackDiv.style.display = 'block';
-            document.getElementById('quiz-score-display').textContent = scoreGame;
-
-            answeredQuestions.push({
-                question: question.question,
-                selected: selectedIndex,
-                correct: question.correct,
-                isCorrect: isCorrect
-            });
-
-            setTimeout(() => {
-                currentQuestionIndexGame++;
-                if (currentQuestionIndexGame < quizQuestionsGame.length) {
-                    displayQuestionGame();
-                } else {
-                    showResultsGame();
-                }
-            }, 2000);
-        }
-
-        function showResultsGame() {
-            quizGameActive = false;
-            document.getElementById('quiz-game-screen').style.display = 'none';
-            document.getElementById('quiz-results-screen').style.display = 'block';
-
-            const correctCount = answeredQuestions.filter(q => q.isCorrect).length;
-            const percentage = Math.round((correctCount / quizQuestionsGame.length) * 100);
-            document.getElementById('quiz-final-score').textContent = `${scoreGame}/${quizQuestionsGame.length * 10}`;
-            document.getElementById('quiz-correct-count').textContent = correctCount;
-            document.getElementById('quiz-accuracy').textContent = percentage + '%';
-
-            let emoji, title, message, achievements = [];
-
-            if (percentage === 100) {
-                emoji = '🏆';
-                title = 'PERFECT SCORE!';
-                message = 'You\'re a Climate Master! Absolutely phenomenal knowledge! 🌍';
-                achievements = ['⭐ Flawless Victory', '🎓 Climate Expert', '🔥 Master Level'];
-            } else if (percentage >= 90) {
-                emoji = '🥇';
-                title = 'Outstanding Performance!';
-                message = 'Exceptional understanding of global warming causes! You\'re a climate champion!';
-                achievements = ['🌟 Rising Star', '📚 Advanced Knowledge'];
-            } else if (percentage >= 80) {
-                emoji = '🥈';
-                title = 'Excellent Work!';
-                message = 'You have strong knowledge about climate causes. Keep it up!';
-                achievements = ['👍 Strong Performance', '📈 Above Average'];
-            } else if (percentage >= 60) {
-                emoji = '👍';
-                title = 'Good Job!';
-                message = 'You understand many of the causes. Review the material to improve further!';
-                achievements = ['✅ Passing Score'];
-            } else if (percentage >= 40) {
-                emoji = '💪';
-                title = 'Keep Learning!';
-                message = 'You\'re on the right track. Review the causes and try again!';
-                achievements = ['🌱 Learning Journey'];
-            } else {
-                emoji = '🚀';
-                title = 'Nice Effort!';
-                message = 'Learning takes time. Review the content above and challenge yourself again!';
-                achievements = ['🎯 Getting Started'];
-            }
-
-            document.getElementById('quiz-result-emoji').textContent = emoji;
-            document.getElementById('quiz-result-title').textContent = title;
-            document.getElementById('quiz-result-message').textContent = message;
-
-            const achievementsContainer = document.getElementById('quiz-achievements-container');
-            achievementsContainer.innerHTML = achievements.map(badge => `<div style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fef2f2, #fee2e2); border-radius: 0.75rem; border: 2px solid #dc2626; margin: 0.5rem; font-weight: 700; color: #7f1d1d; animation: popIn 0.6s ease;">${badge}</div>`).join('');
-        }
-
-        function restartQuizGame() {
-            startQuizGame();
-        }
     </script>
     <script>
         (function() {
@@ -1032,7 +2274,7 @@
                 var b = a.contentDocument || a.contentWindow.document;
                 if (b) {
                     var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'9e3279d4b261b9ff',t:'MTc3NDY1NzI5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    d.innerHTML = "window.__CF$cv$params={r:'9e32d71ad6e5b9ff',t:'MTc3NDY2MTExOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
                     b.getElementsByTagName('head')[0].appendChild(d)
                 }
             }
