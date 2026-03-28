@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change &amp; Its Impact — Environmental Awareness</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .font-body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .app-wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            background-color: #f0f9fb;
+        }
+        
+        .app-wrapper::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-track {
+            background: rgba(6, 78, 107, 0.03);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #22c5e6, #06b6d4);
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(34, 197, 230, 0.3);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #0891b2, #0e7490);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(6, 78, 107, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(34, 197, 230, 0.1);
+        }
+        
+        nav {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #a5f3fc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #22c5e6, #67e8f9);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(34, 197, 230, 0.1);
+            color: #22c5e6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(34, 197, 230, 0.2);
+            transform: translateX(-4px);
+        }
+        
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            color: #a5f3fc;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 5rem 1rem;
+            }
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #0c4a6e 0%, #06b6d4 25%, #22d3ee 50%, #06b6d4 75%, #0c4a6e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(34, 197, 230, 0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 20%, rgba(103, 232, 249, 0.15) 0%, transparent 40%);
+            animation: meshShift 25s ease infinite;
+            z-index: 1;
+        }
+        
+        @keyframes meshShift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: 5rem;
+            }
+        }
+        
+        .hero-divider {
+            height: 4px;
+            width: 128px;
+            margin: 2rem auto;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #22c5e6, #67e8f9, #22c5e6);
+            box-shadow: 0 0 20px rgba(34, 197, 230, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            color: #a5f3fc;
+            opacity: 0.95;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .content-wrapper {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        .intro-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.05), rgba(103, 232, 249, 0.03));
+            border-radius: 1.5rem;
+            border: 1px solid rgba(34, 197, 230, 0.1);
+        }
+        
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #374151;
+            margin: 0;
+        }
+        
+        .impact-card {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(34, 197, 230, 0.1);
+        }
+        
+        .impact-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+        }
+        
+        .impact-card-content {
+            padding: 2rem;
+        }
+        
+        .impact-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c5e6, #67e8f9);
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-card h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0 0 1rem 0;
+            color: #0c4a6e;
+        }
+        
+        .impact-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0.75rem 0;
+        }
+        
+        .impact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .impact-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .impact-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #22c5e6;
+            font-weight: bold;
+        }
+        
+        .source-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(34, 197, 230, 0.1);
+            border: 1px solid rgba(34, 197, 230, 0.2);
+            font-size: 0.875rem;
+            color: #0c4a6e;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .icon-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section {
+            position: relative;
+            padding: 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f9fb, #cffafe);
+            border-radius: 1.5rem;
+            border: 2px solid #22c5e6;
+            margin: 3rem 0;
+        }
+        
+        .summary-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(34, 197, 230, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .summary-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .summary-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0c4a6e;
+            margin: 0 0 1rem 0;
+        }
+        
+        .summary-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0;
+        }
+        /* Assessment Styles */
+        
+        .assessment-section {
+            margin: 3rem 0;
+        }
+        
+        .assessment-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(34, 197, 230, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .assessment-prompt {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.06), rgba(103, 232, 249, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #22c5e6;
+        }
+        
+        .assessment-prompt h3 {
+            margin: 0 0 0.75rem 0;
+            color: #0c4a6e;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        
+        .assessment-prompt p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .reflection-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e0e7ff;
+            border-radius: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 150px;
+            max-height: 350px;
+            transition: all 0.3s ease;
+            color: #374151;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: #22c5e6;
+            box-shadow: 0 0 0 3px rgba(34, 197, 230, 0.1);
+            background: rgba(34, 197, 230, 0.02);
+        }
+        
+        .assessment-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .assessment-btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #22c5e6, #67e8f9);
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 230, 0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 230, 0.3);
+        }
+        
+        .clear-btn {
+            background: rgba(34, 197, 230, 0.1);
+            color: #22c5e6;
+            border: 2px solid rgba(34, 197, 230, 0.2);
+        }
+        
+        .clear-btn:hover {
+            background: rgba(34, 197, 230, 0.15);
+            border-color: rgba(34, 197, 230, 0.3);
+        }
+        
+        .assessment-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .assessment-feedback.show {
+            display: block;
+        }
+        
+        .assessment-feedback.success {
+            background: rgba(34, 197, 230, 0.1);
+            color: #0c4a6e;
+            border-left: 4px solid #22c5e6;
+        }
+        
+        .assessment-feedback-text {
+            margin: 0;
+            font-weight: 600;
+        }
+        /* References Styles */
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.02), rgba(103, 232, 249, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(34, 197, 230, 0.1);
+            border-left: 4px solid #22c5e6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(34, 197, 230, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: 0 12px 24px rgba(34, 197, 230, 0.12);
+            border-color: rgba(34, 197, 230, 0.2);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #0c4a6e;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #22c5e6;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #0c4a6e;
+            background: rgba(34, 197, 230, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(34, 197, 230, 0.1);
+            background: linear-gradient(135deg, #0c4a6e 0%, #164e63 100%);
+            color: #a5f3fc;
+        }
+        
+        footer p:first-child {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: rgba(165, 243, 252, 0.6);
+        }
+        /* Decorative Elements */
+        
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.08;
+            animation: float 20s infinite;
+            z-index: -1;
+        }
+        
+        .float-1 {
+            animation-delay: 0s;
+            top: 10%;
+            left: 5%;
+        }
+        
+        .float-2 {
+            animation-delay: 3s;
+            top: 20%;
+            right: 8%;
+        }
+        
+        .float-3 {
+            animation-delay: 6s;
+            top: 40%;
+            left: 10%;
+        }
+        
+        .float-4 {
+            animation-delay: 9s;
+            bottom: 20%;
+            right: 5%;
+        }
+        
+        .float-5 {
+            animation-delay: 12s;
+            bottom: 30%;
+            left: 15%;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+        /* Background Decorative Elements */
+        
+        .bg-decoration-left {
+            position: fixed;
+            left: -200px;
+            top: 15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(34, 197, 230, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 30s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-right {
+            position: fixed;
+            right: -150px;
+            bottom: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(34, 197, 230, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 35s infinite ease-in-out reverse;
+            pointer-events: none;
+        }
+        
+        .visual-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22c5e6, transparent);
+            margin: 2rem 0;
+            border-radius: 9999px;
+        }
+        
+        .mesh-background {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 230, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(103, 232, 249, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(34, 197, 230, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.06), rgba(103, 232, 249, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #22c5e6;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #0c4a6e;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 640px) {
+            .impact-card-image {
+                height: 350px;
+            }
+        }
+        /* Impact Slider Styles */
+        
+        .impact-slider-group {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.04), rgba(103, 232, 249, 0.02));
+            border-radius: 1rem;
+            border: 1px solid rgba(34, 197, 230, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .impact-slider-group:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 230, 0.06), rgba(103, 232, 249, 0.03));
+            border-color: rgba(34, 197, 230, 0.15);
+        }
+        
+        .impact-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #e0e7ff, #cffafe);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .impact-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c5e6, #67e8f9);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(34, 197, 230, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .impact-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(34, 197, 230, 0.5);
+        }
+        
+        .impact-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c5e6, #67e8f9);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(34, 197, 230, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .impact-slider::-moz-range-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(34, 197, 230, 0.5);
+        }
+        
+        .slider-value {
+            background: linear-gradient(135deg, #22c5e6, #67e8f9);
+            color: white;
+            padding: 0.4rem 0.85rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 40px;
+            text-align: center;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+    <div class="app-wrapper">
+        <div class="mesh-background"></div>
+        <div class="bg-decoration-left"></div>
+        <div class="bg-decoration-right"></div>
+        <div class="floating-elements">
+            <div class="floating-emoji float-1">
+                🌊
+            </div>
+            <div class="floating-emoji float-2">
+                🌍
+            </div>
+            <div class="floating-emoji float-3">
+                ❄️
+            </div>
+            <div class="floating-emoji float-4">
+                ⛈️
+            </div>
+            <div class="floating-emoji float-5">
+                🌤️
+            </div>
+        </div>
+        <header>
+            <nav>
+                <a href="index.html" class="back-button"><i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics</a>
+                <div class="logo"><span>🌊</span> <span id="page-title">Climate Change &amp; Its Impact</span>
+                </div>
+                <div class="nav-desktop"></div>
+            </nav>
+        </header>
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="font-heading">🌊 Climate Change &amp; Its Impact</h1>
+                    <div class="hero-divider"></div>
+                    <p class="hero-subtitle" id="hero-subtitle">Understanding how climate change is reshaping our planet, ecosystems, and human lives right now</p>
+                </div>
+            </section>
+            <div class="content-wrapper">
+                <section class="intro-section">
+                    <p id="intro-text">Climate change is already reshaping weather patterns, ecosystems, and human life worldwide. The Philippines is among the most vulnerable countries to its effects. These impacts are happening now, not in the distant future. This comprehensive
+                        guide explores how climate change is transforming our world across multiple dimensions.</p>
+                </section>
+                <!-- Impact 1: Weather & Climate Patterns -->
+                <article class="impact-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Extreme Weather Events" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='⛈️';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">⛈️</span>
+                        <div class="impact-number">
+                            1
+                        </div>
+                        <h3>Impact on Weather &amp; Climate Patterns</h3>
+                        <p>Climate change intensifies extreme weather events worldwide, affecting the frequency and severity of natural disasters.</p>
+                        <ul>
+                            <li>More frequent and intense heat waves lasting longer</li>
+                            <li>Stronger tropical cyclones with greater rainfall</li>
+                            <li>Heavier precipitation and severe flooding</li>
+                            <li>Longer, more intense droughts in vulnerable regions</li>
+                            <li>Unpredictable rainfall affecting agriculture and water supply</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🇵🇭
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Philippines Impact
+                                </div>
+                                <div class="info-box-text">
+                                    The Philippines experiences more destructive typhoons, unpredictable rainfall, longer dry seasons, and sudden temperature changes.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NOAA – Climate Change Impacts</span>
+                    </div>
+                </article>
+                <!-- Impact 2: Ecosystems & Wildlife -->
+                <article class="impact-card">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800" alt="Melting Ice and Rising Seas" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌊';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🌊</span>
+                        <div class="impact-number">
+                            2
+                        </div>
+                        <h3>Impact on Ecosystems &amp; Wildlife</h3>
+                        <p>Rising temperatures and changing weather patterns disrupt entire ecosystems and threaten biodiversity worldwide.</p>
+                        <ul>
+                            <li>Melting glaciers and polar ice reducing freshwater availability</li>
+                            <li>Rising sea levels threatening coastal communities and islands</li>
+                            <li>Disrupted animal migration patterns and breeding seasons</li>
+                            <li>Habitat destruction affecting food chains and biodiversity</li>
+                            <li>Coral bleaching and marine ecosystem collapse</li>
+                            <li>Species extinction accelerating at unprecedented rates</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📊
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Critical Fact
+                                </div>
+                                <div class="info-box-text">
+                                    Sea ice loss, glacier melting, and rising oceans are occurring at accelerating rates, threatening island nations and coastal areas.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NASA – Climate Change Effects</span>
+                    </div>
+                </article>
+                <!-- Impact 3: Human Health & Wellbeing -->
+                <article class="impact-card">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800" alt="Health Impacts" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🏥';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🏥</span>
+                        <div class="impact-number">
+                            3
+                        </div>
+                        <h3>Impact on Human Health</h3>
+                        <p>Climate change poses direct and indirect threats to human health through multiple pathways and mechanisms.</p>
+                        <ul>
+                            <li>Air quality deterioration from heat and pollution</li>
+                            <li>Heat-related illnesses and heat stroke deaths increasing</li>
+                            <li>Spread of diseases to new regions (dengue, malaria, etc.)</li>
+                            <li>Water contamination and reduced access to clean water</li>
+                            <li>Mental health impacts from climate anxiety and displacement</li>
+                            <li>Malnutrition from crop failures and food shortages</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ⚠️
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Health Alert
+                                </div>
+                                <div class="info-box-text">
+                                    Heat waves, water scarcity, and disease expansion are already visible in vulnerable populations worldwide.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: NOAA – Climate Health Impacts</span>
+                    </div>
+                </article>
+                <!-- Impact 4: Food & Water Security -->
+                <article class="impact-card">
+                    <img src="/images/food-water.jpg" alt="Food and Water Security" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌾';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🌾</span>
+                        <div class="impact-number">
+                            4
+                        </div>
+                        <h3>Impact on Food &amp; Water Security</h3>
+                        <p>Climate change threatens food and water systems, putting millions at risk of hunger and thirst.</p>
+                        <ul>
+                            <li>Unpredictable rainfall causing crop failures</li>
+                            <li>Soil degradation reducing agricultural productivity</li>
+                            <li>Reduced fish stocks affecting coastal communities</li>
+                            <li>Groundwater depletion from increased evaporation</li>
+                            <li>Food price inflation from supply disruptions</li>
+                            <li>Malnutrition affecting vulnerable populations disproportionately</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🇵🇭
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Regional Concern
+                                </div>
+                                <div class="info-box-text">
+                                    Many countries, including the Philippines, face increasing food insecurity from climate-driven disruptions to agriculture and fishing.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: UN – Climate Change Effects</span>
+                    </div>
+                </article>
+                <!-- Impact 5: Economic Disruption -->
+                <article class="impact-card">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800" alt="Economic Impact" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='💼';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">💼</span>
+                        <div class="impact-number">
+                            5
+                        </div>
+                        <h3>Impact on Economy &amp; Livelihoods</h3>
+                        <p>Climate change creates significant economic costs through disasters, lost productivity, and resource depletion.</p>
+                        <ul>
+                            <li>Damage to infrastructure from extreme weather</li>
+                            <li>Agricultural losses affecting rural economies</li>
+                            <li>Tourism industry disruption from environmental degradation</li>
+                            <li>Fishing industry collapse from ocean warming</li>
+                            <li>Insurance costs rising due to increased disasters</li>
+                            <li>Increased government spending on disaster response and recovery</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📈
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Financial Impact
+                                </div>
+                                <div class="info-box-text">
+                                    Climate disasters cost countries billions annually in direct damages and lost economic productivity.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: UN – Economic Impacts</span>
+                    </div>
+                </article>
+                <!-- Impact 6: Social & Political Instability -->
+                <article class="impact-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Social Impact" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #cffafe, #a5f3fc)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌐';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🌐</span>
+                        <div class="impact-number">
+                            6
+                        </div>
+                        <h3>Impact on Society &amp; Global Stability</h3>
+                        <p>Climate change exacerbates inequality and creates cascading social and political challenges worldwide.</p>
+                        <ul>
+                            <li>Climate migration and refugee displacement</li>
+                            <li>Conflict over scarce resources and water</li>
+                            <li>Disproportionate impact on vulnerable populations</li>
+                            <li>Widening wealth gaps between affected regions</li>
+                            <li>Political instability from resource competition</li>
+                            <li>Loss of livelihoods forcing people from their homes</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ⚠️
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Global Challenge
+                                </div>
+                                <div class="info-box-text">
+                                    As climate impacts intensify, global instability rises, threatening international peace and development gains.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: UN – Social Impacts</span>
+                    </div>
+                </article>
+                <!-- Summary Section -->
+                <section class="summary-section">
+                    <div class="summary-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            🎯
+                        </div>
+                        <h2>Key Takeaway</h2>
+                        <p id="conclusion-text">Climate change is not a distant threat — it is a present reality affecting weather, ecosystems, and human life worldwide. From stronger storms and rising seas to biodiversity loss and health risks, its impacts are far-reaching
+                            and intensifying. Scientific agencies like the United Nations, NOAA, and NASA confirm that these effects will continue to worsen unless global greenhouse gas emissions are reduced significantly. The time to act is now.</p>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- Assessment Section -->
+                <section class="assessment-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📊
+                        </div>
+                        <h2 class="references-title">Impact Assessment Tool</h2>
+                    </div>
+                    <div class="assessment-container">
+                        <div class="assessment-prompt">
+                            <h3>🎯 Rate the severity of climate change impacts</h3>
+                            <p>Based on what you've learned, assess how severely climate change affects different areas. Move the sliders to indicate impact levels (1 = minimal, 10 = severe).</p>
+                        </div>
+                        <div id="impact-assessment" style="display: grid; gap: 2rem; margin: 2rem 0;">
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">⛈️ Weather Extremes</label> <span class="slider-value" data-slider="weather">7</span>
+                                </div><input type="range" min="1" max="10" value="7" class="impact-slider" data-slider="weather" oninput="updateSliderValue(this)">
+                            </div>
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">🌊 Sea Level &amp; Coastal Threats</label> <span class="slider-value" data-slider="coastal">8</span>
+                                </div><input type="range" min="1" max="10" value="8" class="impact-slider" data-slider="coastal" oninput="updateSliderValue(this)">
+                            </div>
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">🌾 Food &amp; Water Security</label> <span class="slider-value" data-slider="food">8</span>
+                                </div><input type="range" min="1" max="10" value="8" class="impact-slider" data-slider="food" oninput="updateSliderValue(this)">
+                            </div>
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">🏥 Human Health Risks</label> <span class="slider-value" data-slider="health">7</span>
+                                </div><input type="range" min="1" max="10" value="7" class="impact-slider" data-slider="health" oninput="updateSliderValue(this)">
+                            </div>
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">🌍 Biodiversity Loss</label> <span class="slider-value" data-slider="biodiversity">9</span>
+                                </div><input type="range" min="1" max="10" value="9" class="impact-slider" data-slider="biodiversity" oninput="updateSliderValue(this)">
+                            </div>
+                            <div class="impact-slider-group">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><label style="font-weight: 700; color: #0c4a6e; font-size: 1rem;">💼 Economic Disruption</label> <span class="slider-value" data-slider="economy">7</span>
+                                </div><input type="range" min="1" max="10" value="7" class="impact-slider" data-slider="economy" oninput="updateSliderValue(this)">
+                            </div>
+                        </div>
+                        <div class="assessment-buttons"><button class="assessment-btn submit-btn" onclick="submitAssessment()">See Your Assessment</button> <button class="assessment-btn clear-btn" onclick="resetAssessment()">Reset</button>
+                        </div>
+                        <div class="assessment-feedback" id="feedback"></div>
+                        <div id="assessment-results" style="display: none; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(34, 197, 230, 0.08), rgba(103, 232, 249, 0.04)); border-radius: 1rem; border: 2px solid rgba(34, 197, 230, 0.15);">
+                            <h4 style="color: #0c4a6e; margin: 0 0 1rem 0; font-size: 1.15rem;">📈 Your Assessment Summary</h4>
+                            <div id="results-content"></div>
+                        </div>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- References Section -->
+                <section class="references-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📚
+                        </div>
+                        <h2 class="references-title">References &amp; Sources</h2>
+                    </div>
+                    <div class="references-list">
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>NOAA - National Oceanic and Atmospheric Administration</h4>
+                                <p>Climate Change Impacts and Effects (2024) - Comprehensive data on weather patterns, extreme events, and environmental changes.</p><a href="https://www.noaa.gov/education/resource-collections/climate/climate-change-impacts"
+                                    target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit NOAA Climate Impacts</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>NASA - Science Mission Directorate</h4>
+                                <p>Climate Change Effects and Observations (2024) - Scientific evidence of climate impacts on ice, seas, and weather systems.</p><a href="https://science.nasa.gov/climate-change/effects/" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit NASA Climate Effects</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>United Nations - Climate Change</h4>
+                                <p>Causes and Effects of Climate Change (2024) - Global perspective on climate science, impacts, and solutions.</p><a href="https://www.un.org/en/climatechange/science/causes-effects-climate-change" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit UN Climate Page</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>IPCC - Intergovernmental Panel on Climate Change</h4>
+                                <p>Sixth Assessment Report on Climate Impacts (2021-2023) - Authoritative scientific assessments on climate impacts and risks.</p><a href="https://www.ipcc.ch/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit IPCC Reports</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>World Resources Institute</h4>
+                                <p>Climate Change Impact Analysis (2024) - Interactive tools and research on global climate impacts and adaptation strategies.</p><a href="https://www.wri.org/" target="_blank" rel="noopener noreferrer" class="reference-link"><span>Visit WRI</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Navigation -->
+                <div class="footer-nav">
+                    <a href="index.html" class="back-button">← Back to All Topics</a> <span style="color: #999;">|</span> <a href="topic-1.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:0.75rem; background:rgba(34,197,230,0.1); color:#22c5e6; text-decoration:none; font-weight:600; transition:all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(34,197,230,0.2)'" onmouseout="this.style.background='rgba(34,197,230,0.1)'">Previous Topic <i data-lucide="arrow-left" style="width:20px;height:20px;"></i></a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>🌊 Climate Change &amp; Its Impact — Comprehensive Impact Guide</p>
+            <p>Part of Our Green Earth Environmental Awareness Initiative • 2025</p>
+        </footer>
+    </div>
+    <script>
+        function updateSliderValue(slider) {
+            const value = slider.value;
+            const dataSlider = slider.getAttribute('data-slider');
+            const valueElement = document.querySelector(`.slider-value[data-slider="${dataSlider}"]`);
+            if (valueElement) {
+                valueElement.textContent = value;
+            }
+        }
+
+        function submitAssessment() {
+            const assessments = {
+                weather: document.querySelector('input[data-slider="weather"]').value,
+                coastal: document.querySelector('input[data-slider="coastal"]').value,
+                food: document.querySelector('input[data-slider="food"]').value,
+                health: document.querySelector('input[data-slider="health"]').value,
+                biodiversity: document.querySelector('input[data-slider="biodiversity"]').value,
+                economy: document.querySelector('input[data-slider="economy"]').value
+            };
+
+            const average = Math.round((
+                parseInt(assessments.weather) +
+                parseInt(assessments.coastal) +
+                parseInt(assessments.food) +
+                parseInt(assessments.health) +
+                parseInt(assessments.biodiversity) +
+                parseInt(assessments.economy)
+            ) / 6);
+
+            const resultDiv = document.getElementById('assessment-results');
+            const resultsContent = document.getElementById('results-content');
+
+            let severity = '';
+            let message = '';
+            let emoji = '';
+
+            if (average <= 3) {
+                severity = 'Low Impact';
+                emoji = '✅';
+                message = 'Based on your assessment, you see climate impacts as relatively localized. However, remember that global averages mask severe regional impacts.';
+            } else if (average <= 5) {
+                severity = 'Moderate Impact';
+                emoji = '⚠️';
+                message = 'Your assessment recognizes significant climate impacts. This aligns with current scientific observations of accelerating changes.';
+            } else if (average <= 7) {
+                severity = 'High Impact';
+                emoji = '🚨';
+                message = 'Your assessment reflects the serious nature of climate change impacts happening now. This matches expert consensus on urgent action needs.';
+            } else {
+                severity = 'Critical Impact';
+                emoji = '🌊';
+                message = 'Your assessment recognizes the critical severity of climate change. This understanding aligns with IPCC warnings about accelerating impacts.';
+            }
+
+            resultsContent.innerHTML = `
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">${emoji}</div>
+          <div style="font-size: 1.25rem; font-weight: 700; color: #0c4a6e; margin-bottom: 0.75rem;">Overall Impact Severity: ${severity}</div>
+          <div style="color: #4b5563; line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem;">${message}</div>
+        </div>
+        <div style="padding: 1rem; background: rgba(34, 197, 230, 0.05); border-radius: 0.75rem; border-left: 3px solid #22c5e6;">
+          <div style="font-weight: 700; color: #0c4a6e; margin-bottom: 0.75rem; font-size: 0.95rem;">📊 Your Ratings:</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div>⛈️ <strong>Weather Extremes:</strong> ${assessments.weather}/10</div>
+            <div>🌊 <strong>Coastal Threats:</strong> ${assessments.coastal}/10</div>
+            <div>🌾 <strong>Food & Water:</strong> ${assessments.food}/10</div>
+            <div>🏥 <strong>Health Risks:</strong> ${assessments.health}/10</div>
+            <div>🌍 <strong>Biodiversity Loss:</strong> ${assessments.biodiversity}/10</div>
+            <div>💼 <strong>Economic Impact:</strong> ${assessments.economy}/10</div>
+          </div>
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(34, 197, 230, 0.1); color: #4b5563; font-size: 0.9rem;">
+            <strong>Average Impact Score:</strong> ${average}/10
+          </div>
+        </div>
+      `;
+
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+
+            const feedback = document.getElementById('feedback');
+            feedback.innerHTML = '<strong>✓ Assessment Complete!</strong><br>Review your ratings and consider what actions you can take to address these impacts.';
+            feedback.classList.add('success', 'show');
+            setTimeout(() => feedback.classList.remove('show'), 4000);
+        }
+
+        function resetAssessment() {
+            document.querySelectorAll('.impact-slider').forEach(slider => {
+                const defaultValues = {
+                    weather: '7',
+                    coastal: '8',
+                    food: '8',
+                    health: '7',
+                    biodiversity: '9',
+                    economy: '7'
+                };
+                const dataSlider = slider.getAttribute('data-slider');
+                slider.value = defaultValues[dataSlider];
+                updateSliderValue(slider);
+            });
+
+            document.getElementById('assessment-results').style.display = 'none';
+            document.getElementById('feedback').classList.remove('show', 'success');
+        }
+
+        const defaultConfig = {
+            page_title: "Climate Change & Its Impact",
+            hero_subtitle: "Understanding how climate change is reshaping our planet, ecosystems, and human lives right now",
+            intro_text: "Climate change is already reshaping weather patterns, ecosystems, and human life worldwide. The Philippines is among the most vulnerable countries to its effects. These impacts are happening now, not in the distant future. This comprehensive guide explores how climate change is transforming our world across multiple dimensions.",
+            conclusion_text: "Climate change is not a distant threat — it is a present reality affecting weather, ecosystems, and human life worldwide. From stronger storms and rising seas to biodiversity loss and health risks, its impacts are far-reaching and intensifying. Scientific agencies like the United Nations, NOAA, and NASA confirm that these effects will continue to worsen unless global greenhouse gas emissions are reduced significantly. The time to act is now.",
+            font_family: "Playfair Display",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = key => config[key] || defaultConfig[key];
+            document.getElementById('page-title').textContent = c('page_title');
+            document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+            document.getElementById('intro-text').textContent = c('intro_text');
+            document.getElementById('conclusion-text').textContent = c('conclusion_text');
+
+            const font = c('font_family');
+            document.querySelectorAll('.font-heading').forEach(el => {
+                el.style.fontFamily = `${font}, serif`;
+            });
+
+            const size = c('font_size');
+            document.getElementById('intro-text').style.fontSize = `${size * 1.1}px`;
+            document.getElementById('conclusion-text').style.fontSize = `${size * 1.1}px`;
+        }
+
+        function mapToCapabilities(config) {
+            const c = key => config[key] || defaultConfig[key];
+            const mut = key => ({
+                get: () => c(key),
+                set: (v) => {
+                    config[key] = v;
+                    window.elementSdk.setConfig({
+                        [key]: v
+                    });
+                }
+            });
+
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: mut('font_family'),
+                fontSizeable: mut('font_size')
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            const c = key => config[key] || defaultConfig[key];
+            return new Map([
+                ["page_title", c('page_title')],
+                ["hero_subtitle", c('hero_subtitle')],
+                ["intro_text", c('intro_text')],
+                ["conclusion_text", c('conclusion_text')]
+            ]);
+        }
+
+        lucide.createIcons();
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9e32de63c4efb9ff',t:'MTc3NDY2MTQxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
