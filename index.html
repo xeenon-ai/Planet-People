@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>People & Planet — Environmental Awareness Blog</title>
+    <title>People &amp; Planet — Environmental Awareness Blog</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
     <script src="/_sdk/element_sdk.js"></script>
@@ -35,7 +35,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             height: 100%;
-            background-color: #f8fafb;
+            background: linear-gradient(180deg, #f8fafb 0%, #ecfdf5 100%);
         }
         
         .app-wrapper::-webkit-scrollbar {
@@ -43,7 +43,7 @@
         }
         
         .app-wrapper::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.03);
+            background: rgba(16, 185, 129, 0.03);
         }
         
         .app-wrapper::-webkit-scrollbar-thumb {
@@ -52,17 +52,14 @@
             box-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
         }
         
-        .app-wrapper::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #059669, #15803d);
-        }
-        
         header {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(0, 31, 63, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            background: rgba(0, 31, 63, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         
         nav {
@@ -83,6 +80,11 @@
             font-weight: bold;
             text-decoration: none;
             letter-spacing: -0.02em;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
         }
         
         .nav-desktop {
@@ -182,14 +184,14 @@
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 2rem 1rem;
+            padding: 4rem 1rem;
             text-align: center;
             color: white;
         }
         
         @media (min-width: 768px) {
             .hero {
-                padding: 6rem 1rem;
+                padding: 8rem 1rem;
             }
         }
         
@@ -199,7 +201,7 @@
             inset: 0;
             background: linear-gradient(135deg, #001f3f 0%, #003d5c 25%, #0a5f4a 50%, #1a4d3e 75%, #0d1b2a 100%);
             background-size: 400% 400%;
-            animation: gradientShift 18s ease infinite;
+            animation: gradientShift 20s ease infinite;
             z-index: 0;
         }
         
@@ -220,7 +222,7 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse at 20% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 60%);
-            animation: meshShift 25s ease infinite;
+            animation: meshShift 30s ease infinite;
             z-index: 1;
         }
         
@@ -230,7 +232,7 @@
                 transform: translate(0, 0) scale(1);
             }
             50% {
-                transform: translate(30px, -30px) scale(1.05);
+                transform: translate(40px, -40px) scale(1.08);
             }
         }
         
@@ -241,70 +243,24 @@
             margin: 0 auto;
         }
         
-        .particle {
-            position: absolute;
-            opacity: 0.06;
-            animation: particle-float 15s ease-in-out infinite;
-            z-index: 2;
-        }
-        
-        .particle:nth-child(1) {
-            animation-delay: 0s;
-            animation-duration: 12s;
-            left: 10%;
-            top: 15%;
-        }
-        
-        .particle:nth-child(2) {
-            animation-delay: -3s;
-            animation-duration: 16s;
-            right: 12%;
-            top: 25%;
-        }
-        
-        .particle:nth-child(3) {
-            animation-delay: -6s;
-            animation-duration: 14s;
-            left: 8%;
-            bottom: 25%;
-        }
-        
-        .particle:nth-child(4) {
-            animation-delay: -9s;
-            animation-duration: 18s;
-            right: 8%;
-            bottom: 20%;
-        }
-        
-        .particle:nth-child(5) {
-            animation-delay: -12s;
-            animation-duration: 20s;
-            left: 50%;
-            top: 10%;
-        }
-        
-        @keyframes particle-float {
-            0%,
-            100% {
-                transform: translateY(0) rotateZ(0deg) scale(1);
-            }
-            25% {
-                transform: translateY(-40px) rotateZ(10deg) scale(1.1);
-            }
-            50% {
-                transform: translateY(0) rotateZ(0deg) scale(1);
-            }
-            75% {
-                transform: translateY(40px) rotateZ(-10deg) scale(0.95);
-            }
-        }
-        
         .hero h1 {
             font-size: 3.75rem;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
             letter-spacing: -0.02em;
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (min-width: 768px) {
@@ -320,15 +276,37 @@
             border-radius: 9999px;
             background: linear-gradient(90deg, #10b981, #22c55e, #10b981);
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            animation: expandWidth 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 128px;
+            }
         }
         
         .hero-subtitle {
             font-size: 1.25rem;
-            line-height: 1.5;
+            line-height: 1.6;
             max-width: 48rem;
             margin: 0 auto 3rem;
             color: #d1fae5;
             opacity: 0.95;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (min-width: 768px) {
@@ -337,39 +315,13 @@
             }
         }
         
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-            max-width: 28rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-item>div:first-child {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .stat-item>div:last-child {
-            font-size: 0.875rem;
-            color: #a7f3d0;
-        }
-        
         .button-group {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             justify-content: center;
             align-items: center;
-            margin: 4rem 0;
+            margin: 3rem 0;
         }
         
         @media (min-width: 640px) {
@@ -393,6 +345,7 @@
             transition: all 0.4s ease;
             cursor: pointer;
             border: none;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
         }
         
         .btn::before {
@@ -418,10 +371,13 @@
             background: linear-gradient(135deg, #10b981, #22c55e);
             color: #001f3f;
             box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+            position: relative;
+            z-index: 1;
         }
         
         .btn-primary:hover {
             transform: scale(1.05);
+            box-shadow: 0 28px 50px rgba(16, 185, 129, 0.4);
         }
         
         .btn-primary:active {
@@ -432,21 +388,70 @@
             color: #10b981;
             border: 2px solid rgba(16, 185, 129, 0.5);
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
         
         .btn-secondary:hover {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
+        }
+        
+        .btn i {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .btn:hover i {
+            transform: translateY(4px);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+            max-width: 28rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-item>div:first-child {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: countUp 2s ease-out 0.5s;
+        }
+        
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .stat-item>div:last-child {
+            font-size: 0.875rem;
+            color: #a7f3d0;
         }
         
         .topics-section {
             max-width: 80rem;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
         }
         
         @media (min-width: 768px) {
             .topics-section {
-                padding: 3rem 1.5rem;
+                padding: 4rem 1.5rem;
             }
         }
         
@@ -461,12 +466,24 @@
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             border-radius: 9999px;
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.15);
             border: 1px solid rgba(16, 185, 129, 0.3);
             margin-bottom: 1rem;
             font-size: 0.875rem;
             font-weight: 600;
             color: #059669;
+            animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .section-header h2 {
@@ -474,6 +491,7 @@
             font-weight: bold;
             margin-bottom: 1.5rem;
             color: #001f3f;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
         }
         
         @media (min-width: 768px) {
@@ -488,6 +506,7 @@
             max-width: 48rem;
             margin: 0 auto;
             color: #4b5563;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
         }
         
         .topics-grid {
@@ -517,6 +536,19 @@
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             transform-style: preserve-3d;
             cursor: pointer;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+            animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .topic-card::after {
@@ -617,72 +649,121 @@
             gap: 0.75rem;
         }
         
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUpDelayed 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+            margin: 4rem 0;
+            border-radius: 9999px;
         }
         
-        @keyframes fadeUpDelayed {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        .features-section {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.04), rgba(34, 197, 94, 0.02));
+            border-radius: 2rem;
+            margin: 3rem auto;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .features-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .features-header h2 {
+                font-size: 3rem;
             }
         }
         
-        .fade-up:nth-child(1) {
-            animation-delay: 0.08s;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
         }
         
-        .fade-up:nth-child(2) {
-            animation-delay: 0.16s;
+        .feature-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.05));
+            border: 2px solid rgba(16, 185, 129, 0.25);
+            border-radius: 1.25rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .fade-up:nth-child(3) {
-            animation-delay: 0.24s;
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            z-index: 0;
         }
         
-        .fade-up:nth-child(4) {
-            animation-delay: 0.32s;
+        .feature-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 24px 48px rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(34, 197, 94, 0.08));
         }
         
-        .fade-up:nth-child(5) {
-            animation-delay: 0.40s;
+        .feature-card:hover::before {
+            top: -20%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
         }
         
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
-            margin: 3rem 0;
+        .feature-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin: 0;
         }
         
         .conclusion-section {
             position: relative;
-            padding: 2rem 1rem;
+            padding: 4rem 1rem;
             overflow: hidden;
-        }
-        
-        @media (min-width: 768px) {
-            .conclusion-section {
-                padding: 3rem 1rem;
-            }
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 50%, #f5f3ff 100%);
         }
         
         .conclusion-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 50%, #f5f3ff 100%);
-            z-index: 0;
-        }
-        
-        .conclusion-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
             opacity: 0.04;
-            background: radial-gradient(circle at 30% 40%, #10b981 0%, transparent 50%);
-            z-index: 1;
+            background: radial-gradient(circle at 30% 40%, #10b981 0%, transparent 50%), radial-gradient(circle at 70% 70%, #06b6d4 0%, transparent 50%);
+            z-index: 0;
         }
         
         .conclusion-content {
@@ -707,8 +788,8 @@
                 opacity: 1;
             }
             50% {
-                transform: scale(1.05);
-                opacity: 0.8;
+                transform: scale(1.08);
+                opacity: 0.9;
             }
         }
         
@@ -753,37 +834,593 @@
         }
         
         .action-item {
-            padding: 1.25rem;
-            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .action-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 48px rgba(16, 185, 129, 0.15);
         }
         
         .action-item-emoji {
             font-size: 2.5rem;
             display: block;
             margin-bottom: 0.75rem;
+            animation: float-up 0.6s ease-out;
+        }
+        
+        @keyframes float-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .action-item-text {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #001f3f;
             letter-spacing: 0.5px;
+        }
+        /* Members Section */
+        
+        .members-section {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .members-section {
+                padding: 5rem 1.5rem;
+            }
+        }
+        
+        .members-container {
+            width: 100%;
+        }
+        
+        .members-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .members-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .members-header h2 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .members-header p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .members-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .member-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 2px solid rgba(16, 185, 129, 0.15);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #22c55e, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1;
+        }
+        
+        .member-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 24px 48px rgba(16, 185, 129, 0.15);
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #22c55e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .member-card:hover .member-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .member-name {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .member-bio {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .expertise-tag {
+            padding: 0.35rem 0.85rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #059669;
+            transition: all 0.3s ease;
+        }
+        
+        .member-card:hover .expertise-tag {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .member-social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #10b981;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .member-social-link:hover {
+            background: linear-gradient(135deg, #10b981, #22c55e);
+            border-color: #10b981;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+        }
+        
+        .members-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(34, 197, 94, 0.04));
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 1.5rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+        }
+        
+        .members-cta p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #001f3f;
+            margin-bottom: 1.5rem;
+        }
+        /* Other Members Section */
+        
+        .other-members-section {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .other-members-section {
+                padding: 5rem 1.5rem;
+            }
+        }
+        
+        .other-members-container {
+            width: 100%;
+        }
+        
+        .other-members-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .other-members-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .other-members-header h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        .other-members-header p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+        
+        .other-members-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .other-members-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .other-members-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .other-member-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(34, 197, 94, 0.04));
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 1.25rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .other-member-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.12);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(34, 197, 94, 0.06));
+        }
+        
+        .other-member-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .other-member-item:hover .other-member-icon {
+            transform: scale(1.1);
+        }
+        
+        .other-member-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 0.35rem;
+        }
+        
+        .other-member-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #10b981;
+            letter-spacing: 0.3px;
+        }
+        /* Supporters Section */
+        
+        .supporters-section {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .supporters-section {
+                padding: 5rem 1.5rem;
+            }
+        }
+        
+        .supporters-container {
+            width: 100%;
+        }
+        
+        .supporters-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .supporters-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .supporters-header h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        .supporters-header p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+        
+        .supporters-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .supporter-item {
+            padding: 0.75rem 1.25rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(34, 197, 94, 0.04));
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #001f3f;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .supporter-item:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(34, 197, 94, 0.06));
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);
+            transform: translateY(-2px);
+        }
+        /* Contact Section */
+        
+        .contact-section {
+            position: relative;
+            padding: 4rem 1rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #001f3f 0%, #003d5c 50%, #0a5f4a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 25s ease infinite;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .contact-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .contact-header h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        .contact-header p {
+            font-size: 1.125rem;
+            color: #a7f3d0;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            font-weight: 700;
+            color: white;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        
+        .form-input,
+        .form-textarea {
+            padding: 1rem;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.95);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #001f3f;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(0, 31, 63, 0.4);
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit {
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #10b981, #22c55e);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+            margin-top: 1rem;
+        }
+        
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(16, 185, 129, 0.4);
+        }
+        
+        .form-submit:hover::before {
+            left: 100%;
+        }
+        
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-success {
+            padding: 1.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            border-radius: 0.75rem;
+            color: #a7f3d0;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .form-success.show {
+            display: block;
         }
         
         .references-section {
             max-width: 56rem;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
         }
         
         @media (min-width: 768px) {
             .references-section {
-                padding: 3rem 1rem;
+                padding: 4rem 1rem;
             }
         }
         
@@ -817,6 +1454,13 @@
             border-radius: 1.5rem;
             border: 2px solid rgba(16, 185, 129, 0.2);
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.04), rgba(34, 197, 94, 0.02));
+            transition: all 0.3s ease;
+        }
+        
+        .reference-item:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.1);
+            transform: translateX(8px);
         }
         
         .reference-item h3 {
@@ -855,8 +1499,8 @@
         
         footer {
             text-align: center;
-            padding: 2.5rem 1rem;
-            margin-top: 3rem;
+            padding: 3rem 1rem;
+            margin-top: 2rem;
             border-top: 1px solid rgba(16, 185, 129, 0.1);
             background: linear-gradient(135deg, #001f3f 0%, #003d5c 100%);
             color: #a7f3d0;
@@ -995,66 +1639,47 @@
 <body class="h-full font-body">
     <div class="app-wrapper">
         <header>
-            <nav>
-                <a href="#hero" class="logo"> <span>🌿</span> <span id="nav-title">People & Planet</span> </a> <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu"> <i data-lucide="menu" style="width:26px;height:26px;"></i> </button>
-                <div class="nav-desktop">
-                    <a href="#hero" class="nav-link">Home</a> <a href="#topics" class="nav-link">Topics</a> <a href="#conclusion" class="nav-link">Conclusion</a> <a href="#references" class="nav-link">References</a>
+            <nav><a href="#hero" class="logo"><span>🌿</span> <span id="nav-title">People &amp; Planet</span></a> <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu"><i data-lucide="menu" style="width:26px;height:26px;"></i></button>
+                <div class="nav-desktop"><a href="#hero" class="nav-link">Home</a> <a href="#topics" class="nav-link">Topics</a> <a href="#features" class="nav-link">Why It Matters</a> <a href="#members" class="nav-link">Members</a> <a href="#contact" class="nav-link">Contact</a>                    <a href="#references" class="nav-link">Resources</a>
                 </div>
             </nav>
-            <div id="mobile-menu" class="mobile-menu">
-                <a href="#hero">Home</a> <a href="#topics">Topics</a> <a href="#conclusion">Conclusion</a> <a href="#references">References</a>
+            <div id="mobile-menu" class="mobile-menu"><a href="#hero">Home</a> <a href="#topics">Topics</a> <a href="#features">Why It Matters</a> <a href="#members">Members</a> <a href="#contact">Contact</a> <a href="#references">Resources</a>
             </div>
         </header>
         <main>
             <section id="hero" class="hero">
-                <div class="particle">
-                    🌍
-                </div>
-                <div class="particle">
-                    ♻️
-                </div>
-                <div class="particle">
-                    🌱
-                </div>
-                <div class="particle">
-                    💚
-                </div>
-                <div class="particle">
-                    🌿
-                </div>
                 <div class="hero-content">
-                    <div class="section-badge"><span>🌍</span> <span>Environmental Awareness Hub</span>
+                    <div class="section-badge">
+                        <span>🌍</span> <span>Environmental Awareness Hub</span>
                     </div>
-                    <h1 id="blog-title" class="font-heading">People & Planet</h1>
+                    <h1 id="blog-title" class="font-heading">People &amp; Planet</h1>
                     <div class="hero-divider"></div>
-                    <p id="intro-text" class="hero-subtitle">Welcome to People & Planet — a blog dedicated to exploring the most pressing environmental issues of our time. From global warming and climate change to biodiversity loss and waste management, this blog aims to inform, inspire, and
-                        empower readers to take meaningful action.</p>
-                    <div class="button-group">
-                        <a href="#topics" class="btn btn-primary"> Explore Topics <i data-lucide="arrow-down" style="width:22px;height:22px;"></i> </a> <a href="#references" class="btn btn-secondary"> View References <i data-lucide="external-link" style="width:20px;height:20px;"></i> </a>
+                    <p id="intro-text" class="hero-subtitle">Welcome to People &amp; Planet — a dynamic environmental awareness hub. Explore critical topics like climate change, biodiversity loss, and sustainable practices. Learn, engage, and become part of the solution.</p>
+                    <div class="button-group"><a href="#topics" class="btn btn-primary">Explore Topics <i data-lucide="arrow-down" style="width:22px;height:22px;"></i></a> <a href="#contact" class="btn btn-secondary">Get in Touch <i data-lucide="mail" style="width:20px;height:20px;"></i></a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div>
+                            <div class="stat-counter">
                                 5
                             </div>
                             <div>
-                                Topics
+                                Key Topics
                             </div>
                         </div>
                         <div class="stat-item">
-                            <div>
+                            <div class="stat-counter">
                                 50+
                             </div>
                             <div>
-                                References
+                                Resources
                             </div>
                         </div>
                         <div class="stat-item">
-                            <div>
+                            <div class="stat-counter">
                                 100%
                             </div>
                             <div>
-                                Informed
+                                Impact Driven
                             </div>
                         </div>
                     </div>
@@ -1062,12 +1687,48 @@
             </section>
             <section id="topics" class="topics-section">
                 <div class="section-header">
-                    <div class="section-badge"><i data-lucide="book-open" style="width:18px;height:18px;"></i> <span>Featured Topics</span>
+                    <div class="section-badge">
+                        <i data-lucide="book-open" style="width:18px;height:18px;"></i> <span>Featured Topics</span>
                     </div>
                     <h2>Explore Key Environmental Topics</h2>
-                    <p>Click on any topic to explore in-depth articles with detailed insights, real-world examples, and actionable information. Replace image URLs with your own files.</p>
+                    <p>Click on any topic to explore in-depth articles with detailed insights, real-world examples, and actionable information.</p>
                 </div>
                 <div id="topics-grid" class="topics-grid"></div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="features" class="features-section">
+                <div class="features-header">
+                    <h2>Why Environmental Action Matters</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                🌍
+                            </div>
+                            <h3>Global Impact</h3>
+                            <p>Environmental decisions today shape the future for billions of people worldwide.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                💡
+                            </div>
+                            <h3>Informed Choices</h3>
+                            <p>Knowledge about environmental issues empowers better personal and community decisions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">
+                                🌱
+                            </div>
+                            <h3>Sustainable Future</h3>
+                            <p>Building sustainable practices creates lasting positive change for our planet.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
             <div class="section-divider"></div>
             <section id="conclusion" class="conclusion-section">
@@ -1080,22 +1741,75 @@
                     <p id="conclusion-text">Environmental protection is not just a responsibility of governments — it begins with each one of us. By understanding environmental challenges and making informed decisions, we can create positive change. Let us commit to sustainable
                         practices as part of our daily lives. Together, small actions lead to a greener, healthier future for all.</p>
                     <div class="action-grid">
-                        <div class="action-item"><span class="action-item-emoji">♻️</span>
+                        <div class="action-item">
+                            <span class="action-item-emoji">♻️</span>
                             <p class="action-item-text">Recycle</p>
                         </div>
-                        <div class="action-item"><span class="action-item-emoji">🌱</span>
+                        <div class="action-item">
+                            <span class="action-item-emoji">🌱</span>
                             <p class="action-item-text">Sustain</p>
                         </div>
-                        <div class="action-item"><span class="action-item-emoji">💧</span>
+                        <div class="action-item">
+                            <span class="action-item-emoji">💧</span>
                             <p class="action-item-text">Conserve</p>
                         </div>
-                        <div class="action-item"><span class="action-item-emoji">🌳</span>
+                        <div class="action-item">
+                            <span class="action-item-emoji">🌳</span>
                             <p class="action-item-text">Protect</p>
                         </div>
-                        <div class="action-item"><span class="action-item-emoji">☀️</span>
+                        <div class="action-item">
+                            <span class="action-item-emoji">☀️</span>
                             <p class="action-item-text">Inspire</p>
                         </div>
                     </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="members" class="members-section">
+                <div class="members-container">
+                    <div class="members-header">
+                        <div class="section-badge">
+                            <i data-lucide="users" style="width:18px;height:18px;"></i> <span>Our Community</span>
+                        </div>
+                        <h2>Meet Our Environmental Advocates</h2>
+                        <p>Dedicated professionals and volunteers passionate about creating positive environmental change.</p>
+                    </div>
+                    <div class="members-grid" id="members-grid"></div>
+                    <div class="members-cta">
+                        <p>Want to join our team of environmental champions?</p><a href="#contact" class="btn btn-primary">Become a Member <i data-lucide="star" style="width:20px;height:20px;"></i></a>
+                    </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="supporters" class="supporters-section">
+                <div class="supporters-container">
+                    <div class="supporters-header">
+                        <h2>Our Supporters</h2>
+                        <p>Individuals who believe in our mission and contribute through their support</p>
+                    </div>
+                    <div class="supporters-list" id="supporters-list"></div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="contact" class="contact-section">
+                <div class="contact-content">
+                    <div class="contact-header">
+                        <h2>🤝 Get in Touch</h2>
+                        <p>Join our community of environmental advocates! Share your ideas, questions, and feedback about environmental action.</p>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group"><label for="name" class="form-label">Your Name</label> <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group"><label for="email" class="form-label">Email Address</label> <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group"><label for="subject" class="form-label">Subject</label> <input type="text" id="subject" class="form-input" placeholder="What is this about?" required>
+                        </div>
+                        <div class="form-group"><label for="message" class="form-label">Message</label> <textarea id="message" class="form-textarea" placeholder="Share your thoughts, questions, or ideas..." required></textarea>
+                        </div><button type="submit" class="form-submit">Send Message 📬</button>
+                        <div class="form-success" id="form-success">
+                            ✨ Thanks for reaching out! We'll get back to you soon.
+                        </div>
+                    </form>
                 </div>
             </section>
             <div class="section-divider"></div>
@@ -1105,7 +1819,7 @@
                 <div class="reference-list">
                     <div class="reference-item">
                         <h3>NASA Climate Change: How Do We Know?</h3>
-                        <p>Authoritative information on climate change evidence and climate science.</p><a href="https://climate.nasa.gov/evidence/" target="_blank" rel="noopener noreferrer" class="reference-link"> Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i> </a>
+                        <p>Authoritative information on climate change evidence and climate science.</p><a href="https://climate.nasa.gov/evidence/" target="_blank" rel="noopener noreferrer" class="reference-link">Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
                     </div>
                     <div class="reference-item">
                         <h3>DENR - National Solid Waste Management Status Report</h3>
@@ -1114,17 +1828,20 @@
                     </div>
                     <div class="reference-item">
                         <h3>WWF - Living Planet Report</h3>
-                        <p>World Wildlife Fund's comprehensive analysis of biodiversity loss and ecosystem health.</p><a href="https://livingplanet.panda.org/" target="_blank" rel="noopener noreferrer" class="reference-link"> Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i> </a>
+                        <p>World Wildlife Fund's comprehensive analysis of biodiversity loss and ecosystem health.</p><a href="https://livingplanet.panda.org/" target="_blank" rel="noopener noreferrer" class="reference-link">Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                    </div>
+                    <div class="reference-item">
+                        <h3>Ellen MacArthur Foundation – Circular Economy</h3>
+                        <p>Explore how circular economy principles support sustainable resource management.</p><a href="https://www.ellenmacarthurfoundation.org" target="_blank" rel="noopener noreferrer" class="reference-link">Visit Source <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
                     </div>
                 </div>
             </section>
         </main>
         <footer>
-            <p>🌿 People & Planet — Environmental Awareness Blog</p>
-            <p>Created for Environmental Awareness Initiative • 2025</p>
+            <p>🌿 People &amp; Planet — Environmental Awareness Hub</p>
+            <p>Empowering communities for a sustainable future • 2025</p>
         </footer>
     </div>
-    <!-- MODAL -->
     <div id="topic-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1134,105 +1851,188 @@
         </div>
     </div>
     <script>
-        const topics = [{
-            num: 1,
-            title: "Causes of Global Warming",
-            icon: "🌡️",
-            desc: "Explore human activities and natural factors driving global temperatures to dangerous levels.",
-            color: "#dc2626",
-            fullContent: `
+        const members = [{
+            name: "Mr. Jake Israel Santiago",
+            role: "Project Manager & Full Stack Developer",
+            emoji: "💻",
+            bio: "Driving software projects with 12+ years of experience in full stack development, agile leadership, and scalable system design.",
+            expertise: ["Project Management", "Web Development", "Agile Methodologies", "UI/UX Design", "Database Systems"],
+            facebook: "https://www.facebook.com/profile.php?id=61586492722527"
+        }, {
+            name: "Cotillon, Nina Jazmyne",
+            role: "Biodiversity Researcher",
+            emoji: "🦋",
+            bio: "Exploring the definition of biodiversity and why it matters, highlighting its role in food security, medicine, and ecological balance.",
+            expertise: ["Biodiversity", "Ecology", "Environmental Awareness"],
+            facebook: "https://www.facebook.com/nina.cotillon.14"
+        }, {
+            name: "Guteza, Mecah",
+            role: "Environmental Analyst",
+            emoji: "🌊",
+            bio: "Investigating causes of biodiversity loss such as habitat destruction, pollution, and overfishing, with Philippine examples like coral reef decline and endangered species.",
+            expertise: ["Conservation", "Wildlife Research", "Philippine Ecology"],
+            facebook: "https://www.facebook.com/aikgtz"
+        }, {
+            name: "Ramoso, Alexsandra Nicole",
+            role: "Waste Management Researcher",
+            emoji: "🗑️",
+            bio: "Examining the current state of waste management in the Philippines, identifying common issues such as plastic pollution and landfill overflow.",
+            expertise: ["Solid Waste Management", "Environmental Policy", "Philippine Governance"],
+            facebook: "https://www.facebook.com/alexsandra.nicole.ramoso"
+        }, {
+            name: "Liwanag, Allanis Murray",
+            role: "Community Sustainability Analyst",
+            emoji: "♻️",
+            bio: "Summarizing government policies like RA 9003 and highlighting community efforts such as barangay segregation and recycling initiatives.",
+            expertise: ["Sustainability", "Community Engagement", "Recycling Systems"],
+            facebook: "https://www.facebook.com/allanisiwanag"
+        }];
+
+        function renderMembers() {
+            const grid = document.getElementById('members-grid');
+            grid.innerHTML = '';
+            members.forEach((member, index) => {
+                        const card = document.createElement('div');
+                        card.className = 'member-card';
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        card.innerHTML = `
+                    <div class="member-avatar">${member.emoji}</div>
+                    <h3 class="member-name">${member.name}</h3>
+                    <p class="member-role">${member.role}</p>
+                    <p class="member-bio">${member.bio}</p>
+                    <div class="member-expertise">
+                        ${member.expertise.map(exp => `<span class="expertise-tag">${exp}</span>`).join('')}
+                    </div>
+                    <div class="member-social">
+                        <a href="${member.facebook}" class="member-social-link" title="Facebook">
+                            <i data-lucide="facebook" style="width:18px;height:18px;"></i>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        const supporters = [
+            "Ambion, Sherramaine B.", "Bales, Alex, Jr. B.", "Borromeo, Salvador S. Jr.",
+            "Botulan, Dowwie Eve. S.", "Dacillio Joshee", "Juan Carlos Ruiz", "Joey, Tatel G.",
+        ];
+
+        function renderSupporters() {
+            const list = document.getElementById('supporters-list');
+            list.innerHTML = '';
+            supporters.forEach((name, index) => {
+                const item = document.createElement('div');
+                item.className = 'supporter-item';
+                item.style.animationDelay = `${(index % 8) * 0.05}s`;
+                item.textContent = name;
+                list.appendChild(item);
+            });
+        }
+
+        const topics = [
+            {
+                num: 1,
+                title: "Causes of Global Warming",
+                icon: "🌡️",
+                desc: "Explore human activities and natural factors driving global temperatures.",
+                color: "#dc2626",
+                fullContent: `
                     <img src="images/topic1.jpg" alt="Global warming" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #dc262620, #dc262610)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌡️';">
                     <h3>🔥 Burning of Fossil Fuels (Main Cause)</h3>
-                    <p>Human use of coal, oil, and natural gas for electricity, transportation, and industry releases large amounts of carbon dioxide (CO₂). CO₂ is the most significant greenhouse gas driving modern warming.</p>
-                    <p><strong>Source: NASA – Human activities are the primary driver of warming since the mid‑20th century.</strong></p>
+                    <p>Human use of coal, oil, and natural gas releases carbon dioxide. CO₂ is the most significant greenhouse gas driving warming.</p>
                     <h3>🐄 Agriculture & Livestock</h3>
-                    <p>Cows and other ruminants produce methane (CH₄) during digestion. Rice farming and manure management also release methane. Methane traps far more heat per molecule than CO₂.</p>
+                    <p>Livestock farming produces methane, a potent greenhouse gas far more powerful than CO₂ per molecule.</p>
                     <h3>🏭 Industrial Processes</h3>
-                    <p>Factories emit nitrous oxide (N₂O) and chlorofluorocarbons (CFCs). These gases are extremely potent and remain in the atmosphere for decades.</p>
+                    <p>Factories emit multiple gases that trap heat and remain in the atmosphere for decades.</p>
                     <h3>🌳 Deforestation</h3>
-                    <p>Cutting down forests reduces Earth's natural ability to absorb CO₂. When trees are burned or decay, they release stored carbon back into the atmosphere.</p>
-                    <h3>🗑️ Waste Management & Landfills</h3>
-                    <p>Organic waste in landfills decomposes without oxygen, producing methane. Poor waste systems increase greenhouse gas emissions.</p>
+                    <p>Cutting forests reduces Earth's ability to absorb CO₂ and releases stored carbon.</p>
                 `
-        }, {
-            num: 2,
-            title: "Climate Change & Its Impact",
-            icon: "🌪️",
-            desc: "Understand how shifting climate patterns affect ecosystems, weather, and human life worldwide.",
-            color: "#ea580c",
-            fullContent: `
-                    <img src="https://your-domain.com/images/climate-impact.jpg" alt="Climate impact" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #ea580c20, #ea580c10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌪️';">
+            },
+            {
+                num: 2,
+                title: "Climate Change & Its Impact",
+                icon: "🌪️",
+                desc: "Understand how climate patterns affect ecosystems and human life.",
+                color: "#ea580c",
+                fullContent: `
+                    <img src="images/topic2.jpg" alt="Climate impact" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #ea580c20, #ea580c10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌪️';">
                     <h3>Global Temperature Rise</h3>
-                    <p>Earth's average temperature has risen approximately 1.1°C since pre-industrial times, with most warming occurring in the last 40 years.</p>
+                    <p>Average temperature has risen 1.1°C since pre-industrial times with most warming in the last 40 years.</p>
                     <h3>Extreme Weather Events</h3>
-                    <p>Climate change intensifies hurricanes, floods, droughts, and heatwaves, causing devastating impacts on communities worldwide.</p>
+                    <p>Climate change intensifies hurricanes, floods, droughts causing devastating impacts globally.</p>
                     <h3>Sea Level Rise</h3>
-                    <p>Melting ice sheets and thermal expansion of seawater threaten coastal cities and island nations.</p>
+                    <p>Melting ice sheets threaten coastal cities and island nations worldwide.</p>
                     <h3>Ecosystem Disruption</h3>
-                    <p>Many species face habitat loss and altered migration patterns, threatening biodiversity and food systems.</p>
+                    <p>Species face habitat loss and altered migration patterns, threatening biodiversity.</p>
                 `
-        }, {
-            num: 3,
-            title: "Effect of Biodiversity Loss",
-            icon: "🦋",
-            desc: "Learn why species extinction threatens food security, medicine, and ecological balance.",
-            color: "#16a34a",
-            fullContent: `
-                    <img src="https://your-domain.com/images/biodiversity-loss.jpg" alt="Biodiversity" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #16a34a20, #16a34a10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🦋';">
+            },
+            {
+                num: 3,
+                title: "Effect of Biodiversity Loss",
+                icon: "🦋",
+                desc: "Learn why species extinction threatens food security and ecosystems.",
+                color: "#16a34a",
+                fullContent: `
+                    <img src="images/topic3.jpg" alt="Biodiversity" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #16a34a20, #16a34a10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🦋';">
                     <h3>Species Extinction Rate</h3>
-                    <p>We're losing species 1,000 times faster than the natural extinction rate, driven by habitat destruction and pollution.</p>
+                    <p>We're losing species 1,000 times faster than natural rate, driven by habitat destruction.</p>
                     <h3>Food Web Collapse</h3>
-                    <p>Loss of pollinators and keystone species disrupts entire ecosystems and threatens global food production.</p>
+                    <p>Loss of pollinators disrupts ecosystems and threatens food production.</p>
                     <h3>Medicinal Resources</h3>
-                    <p>Many life-saving medicines are derived from plants and animals. Biodiversity loss eliminates potential cures and treatments.</p>
+                    <p>Many life-saving medicines come from plants and animals now facing extinction.</p>
                     <h3>Climate Stability</h3>
-                    <p>Diverse ecosystems are more resilient and better at regulating climate, carbon cycles, and water systems.</p>
+                    <p>Diverse ecosystems better regulate climate and water systems.</p>
                 `
-        }, {
-            num: 4,
-            title: "Philippine Waste Management",
-            icon: "🗑️",
-            desc: "Examine the waste crisis in the Philippines and the laws designed to address it.",
-            color: "#0891b2",
-            fullContent: `
-                    <img src="https://your-domain.com/images/waste-management.jpg" alt="Waste management" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #0891b220, #0891b210)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🗑️';">
+            },
+            {
+                num: 4,
+                title: "Philippine Waste Management",
+                icon: "🗑️",
+                desc: "Examine waste crisis and laws designed to address it.",
+                color: "#0891b2",
+                fullContent: `
+                    <img src="images/topic4.jpg" alt="Waste management" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #0891b220, #0891b210)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🗑️';">
                     <h3>The Waste Crisis</h3>
-                    <p>The Philippines generates over 150,000 tons of waste daily, much of which ends up in landfills and oceans.</p>
+                    <p>Philippines generates 150,000+ tons daily, much ending up in landfills and oceans.</p>
                     <h3>Republic Act 9003</h3>
-                    <p>The Solid Waste Management Law mandates waste segregation, recycling, and proper disposal to reduce environmental impact.</p>
+                    <p>Solid Waste Management Law mandates segregation and recycling to reduce environmental impact.</p>
                     <h3>Plastic Pollution</h3>
-                    <p>The Philippines is among the world's largest contributors to ocean plastic, threatening marine life and ecosystems.</p>
+                    <p>Philippines is major contributor to ocean plastic, threatening marine ecosystems.</p>
                     <h3>Community Solutions</h3>
-                    <p>Local initiatives and proper implementation of waste management laws are crucial for sustainable progress.</p>
+                    <p>Local initiatives are crucial for sustainable waste management progress.</p>
                 `
-        }, {
-            num: 5,
-            title: "Refuse, Reduce, Reuse, Repair & Recycle",
-            icon: "♻️",
-            desc: "Discover the 5R framework for sustainable living and minimizing waste.",
-            color: "#7c3aed",
-            fullContent: `
-                    <img src="https://your-domain.com/images/5r-framework.jpg" alt="5R framework" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #7c3aed20, #7c3aed10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='♻️';">
+            },
+            {
+                num: 5,
+                title: "The 5Rs Framework",
+                icon: "♻️",
+                desc: "Discover framework for sustainable living and minimizing waste.",
+                color: "#7c3aed",
+                fullContent: `
+                    <img src="images/topic5.jpg" alt="5R framework" class="modal-image" onerror="this.style.background='linear-gradient(135deg, #7c3aed20, #7c3aed10)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='♻️';">
                     <h3>1. Refuse</h3>
-                    <p>Say no to unnecessary items. Decline single-use plastics, excess packaging, and products you don't truly need.</p>
+                    <p>Say no to unnecessary items and single-use plastics when possible.</p>
                     <h3>2. Reduce</h3>
-                    <p>Consume less by buying only what you need and choosing products with minimal packaging.</p>
+                    <p>Consume less by buying only what you need with minimal packaging.</p>
                     <h3>3. Reuse</h3>
-                    <p>Find new uses for old items. Use reusable bags, bottles, and containers instead of disposable ones.</p>
+                    <p>Find new uses for old items instead of disposable alternatives.</p>
                     <h3>4. Repair</h3>
-                    <p>Extend the life of your belongings by repairing them rather than replacing them with new ones.</p>
+                    <p>Extend life of belongings by repairing instead of replacing.</p>
                     <h3>5. Recycle</h3>
-                    <p>Properly sort and recycle materials to give them a second life and keep them out of landfills.</p>
+                    <p>Properly recycle materials to give them a second life.</p>
                 `
-        }];
+            }
+        ];
 
         function renderTopics() {
             const grid = document.getElementById('topics-grid');
             grid.innerHTML = '';
-
             topics.forEach((t, index) => {
                 const card = document.createElement('div');
-                card.className = 'topic-card fade-up';
+                card.className = 'topic-card';
+                card.style.animationDelay = `${index * 0.1}s`;
                 card.onclick = () => openTopic(index);
                 card.innerHTML = `
                     <div class="topic-card-image-wrapper">
@@ -1243,25 +2043,34 @@
                         <div class="topic-label" style="background:${t.color}15; color:${t.color};">TOPIC ${t.num}</div>
                         <h3>${t.title}</h3>
                         <p>${t.desc}</p>
-                        <div class="topic-cta" style="color:${t.color};">
-                            Learn More
-                            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
-                        </div>
+                        <div class="topic-cta" style="color:${t.color};">Learn More <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
-
             lucide.createIcons();
         }
 
         function openTopic(index) {
-            // Store selected topic in session storage
-            sessionStorage.setItem('selectedTopic', index);
-            // Redirect to topic page
             window.location.href = `topic-${index + 1}.html`;
         }
 
+        function closeModal() {
+            document.getElementById('topic-modal').classList.remove('active');
+        }
+
+        // Contact Form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formSuccess = document.getElementById('form-success');
+            formSuccess.classList.add('show');
+            this.reset();
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+            }, 4000);
+        });
+
+        // Mobile Menu Toggle
         document.getElementById('menu-toggle').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('active');
         });
@@ -1274,14 +2083,8 @@
 
         const defaultConfig = {
             blog_title: "People & Planet",
-            blog_subtitle: "Environmental Awareness Hub",
-            intro_text: "Welcome to Our People & Planet — a blog dedicated to exploring the most pressing environmental issues of our time. From global warming and climate change to biodiversity loss and waste management, this blog aims to inform, inspire, and empower readers to take meaningful action.",
-            conclusion_text: "Environmental protection is not just a responsibility of governments — it begins with each one of us. By understanding environmental challenges and making informed decisions, we can create positive change. Let us commit to sustainable practices as part of our daily lives. Together, small actions lead to a greener, healthier future for all.",
-            background_color: "#f8fafb",
-            surface_color: "#ffffff",
-            text_color: "#001f3f",
-            primary_action_color: "#10b981",
-            secondary_action_color: "#22c55e",
+            intro_text: "Welcome to People & Planet — a dynamic environmental awareness hub. Explore critical topics and become part of the solution.",
+            conclusion_text: "Environmental protection begins with each one of us. Together, small actions lead to a greener future for all.",
             font_family: "Playfair Display",
             font_size: 16
         };
@@ -1292,11 +2095,6 @@
             document.getElementById('nav-title').textContent = c('blog_title');
             document.getElementById('intro-text').textContent = c('intro_text');
             document.getElementById('conclusion-text').textContent = c('conclusion_text');
-            document.querySelector('.app-wrapper').style.backgroundColor = c('background_color');
-
-            document.querySelectorAll('.topic-card').forEach(card => {
-                card.style.backgroundColor = c('surface_color');
-            });
 
             const font = c('font_family');
             document.querySelectorAll('.font-heading').forEach(el => {
@@ -1314,20 +2112,12 @@
                 get: () => c(key),
                 set: (v) => {
                     config[key] = v;
-                    window.elementSdk.setConfig({
-                        [key]: v
-                    });
+                    window.elementSdk.setConfig({ [key]: v });
                 }
             });
 
             return {
-                recolorables: [
-                    mut('background_color'),
-                    mut('surface_color'),
-                    mut('text_color'),
-                    mut('primary_action_color'),
-                    mut('secondary_action_color')
-                ],
+                recolorables: [],
                 borderables: [],
                 fontEditable: mut('font_family'),
                 fontSizeable: mut('font_size')
@@ -1338,13 +2128,14 @@
             const c = key => config[key] || defaultConfig[key];
             return new Map([
                 ["blog_title", c('blog_title')],
-                ["blog_subtitle", c('blog_subtitle')],
                 ["intro_text", c('intro_text')],
                 ["conclusion_text", c('conclusion_text')]
             ]);
         }
 
         renderTopics();
+        renderMembers();
+        renderSupporters();
         lucide.createIcons();
 
         if (window.elementSdk) {
@@ -1362,7 +2153,7 @@
                 var b = a.contentDocument || a.contentWindow.document;
                 if (b) {
                     var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'9e324f64912cb9ff',t:'MTc3NDY1NTU2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    d.innerHTML = "window.__CF$cv$params={r:'9e33881c4408b9ff',t:'MTc3NDY2ODM2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
                     b.getElementsByTagName('head')[0].appendChild(d)
                 }
             }
