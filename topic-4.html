@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philippine Waste Management Crisis — Environmental Awareness</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .font-body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .app-wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            background-color: #fef3e2;
+        }
+        
+        .app-wrapper::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .app-wrapper::-webkit-scrollbar-track {
+            background: rgba(120, 53, 15, 0.03);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ea580c, #f97316);
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(234, 88, 12, 0.3);
+        }
+        
+        .app-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #c2410c, #ea580c);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(92, 51, 23, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(234, 88, 12, 0.1);
+        }
+        
+        nav {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #fed7aa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #ea580c, #f97316);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(234, 88, 12, 0.1);
+            color: #ea580c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(234, 88, 12, 0.2);
+            transform: translateX(-4px);
+        }
+        
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            color: #a5f3fc;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 5rem 1rem;
+            }
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #92400e 0%, #ea580c 25%, #f97316 50%, #ea580c 75%, #92400e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(234, 88, 12, 0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 40%);
+            animation: meshShift 25s ease infinite;
+            z-index: 1;
+        }
+        
+        @keyframes meshShift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: 5rem;
+            }
+        }
+        
+        .hero-divider {
+            height: 4px;
+            width: 128px;
+            margin: 2rem auto;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #ea580c, #f97316, #ea580c);
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            color: #fed7aa;
+            opacity: 0.95;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .content-wrapper {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        .intro-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.03));
+            border-radius: 1.5rem;
+            border: 1px solid rgba(234, 88, 12, 0.1);
+        }
+        
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #374151;
+            margin: 0;
+        }
+        
+        .impact-card {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(234, 88, 12, 0.1);
+        }
+        
+        .impact-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #fed7aa, #fdba74);
+        }
+        
+        .impact-card-content {
+            padding: 2rem;
+        }
+        
+        .impact-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ea580c, #f97316);
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-card h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0 0 1rem 0;
+            color: #b45309;
+        }
+        
+        .impact-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0.75rem 0;
+        }
+        
+        .impact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .impact-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .impact-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ea580c;
+            font-weight: bold;
+        }
+        
+        .source-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(234, 88, 12, 0.1);
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            font-size: 0.875rem;
+            color: #b45309;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .icon-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section {
+            position: relative;
+            padding: 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fef3e2, #fed7aa);
+            border-radius: 1.5rem;
+            border: 2px solid #ea580c;
+            margin: 3rem 0;
+        }
+        
+        .summary-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .summary-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .summary-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b45309;
+            margin: 0 0 1rem 0;
+        }
+        
+        .summary-section p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #4b5563;
+            margin: 0;
+        }
+        /* Assessment Styles */
+        
+        .assessment-section {
+            margin: 3rem 0;
+        }
+        
+        .assessment-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .assessment-prompt {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #10b981;
+        }
+        
+        .assessment-prompt h3 {
+            margin: 0 0 0.75rem 0;
+            color: #047857;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        
+        .assessment-prompt p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .assessment-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .assessment-btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .clear-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .clear-btn:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .assessment-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .assessment-feedback.show {
+            display: block;
+        }
+        
+        .assessment-feedback.success {
+            background: rgba(234, 88, 12, 0.1);
+            color: #b45309;
+            border-left: 4px solid #ea580c;
+        }
+        
+        .assessment-feedback-text {
+            margin: 0;
+            font-weight: 600;
+        }
+        /* References Styles */
+        
+        .references-section {
+            margin-top: 3rem;
+        }
+        
+        .references-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .references-icon {
+            font-size: 2.5rem;
+        }
+        
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #b45309;
+            margin: 0;
+        }
+        
+        .references-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .reference-item {
+            padding: 1.75rem;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.02), rgba(249, 115, 22, 0.02));
+            border-radius: 1.2rem;
+            border: 2px solid rgba(234, 88, 12, 0.1);
+            border-left: 4px solid #ea580c;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reference-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(234, 88, 12, 0.08), transparent 80%);
+            transition: right 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: 0 12px 24px rgba(234, 88, 12, 0.12);
+            border-color: rgba(234, 88, 12, 0.2);
+        }
+        
+        .reference-item:hover::before {
+            right: -20%;
+        }
+        
+        .reference-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reference-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #b45309;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .reference-item p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ea580c;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            margin-left: -0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .reference-link:hover {
+            color: #b45309;
+            background: rgba(234, 88, 12, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+            background: linear-gradient(135deg, #064e3b 0%, #0d6e52 100%);
+            color: #a7f3d0;
+        }
+        
+        footer p:first-child {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: rgba(167, 243, 208, 0.6);
+        }
+        /* Decorative Elements */
+        
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.08;
+            animation: float 20s infinite;
+            z-index: -1;
+        }
+        
+        .float-1 {
+            animation-delay: 0s;
+            top: 10%;
+            left: 5%;
+        }
+        
+        .float-2 {
+            animation-delay: 3s;
+            top: 20%;
+            right: 8%;
+        }
+        
+        .float-3 {
+            animation-delay: 6s;
+            top: 40%;
+            left: 10%;
+        }
+        
+        .float-4 {
+            animation-delay: 9s;
+            bottom: 20%;
+            right: 5%;
+        }
+        
+        .float-5 {
+            animation-delay: 12s;
+            bottom: 30%;
+            left: 15%;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+        /* Background Decorative Elements */
+        
+        .bg-decoration-left {
+            position: fixed;
+            left: -200px;
+            top: 15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 30s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        .bg-decoration-right {
+            position: fixed;
+            right: -150px;
+            bottom: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: float 35s infinite ease-in-out reverse;
+            pointer-events: none;
+        }
+        
+        .visual-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            margin: 2rem 0;
+            border-radius: 9999px;
+        }
+        
+        .mesh-background {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(52, 211, 153, 0.03) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .info-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(52, 211, 153, 0.03));
+            border-radius: 1rem;
+            border-left: 4px solid #10b981;
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .info-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .info-box-content {
+            flex: 1;
+        }
+        
+        .info-box-title {
+            font-weight: 700;
+            color: #047857;
+            margin: 0 0 0.25rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .info-box-text {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 640px) {
+            .impact-card-image {
+                height: 350px;
+            }
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+    <div class="app-wrapper">
+        <div class="mesh-background"></div>
+        <div class="bg-decoration-left"></div>
+        <div class="bg-decoration-right"></div>
+        <div class="floating-elements">
+            <div class="floating-emoji float-1">
+                🗑️
+            </div>
+            <div class="floating-emoji float-2">
+                ♻️
+            </div>
+            <div class="floating-emoji float-3">
+                🌊
+            </div>
+            <div class="floating-emoji float-4">
+                🏭
+            </div>
+            <div class="floating-emoji float-5">
+                🌍
+            </div>
+        </div>
+        <header>
+            <nav>
+                <a href="index.html" class="back-button"><i data-lucide="arrow-left" style="width:20px;height:20px;"></i> Back to Topics</a>
+                <div class="logo"><span>🗑️</span> <span id="page-title">Philippine Waste Management Crisis</span>
+                </div>
+                <div class="nav-desktop"></div>
+            </nav>
+        </header>
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="font-heading">🗑️ Philippine Waste Management Crisis</h1>
+                    <div class="hero-divider"></div>
+                    <p class="hero-subtitle" id="hero-subtitle">How 40,000 tons of daily waste threatens the Philippines' ecosystems, health, and future</p>
+                </div>
+            </section>
+            <div class="content-wrapper">
+                <section class="intro-section">
+                    <p id="intro-text">The Philippines generates approximately 40,000 tons of solid waste daily, with Metro Manila being the largest contributor. Despite strong legislation like the Ecological Solid Waste Management Act (RA 9003), poor enforcement, rising
+                        plastic consumption, and limited infrastructure have left the country facing a severe waste crisis. This guide explores the waste management challenges threatening Philippine ecosystems, public health, and economic development.</p>
+                </section>
+                <!-- Impact 1: Weather & Climate Patterns -->
+                <article class="impact-card">
+                    <img src="/images/Philippines-flood-Main.jpg" alt="Philippine Waste Crisis" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🗑️';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🗑️</span>
+                        <div class="impact-number">
+                            1
+                        </div>
+                        <h3>The Daily Waste Crisis</h3>
+                        <p>The Philippines generates 40,000 tons of solid waste daily, with Metro Manila alone producing the largest share. This staggering volume overwhelms existing landfills and waste management systems.</p>
+                        <ul>
+                            <li>7,600+ islands make waste collection and transport extremely challenging</li>
+                            <li>Metro Manila, Cebu, and Davao are major waste hotspots</li>
+                            <li>Landfills reaching maximum capacity years ahead of schedule</li>
+                            <li>Only 60% of waste receives proper disposal; rest goes to illegal dumpsites</li>
+                            <li>Rapid urbanization and population growth accelerate waste generation</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📊
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Critical Fact
+                                </div>
+                                <div class="info-box-text">
+                                    40,000 tons daily = 14.6 million tons annually. At current rates, the Philippines' landfills will be completely full within 5-8 years.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: DENR – Solid Waste Management</span>
+                    </div>
+                </article>
+                <!-- Impact 2: Ecosystems & Wildlife -->
+                <article class="impact-card">
+                    <img src="/images/Waste-Management-Laws.jpg" alt="Waste Segregation &amp; Laws" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='⚖️';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">⚖️</span>
+                        <div class="impact-number">
+                            2
+                        </div>
+                        <h3>Laws &amp; Regulations Exist—But Enforcement is Weak</h3>
+                        <p>The Philippines has comprehensive waste management laws, but inconsistent enforcement at barangay and municipal levels undermines their effectiveness.</p>
+                        <ul>
+                            <li><strong>RA 9003 (2000)</strong> - Mandates waste segregation at source, recycling, composting, and requires LGUs to establish Materials Recovery Facilities (MRFs)</li>
+                            <li><strong>RA 8749 (1999)</strong> - Clean Air Act bans incineration of municipal waste to reduce air pollution</li>
+                            <li><strong>RA 6969 (1990)</strong> - Regulates hazardous waste importation, storage, and disposal</li>
+                            <li><strong>EPR Law (2022)</strong> - Requires companies to take responsibility for plastic packaging waste and reduce single-use plastics</li>
+                            <li>Many LGUs fail to implement segregation programs or maintain MRFs; political will and budget allocation are lacking</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📋
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The Enforcement Gap
+                                </div>
+                                <div class="info-box-text">
+                                    While laws are strong on paper, only about 40% of LGUs have functional MRFs. Penalties for non-compliance are rarely enforced.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: DENR – RA 9003 Compliance Reports</span>
+                    </div>
+                </article>
+                <!-- Impact 3: Human Health & Wellbeing -->
+                <article class="impact-card">
+                    <img src="/images/Plastic-Pollution.jpg" alt="Plastic Waste in Philippines" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🌊';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🌊</span>
+                        <div class="impact-number">
+                            3
+                        </div>
+                        <h3>Plastic Dependency &amp; Marine Pollution</h3>
+                        <p>The Philippines is among the world's top contributors to ocean plastic pollution. Single-use plastics, especially sachets, dominate consumer packaging and waste streams.</p>
+                        <ul>
+                            <li>Sachets (small plastic packages for shampoo, sauce, etc.) are ubiquitous and difficult to recycle</li>
+                            <li>The Philippines contributes 1.88 million tons of plastic to oceans annually</li>
+                            <li>Microplastics found in fish, drinking water, and even table salt</li>
+                            <li>Coastal communities rely on fishing, but poisoned waters threaten livelihoods and food security</li>
+                            <li>Single-use plastics make up 60%+ of the waste stream in Metro Manila</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                ♻️
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The Sachet Problem
+                                </div>
+                                <div class="info-box-text">
+                                    Sachets are convenient and cheap but nearly impossible to collect for recycling. They end up in rivers, oceans, and landfills, degrading over 400 years.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Ocean Cleanup Foundation – Philippine Waste</span>
+                    </div>
+                </article>
+                <!-- Impact 4: Food & Water Security -->
+                <article class="impact-card">
+                    <img src="images/PHHealthSys.jpg" alt="Health Impacts of Waste" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🏥';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🏥</span>
+                        <div class="impact-number">
+                            4
+                        </div>
+                        <h3>Public Health &amp; Environmental Impacts</h3>
+                        <p>Improper waste disposal contaminates water, soil, and air, leading to disease outbreaks, respiratory problems, and long-term health crises across communities.</p>
+                        <ul>
+                            <li>Open dumpsites breed disease-carrying insects and rodents, spreading dengue, leptospirosis, and cholera</li>
+                            <li>Groundwater contaminated by leachate from overflowing landfills</li>
+                            <li>Air pollution from uncontrolled burning of waste causes respiratory illnesses</li>
+                            <li>Rivers and coastal areas polluted, affecting drinking water and fishing—primary income for millions</li>
+                            <li>Children in informal settlements near dumpsites face highest health risks</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                🌍
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    Environmental Justice
+                                </div>
+                                <div class="info-box-text">
+                                    The poorest communities suffer the most—living near landfills and dumpsites where waste causes the greatest damage to health and environment.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: Philippine Health Department – Waste-Related Diseases</span>
+                    </div>
+                </article>
+                <!-- Impact 5: Economic Disruption -->
+                <article class="impact-card">
+                    <img src="/images/infrastrucre.jpg" alt="Infrastructure Challenges" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='🏗️';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">🏗️</span>
+                        <div class="impact-number">
+                            5
+                        </div>
+                        <h3>Infrastructure Gaps &amp; Implementation Challenges</h3>
+                        <p>Many LGUs lack the infrastructure, funding, and political will to implement effective waste management systems, leaving the country unable to handle its waste crisis.</p>
+                        <ul>
+                            <li>Only 40% of LGUs have functional Materials Recovery Facilities (MRFs)</li>
+                            <li>Limited sanitary landfills in operation; many LGUs use unsafe, open dumpsites</li>
+                            <li>Insufficient funding for waste collection, transport, and treatment</li>
+                            <li>Public awareness campaigns on segregation are inconsistent and ineffective</li>
+                            <li>Corruption and mismanagement of waste management budgets in many municipalities</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                💰
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The Budget Problem
+                                </div>
+                                <div class="info-box-text">
+                                    Waste management is expensive—collection, transport, and disposal costs strain LGU budgets. Federal support is insufficient.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: DBM – Local Government Budgets for Waste</span>
+                    </div>
+                </article>
+                <!-- Impact 6: Social & Political Instability -->
+                <article class="impact-card">
+                    <img src="/images/Tourism-Decline.jpg" alt="Economic &amp; Tourism Impact" class="impact-card-image" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #fed7aa, #fdba74)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.fontSize='4rem'; this.textContent='💼';">
+                    <div class="impact-card-content">
+                        <span class="icon-emoji">💼</span>
+                        <div class="impact-number">
+                            6
+                        </div>
+                        <h3>Economic Cost &amp; Tourism Decline</h3>
+                        <p>Waste pollution directly damages the Philippine economy through declining tourism, lost fisheries, and rising healthcare costs from pollution-related diseases.</p>
+                        <ul>
+                            <li>Beach pollution reduces tourism revenue—beaches are major economic drivers in provinces</li>
+                            <li>Fishing industry suffers as waters become contaminated with microplastics and toxins</li>
+                            <li>Healthcare costs escalate due to waste-related illnesses (dengue, respiratory infections, etc.)</li>
+                            <li>Real estate values decline in areas near dumpsites and polluted waterways</li>
+                            <li>Billions of pesos spent on waste management far exceed prevention and segregation investments</li>
+                        </ul>
+                        <div class="info-box">
+                            <div class="info-box-icon">
+                                📊
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">
+                                    The True Cost
+                                </div>
+                                <div class="info-box-text">
+                                    Cleanup, healthcare, and lost productivity from waste-related problems cost the Philippines more annually than prevention programs would.
+                                </div>
+                            </div>
+                        </div><span class="source-badge">🔗 Source: World Bank – Cost of Pollution in Philippines</span>
+                    </div>
+                </article>
+                <!-- Summary Section -->
+                <section class="summary-section">
+                    <div class="summary-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            🎯
+                        </div>
+                        <h2>Key Takeaway</h2>
+                        <p id="conclusion-text">The Philippines faces a mounting waste crisis that threatens ecosystems, public health, and economic development. With 40,000 tons generated daily, strong laws like RA 9003 exist but remain weakly enforced. Solving this crisis
+                            requires: (1) Stronger enforcement of waste segregation and LGU compliance, (2) Reduced plastic dependency through the EPR Law and corporate accountability, (3) Investment in infrastructure like functional MRFs and sanitary
+                            landfills, and (4) Public participation in segregation and waste reduction. Without urgent action, the Philippines' landfills will overflow, oceans will become cesspools, and vulnerable communities will suffer most. The time
+                            to transform waste management is now.</p>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- Waste Segregation Quiz Section -->
+                <section class="assessment-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            ♻️
+                        </div>
+                        <h2 class="references-title">Waste Segregation Challenge</h2>
+                    </div>
+                    <div class="assessment-container">
+                        <div class="assessment-prompt">
+                            <h3>🎯 Sort Waste Into Correct Bins</h3>
+                            <p>Drag each waste item into the correct segregation category. Learn how proper waste segregation is the first step to solving the Philippines' waste crisis!</p>
+                        </div>
+                        <div id="waste-game" style="margin: 2rem 0;">
+                            <!-- Waste Items to Drag -->
+                            <div style="background: linear-gradient(135deg, rgba(234, 88, 12, 0.06), rgba(249, 115, 22, 0.02)); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; border: 2px dashed rgba(234, 88, 12, 0.2);">
+                                <div style="font-weight: 700; color: #b45309; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                                    📦 Waste Items (Drag to Sort):
+                                </div>
+                                <div id="waste-items" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
+                                    <div class="waste-item" draggable="true" data-type="biodegradable" data-name="Fruit Peels" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🍌
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Fruit Peels
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="recyclable" data-name="Bottle" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🥤
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Bottle
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="biodegradable" data-name="Tea Leaves" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🍵
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Tea Leaves
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="non-biodegradable" data-name="Plastic Bag" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            💼
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Plastic Bag
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="recyclable" data-name="Newspaper" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            📰
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Newspaper
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="non-biodegradable" data-name="Glass" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🍷
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Glass
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="biodegradable" data-name="Plant Leaves" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🌿
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Plant Leaves
+                                        </div>
+                                    </div>
+                                    <div class="waste-item" draggable="true" data-type="recyclable" data-name="Aluminum Can" style="padding: 1rem; background: white; border: 2px solid #ea580c; border-radius: 0.75rem; text-align: center; cursor: grab; transition: all 0.3s ease; user-select: none;">
+                                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">
+                                            🥫
+                                        </div>
+                                        <div style="font-weight: 600; color: #374151; font-size: 0.85rem;">
+                                            Can
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Waste Bins -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
+                                <div class="waste-bin" data-bin="biodegradable" style="padding: 1.5rem; background: linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.02)); border: 3px dashed #ea580c; border-radius: 1rem; min-height: 200px; text-align: center;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.25rem;">
+                                        🍃
+                                    </div>
+                                    <div style="font-weight: 700; color: #b45309; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                                        Biodegradable
+                                    </div>
+                                    <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 1rem;">
+                                        Breaks down naturally
+                                    </div>
+                                    <div id="bin-biodegradable" style="min-height: 80px; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+                                </div>
+                                <div class="waste-bin" data-bin="non-biodegradable" style="padding: 1.5rem; background: linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.02)); border: 3px dashed #ea580c; border-radius: 1rem; min-height: 200px; text-align: center;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.25rem;">
+                                        ⚫
+                                    </div>
+                                    <div style="font-weight: 700; color: #b45309; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                                        Non-Biodegradable
+                                    </div>
+                                    <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 1rem;">
+                                        Takes centuries to break down
+                                    </div>
+                                    <div id="bin-non-biodegradable" style="min-height: 80px; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+                                </div>
+                                <div class="waste-bin" data-bin="recyclable" style="padding: 1.5rem; background: linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.02)); border: 3px dashed #ea580c; border-radius: 1rem; min-height: 200px; text-align: center;">
+                                    <div style="font-size: 2rem; margin-bottom: 0.25rem;">
+                                        ♻️
+                                    </div>
+                                    <div style="font-weight: 700; color: #b45309; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                                        Recyclable
+                                    </div>
+                                    <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 1rem;">
+                                        Can be reused/repurposed
+                                    </div>
+                                    <div id="bin-recyclable" style="min-height: 80px; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="waste-feedback" class="assessment-feedback"></div>
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="assessment-btn submit-btn" onclick="checkWasteSortScore()" style="padding: 1rem 2rem;">Check Score</button> <button class="assessment-btn clear-btn" onclick="resetWasteGame()" style="padding: 1rem 2rem;">Reset Game</button>
+                        </div>
+                    </div>
+                </section>
+                <div class="visual-divider"></div>
+                <!-- References Section -->
+                <section class="references-section">
+                    <div class="references-header">
+                        <div class="references-icon">
+                            📚
+                        </div>
+                        <h2 class="references-title">References &amp; Sources</h2>
+                    </div>
+                    <div class="references-list">
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>RichestPH – Waste Management Crisis in the Philippines</h4>
+                                <p>In-depth analysis of the Philippines' waste crisis, causes of overflow, and impacts on Metro Manila and major cities.</p><a href="https://www.richestph.com/environment/waste-management-crisis-philippines" target="_blank"
+                                    rel="noopener noreferrer" class="reference-link"><span>Visit RichestPH Article</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Wazzup Pilipinas – Waste Crisis in the Philippines: A Call for Real Action</h4>
+                                <p>Critical examination of enforcement gaps, plastic dependency, and public awareness challenges in Philippine waste management.</p><a href="https://www.wazzuppilipinas.com/2020/01/waste-crisis-in-philippines.html" target="_blank"
+                                    rel="noopener noreferrer" class="reference-link"><span>Visit Wazzup Pilipinas Article</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>PIDS – Analysis of Regulatory Policies on Solid Waste Management in the Philippines</h4>
+                                <p>Academic analysis of RA 9003 implementation, policy effectiveness, and recommendations for strengthening waste management law enforcement.</p><a href="https://www.pids.gov.ph/publications/7162" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit PIDS Research</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>DENR – Solid Waste Management &amp; RA 9003 Compliance</h4>
+                                <p>Official government data on waste generation, landfill capacity, and local government unit compliance with ecological waste management requirements.</p><a href="https://www.denr.gov.ph/" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit DENR</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-content">
+                                <h4>Ocean Cleanup Foundation – Philippine Waste &amp; Ocean Pollution</h4>
+                                <p>Research on plastic pollution from the Philippines, microplastics in marine ecosystems, and impacts on fisheries and coastal communities.</p><a href="https://theoceancleanup.com/" target="_blank" rel="noopener noreferrer"
+                                    class="reference-link"><span>Visit Ocean Cleanup Foundation</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Navigation -->
+                <div class="footer-nav">
+                    <a href="index.html" class="back-button">← Back to All Topics</a> <span style="color: #999;">|</span> <a href="topic-1.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:0.75rem; background:rgba(16,185,129,0.1); color:#10b981; text-decoration:none; font-weight:600; transition:all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(16,185,129,0.2)'" onmouseout="this.style.background='rgba(16,185,129,0.1)'">Previous Topic <i data-lucide="arrow-left" style="width:20px;height:20px;"></i></a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>🗑️ Philippine Waste Management Crisis — Comprehensive Impact Guide</p>
+            <p>Part of Our Environmental Sustainability Initiative • 2025</p>
+        </footer>
+    </div>
+    <script>
+        // Waste Segregation Game
+        let draggedElement = null;
+        let wasteItems = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initWasteGame();
+        });
+
+        function initWasteGame() {
+            document.querySelectorAll('.waste-item').forEach(item => {
+                item.addEventListener('dragstart', dragStart);
+                item.addEventListener('dragend', dragEnd);
+            });
+
+            document.querySelectorAll('.waste-bin').forEach(bin => {
+                bin.addEventListener('dragover', dragOver);
+                bin.addEventListener('drop', drop);
+                bin.addEventListener('dragleave', dragLeave);
+            });
+        }
+
+        function dragStart(e) {
+            draggedElement = this;
+            this.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function dragEnd(e) {
+            draggedElement = null;
+            this.style.opacity = '1';
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            this.style.background = 'linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(249, 115, 22, 0.1))';
+            this.style.borderColor = '#ea580c';
+        }
+
+        function dragLeave(e) {
+            this.style.background = 'linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.02))';
+            this.style.borderColor = 'rgba(234, 88, 12, 0.1)';
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            if (!draggedElement) return;
+
+            const binType = this.dataset.bin;
+            const itemType = draggedElement.dataset.type;
+            const itemName = draggedElement.dataset.name;
+
+            // Clone the item and add to bin
+            const binContainer = document.getElementById(`bin-${binType}`);
+            const clonedItem = document.createElement('div');
+            clonedItem.style.cssText = 'padding: 0.5rem 0.75rem; background: white; border: 1px solid #ea580c; border-radius: 0.5rem; font-weight: 600; font-size: 0.8rem; color: #374151; text-align: center;';
+            clonedItem.textContent = itemName;
+            clonedItem.dataset.correct = itemType === binType ? 'yes' : 'no';
+            clonedItem.ondblclick = () => clonedItem.remove();
+
+            binContainer.appendChild(clonedItem);
+
+            // Remove original from pool
+            draggedElement.style.display = 'none';
+
+            this.style.background = 'linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(249, 115, 22, 0.02))';
+            this.style.borderColor = 'rgba(234, 88, 12, 0.1)';
+        }
+
+        function checkWasteSortScore() {
+            let correct = 0;
+            let total = 0;
+
+            document.querySelectorAll('[data-correct]').forEach(item => {
+                total++;
+                if (item.dataset.correct === 'yes') correct++;
+            });
+
+            if (total === 0) {
+                const feedback = document.getElementById('waste-feedback');
+                feedback.innerHTML = '<strong>⚠️ Please sort at least one item first!</strong>';
+                feedback.className = 'assessment-feedback success show';
+                setTimeout(() => feedback.classList.remove('show'), 3000);
+                return;
+            }
+
+            const percentage = Math.round((correct / total) * 100);
+            let message = '';
+            let emoji = '';
+
+            if (percentage === 100) {
+                message = '🏆 Perfect! You mastered waste segregation!';
+                emoji = '✨';
+            } else if (percentage >= 80) {
+                message = '💚 Excellent! You understand proper waste sorting!';
+                emoji = '👍';
+            } else if (percentage >= 60) {
+                message = '📚 Good effort! Review the categories to improve.';
+                emoji = '📖';
+            } else {
+                message = '🌱 Keep learning! Try again to improve your score.';
+                emoji = '🔄';
+            }
+
+            const feedback = document.getElementById('waste-feedback');
+            feedback.innerHTML = `<strong>${emoji} Score: ${correct}/${total} (${percentage}%)</strong><br>${message}<br><small>Double-click any sorted item to remove it and try again.</small>`;
+            feedback.className = 'assessment-feedback success show';
+        }
+
+        function resetWasteGame() {
+            document.querySelectorAll('.waste-item').forEach(item => item.style.display = 'block');
+            document.getElementById('bin-biodegradable').innerHTML = '';
+            document.getElementById('bin-non-biodegradable').innerHTML = '';
+            document.getElementById('bin-recyclable').innerHTML = '';
+            document.getElementById('waste-feedback').className = 'assessment-feedback';
+        }
+
+        const defaultConfig = {
+            page_title: "Philippine Waste Management Crisis",
+            hero_subtitle: "How 40,000 tons of daily waste threatens the Philippines' ecosystems, health, and future",
+            intro_text: "The Philippines generates approximately 40,000 tons of solid waste daily, with Metro Manila being the largest contributor. Despite strong legislation like the Ecological Solid Waste Management Act (RA 9003), poor enforcement, rising plastic consumption, and limited infrastructure have left the country facing a severe waste crisis. This guide explores the waste management challenges threatening Philippine ecosystems, public health, and economic development.",
+            conclusion_text: "The Philippines faces a mounting waste crisis that threatens ecosystems, public health, and economic development. With 40,000 tons generated daily, strong laws like RA 9003 exist but remain weakly enforced. Solving this crisis requires: (1) Stronger enforcement of waste segregation and LGU compliance, (2) Reduced plastic dependency through the EPR Law and corporate accountability, (3) Investment in infrastructure like functional MRFs and sanitary landfills, and (4) Public participation in segregation and waste reduction. Without urgent action, the Philippines' landfills will overflow, oceans will become cesspools, and vulnerable communities will suffer most. The time to transform waste management is now.",
+            font_family: "Playfair Display",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const c = key => config[key] || defaultConfig[key];
+            document.getElementById('page-title').textContent = c('page_title');
+            document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+            document.getElementById('intro-text').textContent = c('intro_text');
+            document.getElementById('conclusion-text').textContent = c('conclusion_text');
+
+            const font = c('font_family');
+            document.querySelectorAll('.font-heading').forEach(el => {
+                el.style.fontFamily = `${font}, serif`;
+            });
+
+            const size = c('font_size');
+            document.getElementById('intro-text').style.fontSize = `${size * 1.1}px`;
+            document.getElementById('conclusion-text').style.fontSize = `${size * 1.1}px`;
+        }
+
+        function mapToCapabilities(config) {
+            const c = key => config[key] || defaultConfig[key];
+            const mut = key => ({
+                get: () => c(key),
+                set: (v) => {
+                    config[key] = v;
+                    window.elementSdk.setConfig({
+                        [key]: v
+                    });
+                }
+            });
+
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: mut('font_family'),
+                fontSizeable: mut('font_size')
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            const c = key => config[key] || defaultConfig[key];
+            return new Map([
+                ["page_title", c('page_title')],
+                ["hero_subtitle", c('hero_subtitle')],
+                ["intro_text", c('intro_text')],
+                ["conclusion_text", c('conclusion_text')]
+            ]);
+        }
+
+        lucide.createIcons();
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'9e332e94a26cb9ff',t:'MTc3NDY2NDcwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
